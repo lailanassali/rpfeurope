@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Toaster } from 'react-hot-toast';
 import { ConnectTabs } from "@/components/common/ConnectTabs";
@@ -104,7 +104,8 @@ const connectTabs = [
    }
 ];
 
-export default function ConnectPage() {
+// Separate component that uses useSearchParams
+function ConnectPageContent() {
    const searchParams = useSearchParams();
    const [activeTab, setActiveTab] = useState("baptism");
 
@@ -170,5 +171,13 @@ export default function ConnectPage() {
          </main>
          <Toaster position="top-right" />
       </div>
+   );
+}
+
+export default function ConnectPage() {
+   return (
+      <Suspense fallback={<div className="flex min-h-screen items-center justify-center">Loading...</div>}>
+         <ConnectPageContent />
+      </Suspense>
    );
 }
