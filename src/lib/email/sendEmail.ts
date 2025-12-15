@@ -10,7 +10,7 @@ interface SendEmailParams {
 export async function sendEmail({ to, cc, subject, html }: SendEmailParams) {
  try {
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const FROM_EMAIL = process.env.SMTP_FROM_EMAIL || 'noreply@chheurope.com';
+  const FROM_EMAIL = process.env.SMTP_FROM_EMAIL || 'onboarding@resend.dev';
 
   if (!RESEND_API_KEY) {
    console.error('RESEND_API_KEY not configured');

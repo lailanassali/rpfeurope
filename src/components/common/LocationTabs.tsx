@@ -74,7 +74,7 @@ export function LocationTabs({ tabs }: LocationTabsProps) {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-[10px] h-[44px] rounded-[8px] transition-colors ${activeTab === tab.id
+              className={`px-[10px] h-[44px] w-[160px] rounded-[8px] transition-colors ${activeTab === tab.id
                 ? "bg-primary text-white font-bold"
                 : "bg-transparent text-black hover:bg-gray-100"
                 }`}

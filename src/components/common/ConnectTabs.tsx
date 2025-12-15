@@ -97,7 +97,7 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
           <button
             key={tab.id}
             onClick={() => handleTabClick(tab.id)}
-            className={`px-[10px] h-[44px] rounded-[8px] transition-colors ${activeTab === tab.id
+            className={`px-[10px] h-[44px] w-[160px] rounded-[8px] transition-colors ${activeTab === tab.id
               ? "bg-primary text-white font-bold"
               : "bg-transparent text-black hover:bg-gray-100"
               }`}
@@ -135,7 +135,7 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
           <img
             src={currentTab.image}
             alt={currentTab.title}
-            className="w-full h-[434px] object-cover rounded-[12px]"
+            className="w-full max-h-[534px] object-cover rounded-[12px]"
           />
         </div>
 
@@ -418,16 +418,6 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
                     required
                   />
                   <FormTextarea name="testimony" label="Tell us your testimony" required />
-                  <FormSelect
-                    name="preferredContact"
-                    label="Preferred Mode of Contact"
-                    options={[
-                      { value: "email", label: "Email" },
-                      { value: "phone", label: "Phone" },
-                      { value: "whatsapp", label: "WhatsApp" }
-                    ]}
-                    required
-                  />
                   <div className="flex gap-2 mt-5">
                     <Info className="size-5 text-[#4469B0] shrink-0 mt-0.5" />
                     <p className="text-[14px] text-[#304A7B]">
