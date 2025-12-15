@@ -1,70 +1,107 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSession, signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { FormInput } from '@/components/common/FormInput';
 import { ChhButton } from '@/components/common/ChhButton';
 import { Eye, EyeOff } from 'lucide-react';
 
 export default function ProfilePage() {
- const [isLoading, setIsLoading] = useState(false);
- const [showCurrentPassword, setShowCurrentPassword] = useState(false);
- const [showNewPassword, setShowNewPassword] = useState(false);
- const [formData, setFormData] = useState({
-  full_name: '',
-  current_password: '',
-  new_password: '',
-  confirm_password: '',
- });
-
- const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-
-  if (formData.new_password && formData.new_password !== formData.confirm_password) {
-   toast.error('New passwords do not match');
-   return;
-  }
-
-  if (formData.new_password && formData.new_password.length < 8) {
-   toast.error('Password must be at least 8 characters');
-   return;
-  }
-
-  setIsLoading(true);
-
-  try {
-   const body: any = { full_name: formData.full_name };
-
-   if (formData.new_password) {
-    body.current_password = formData.current_password;
-    body.new_password = formData.new_password;
-   }
-
-   const res = await fetch('/api/admin/profile', {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-   });
-
-   const data = await res.json();
-
-   if (!res.ok) {
-    throw new Error(data.error || 'Failed to update profile');
-   }
-
-   toast.success('Profile updated successfully!');
-   setFormData({
-    ...formData,
+  const { data: session, update } = useSession();
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFetching, setIsFetching] = useState(true);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
     current_password: '',
     new_password: '',
     confirm_password: '',
-   });
-  } catch (error: any) {
-   toast.error(error.message || 'Failed to update profile');
-  } finally {
-   setIsLoading(false);
+  });
+
+  useEffect(() => {
+    if (session?.user?.name) {
+      setFormData(prev => ({ ...prev, name: session.user.name || '' }));
+      setIsFetching(false);
+    }
+  }, [session]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (formData.new_password && formData.new_password !== formData.confirm_password) {
+      toast.error('New passwords do not match');
+      return;
+    }
+
+    if (formData.new_password && formData.new_password.length < 8) {
+      toast.error('Password must be at least 8 characters');
+      return;
+    }
+
+    setIsLoading(true);
+    const passwordChanged = !!formData.new_password;
+
+    try {
+      const body: any = { name: formData.name };
+      
+      if (formData.new_password) {
+        body.current_password = formData.current_password;
+        body.new_password = formData.new_password;
+      }
+
+      const res = await fetch('/api/admin/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to update profile');
+      }
+
+      if (passwordChanged) {
+        // Password was changed - log out user
+        toast.success('Password updated! Please log in again with your new password.');
+        setTimeout(() => {
+          signOut({ callbackUrl: '/admin/login' });
+        }, 1500);
+      } else {
+        // Only name was changed - update session
+        await update({
+          ...session,
+          user: {
+            ...session?.user,
+            name: formData.name,
+          },
+        });
+        toast.success('Profile updated successfully!');
+        setFormData({
+          ...formData,
+          current_password: '',
+          new_password: '',
+          confirm_password: '',
+        });
+      }
+    } catch (error: any) {
+      toast.error(error.message || 'Failed to update profile');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  if (isFetching) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      </div>
+    );
   }
- };
 
  return (
   <div>
@@ -78,8 +115,8 @@ export default function ProfilePage() {
      <h3 className="text-lg font-semibold mb-4">Personal Information</h3>
      <FormInput
       label="Full Name"
-      value={formData.full_name}
-      onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+      value={formData.name}
+      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
       required
      />
     </div>

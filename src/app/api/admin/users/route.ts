@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
 
   const { data, error } = await supabaseAdmin
    .from('users')
-   .select('id, full_name, email, role, is_active, last_login, created_at')
+   .select('id, name, email, role, is_active, last_login, created_at')
    .order('created_at', { ascending: false });
 
   if (error) throw error;
@@ -28,9 +28,9 @@ export async function POST(request: NextRequest) {
   if (tokenOrError instanceof NextResponse) return tokenOrError;
 
   const body = await request.json();
-  const { full_name, email, password } = body;
+  const { name, email, password } = body;
 
-  if (!full_name || !email || !password) {
+  if (!name || !email || !password) {
    return NextResponse.json({ error: 'Name, email, and password are required' }, { status: 400 });
   }
 
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
   const { data: user, error } = await supabaseAdmin
    .from('users')
    .insert({
-    full_name,
+    name,
     email,
     password: hashedPassword,
     role: 'super_admin',
@@ -74,14 +74,14 @@ export async function POST(request: NextRequest) {
   await sendEmail({
    to: email,
    subject: 'Welcome to CHH Europe Admin',
-   html: welcomeUserEmail(full_name, resetLink),
+   html: welcomeUserEmail(name, resetLink),
   });
 
   return NextResponse.json({
    success: true,
    user: {
     id: user.id,
-    full_name: user.full_name,
+    name: user.name,
     email: user.email,
    }
   }, { status: 201 });

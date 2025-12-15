@@ -9,7 +9,7 @@ export async function PUT(request: NextRequest) {
     if (tokenOrError instanceof NextResponse) return tokenOrError;
 
     const body = await request.json();
-    const { full_name, current_password, new_password } = body;
+    const { name, current_password, new_password } = body;
 
     const userId = tokenOrError.id;
 
@@ -27,8 +27,8 @@ export async function PUT(request: NextRequest) {
     const updateData: any = {};
 
     // Update name if provided
-    if (full_name) {
-      updateData.full_name = full_name;
+    if (name) {
+      updateData.name = name;
     }
 
     // Update password if provided
@@ -52,7 +52,7 @@ export async function PUT(request: NextRequest) {
       .from('users')
       .update(updateData)
       .eq('id', userId)
-      .select('id, full_name, email, role')
+      .select('id, name, email, role')
       .single();
 
     if (error) throw error;

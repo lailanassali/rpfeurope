@@ -98,7 +98,7 @@ export default function UsersPage() {
       ) : (
        users.map((user) => (
         <tr key={user.id} className="hover:bg-gray-50">
-         <td className="px-6 py-4 font-medium">{user.full_name}</td>
+         <td className="px-6 py-4 font-medium">{user.name}</td>
          <td className="px-6 py-4 text-sm text-gray-700">{user.email}</td>
          <td className="px-6 py-4">
           <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">

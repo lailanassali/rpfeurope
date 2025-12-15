@@ -103,9 +103,9 @@ export default function ImagesPage() {
 
    {/* Page Selector */}
    <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
-    <h3 className="font-semibold mb-4">Select Page</h3>
+    <h3 className="font-semibold mb-4 capitalize">Select A Page You want to add image to</h3>
     <FormSelect
-     label="Select Page"
+     label=""
      value={selectedPage}
      onChange={(e) => setSelectedPage(e.target.value)}
      options={PAGE_OPTIONS.map(p => ({ value: p.value, label: p.label }))}

@@ -15,7 +15,7 @@ interface AddUserModalProps {
 export function AddUserModal({ isOpen, onClose, onSuccess }: AddUserModalProps) {
  const [isLoading, setIsLoading] = useState(false);
  const [formData, setFormData] = useState({
-  full_name: '',
+  name: '',
   email: '',
   password: '',
  });
@@ -38,7 +38,7 @@ export function AddUserModal({ isOpen, onClose, onSuccess }: AddUserModalProps) 
    }
 
    toast.success('User created! Password setup email sent.');
-   setFormData({ full_name: '', email: '', password: '' });
+   setFormData({ name: '', email: '', password: '' });
    onSuccess();
   } catch (error: any) {
    toast.error(error.message || 'Failed to create user');
@@ -62,8 +62,8 @@ export function AddUserModal({ isOpen, onClose, onSuccess }: AddUserModalProps) 
     <form onSubmit={handleSubmit} className="space-y-4">
      <FormInput
       label="Full Name"
-      value={formData.full_name}
-      onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+      value={formData.name}
+      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
       required
      />
 

@@ -4,16 +4,18 @@ import { requireSuperAdmin } from '@/lib/api-middleware';
 
 export async function GET(
  request: NextRequest,
- { params }: { params: { id: string } }
+ { params }: { params: Promise<{ id: string }> }
 ) {
  try {
   const tokenOrError = await requireSuperAdmin(request);
   if (tokenOrError instanceof NextResponse) return tokenOrError;
 
+  const { id } = await params;
+
   const { data, error } = await supabaseAdmin
    .from('users')
-   .select('id, full_name, email, role, is_active, last_login, created_at')
-   .eq('id', params.id)
+   .select('id, name, email, role, is_active, last_login, created_at')
+   .eq('id', id)
    .single();
 
   if (error) throw error;
@@ -25,23 +27,24 @@ export async function GET(
 
 export async function PUT(
  request: NextRequest,
- { params }: { params: { id: string } }
+ { params }: { params: Promise<{ id: string }> }
 ) {
  try {
   const tokenOrError = await requireSuperAdmin(request);
   if (tokenOrError instanceof NextResponse) return tokenOrError;
 
+  const { id } = await params;
   const body = await request.json();
-  const { full_name, is_active } = body;
+  const { name, is_active } = body;
 
   const updateData: any = {};
-  if (full_name !== undefined) updateData.full_name = full_name;
+  if (name !== undefined) updateData.name = name;
   if (is_active !== undefined) updateData.is_active = is_active;
 
   const { data, error } = await supabaseAdmin
    .from('users')
    .update(updateData)
-   .eq('id', params.id)
+   .eq('id', id)
    .select()
    .single();
 
@@ -54,16 +57,18 @@ export async function PUT(
 
 export async function DELETE(
  request: NextRequest,
- { params }: { params: { id: string } }
+ { params }: { params: Promise<{ id: string }> }
 ) {
  try {
   const tokenOrError = await requireSuperAdmin(request);
   if (tokenOrError instanceof NextResponse) return tokenOrError;
 
+  const { id } = await params;
+
   const { error } = await supabaseAdmin
    .from('users')
    .delete()
-   .eq('id', params.id);
+   .eq('id', id);
 
   if (error) throw error;
   return NextResponse.json({ success: true });
