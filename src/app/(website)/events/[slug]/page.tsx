@@ -75,7 +75,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
               className="absolute inset-0 bg-cover bg-center"
               style={{
                 backgroundColor: "#382a4dff",
-                backgroundImage: `linear-gradient(rgba(89, 66, 123, 0.6), rgba(89, 66, 123, 0.6)), url('${event.image_url || 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=1080&fit=crop'}')`
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${event.image_url || 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=1080&fit=crop'}')`
               }}
             />
             <HeroText heading={event.title} />

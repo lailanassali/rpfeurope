@@ -4,6 +4,7 @@ import { FinalCTA } from "@/components/common/FinalCTA";
 import { CardComponent } from "@/components/common/CardComponent";
 import { Clock, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { getHeroImage, getCarouselImages } from "@/lib/image-utils";
 
 export const metadata: Metadata = {
         title: "Men & Women's Fellowship | Christ Healing Home",
@@ -11,7 +12,12 @@ export const metadata: Metadata = {
                 "A home for everyone seeking God's presence, growing in faith, and walking in purpose.",
 };
 
-export default function FellowshipPage() {
+export default async function FellowshipPage() {
+        // Fetch images from database
+        const fellowshipHero = await getHeroImage('fellowship_hero');
+        const fellowshipActivities = await getCarouselImages('fellowship_activities');
+        const fellowshipCTA = await getHeroImage('fellowship_cta');
+
         return (
                 <div className="w-full flex min-h-screen flex-col font-sans">
                         <main className="flex-1">
@@ -22,8 +28,9 @@ export default function FellowshipPage() {
                                                 className="absolute inset-0 bg-cover bg-center"
                                                 style={{
                                                         backgroundColor: "#382a4dff",
-                                                        backgroundImage:
-                                                                "linear-gradient(rgba(89, 66, 123, 0.6), rgba(89, 66, 123, 0.6)), url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=1080&fit=crop')",
+                                                        backgroundImage: fellowshipHero
+                                                                ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${fellowshipHero}')`
+                                                                : "#382a4dff",
                                                 }}
                                         />
                                         <HeroText
@@ -92,8 +99,9 @@ Each gathering is built on a foundation of love and encouragement where everyone
                                                                         className=" w-full overflow-hidden rounded-lg"
                                                                         style={{
                                                                                 height: "352px",
-                                                                                backgroundImage:
-                                                                                        "url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop')",
+                                                                                backgroundImage: fellowshipActivities[0]
+                                                                                        ? `url('${fellowshipActivities[0]}')`
+                                                                                        : "none",
                                                                                 backgroundSize: "cover",
                                                                                 backgroundPosition: "center",
                                                                         }}
@@ -203,7 +211,7 @@ We've watched God move powerfully in every session — healing hearts, answering
                                                 {/* 6. Cards Grid */}
                                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                                                         <CardComponent
-                                                                image="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop"
+                                                                image={fellowshipActivities[0] || ""}
                                                                 title="Faith in Action"
                                                                 description="Discover how faith transforms everyday life and empowers believers."
                                                                 linkText="Join live stream"
@@ -211,7 +219,7 @@ We've watched God move powerfully in every session — healing hearts, answering
                                                                 textBgColor="#ffffff"
                                                         />
                                                         <CardComponent
-                                                                image="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop"
+                                                                image={fellowshipActivities[1] || ""}
                                                                 title="Power of Prayer"
                                                                 description="Learn about the transformative power of consistent prayer life."
                                                                 linkText="Get Volume 1"
@@ -224,7 +232,7 @@ We've watched God move powerfully in every session — healing hearts, answering
                                                                 }}
                                                         />
                                                         <CardComponent
-                                                                image="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop"
+                                                                image={fellowshipActivities[2] || ""}
                                                                 title="Walking in Purpose"
                                                                 description="Understanding and fulfilling your God-given calling and purpose."
                                                                 linkText="Read More"
@@ -242,6 +250,7 @@ We've watched God move powerfully in every session — healing hearts, answering
                                         primaryButtonText="Join Our Ministry"
                                         primaryButtonHref="/connect"
                                         backgroundColor="#FFFFFF"
+                                        backgroundImage={fellowshipCTA}
                                 />
                         </main>
                 </div>

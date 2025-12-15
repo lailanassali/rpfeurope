@@ -93,7 +93,7 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
                   className="absolute inset-0 bg-cover bg-center"
                   style={{
                      backgroundColor: "#382a4dff",
-                     backgroundImage: `linear-gradient(rgba(89, 66, 123, 0.6), rgba(89, 66, 123, 0.6)), url('${location.image_url || 'https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1920&h=1080&fit=crop'}')`
+                     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${location.image_url || 'https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1920&h=1080&fit=crop'}')`
                   }}
                />
                <HeroText

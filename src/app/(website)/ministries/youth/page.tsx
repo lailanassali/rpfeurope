@@ -6,8 +6,9 @@ import { FinalCTA } from "@/components/common/FinalCTA";
 import { Clock, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { getHeroImage, getCarouselImages } from "@/lib/image-utils";
 
-// Sample data for location tabs
+// Sample data for location tabs (keeping static for now as per requirements)
 const locationTabs = [
      {
           id: "chh-uk",
@@ -17,7 +18,7 @@ const locationTabs = [
                title: `CHH London Youth ${i + 1}`,
                services: ["Youth Service - Every Sunday | 12:00 PM"],
                address: `${i + 1} Youth Hall, London, UK`,
-               image: `https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop`,
+               image: "",
                mapLink: `https://maps.google.com/?q=${i + 1}+Youth+Hall+London+UK`
           }))
      },
@@ -29,7 +30,7 @@ const locationTabs = [
                title: `CHH Paris Youth ${i + 1}`,
                services: ["Youth Worship - Every Sunday | 1:00 PM"],
                address: `${i + 1} Rue de Jeunes, Paris, France`,
-               image: `https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop`,
+               image: "",
                mapLink: `https://maps.google.com/?q=${i + 1}+Rue+de+Jeunes+Paris+France`
           }))
      }
@@ -40,7 +41,12 @@ export const metadata: Metadata = {
      description: "A Generation Rising in Christ. A space where young people encounter God, build real friendships, and discover who they are in Him.",
 };
 
-export default function YouthPage() {
+export default async function YouthPage() {
+     // Fetch images from database
+     const youthHero = await getHeroImage('youth_hero');
+     const youthSections = await getCarouselImages('youth_sections');
+     const youthCTA = await getHeroImage('youth_cta');
+
      return (
           <div className="w-full flex min-h-screen flex-col font-sans">
                <main className="flex-1">
@@ -51,7 +57,7 @@ export default function YouthPage() {
                               className="absolute inset-0 bg-cover bg-center"
                               style={{
                                    backgroundColor: "#382a4dff",
-                                   backgroundImage: "linear-gradient(rgba(89, 66, 123, 0.6), rgba(89, 66, 123, 0.6)), url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=1080&fit=crop')"
+                                   backgroundImage: youthHero ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${youthHero}')` : "#382a4dff"
                               }}
                          />
                          <HeroText
@@ -69,7 +75,7 @@ export default function YouthPage() {
                          heading="A Place to Belong"
                          description="Welcome to CHH Youth led by Pastor Reece. In this house, no one is left behind. Every young person has a voice and a place to belong. Here, the youth are encouraged, equipped, and empowered to grow strong in God's word and in who He has called them to be."
                          quote="Don't let anyone look down on you because you are young, but set an example for the believers in speech, in conduct, in love, in faith and in purity. — 1 Timothy 4:12"
-                         image="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop"
+                         image={youthSections[0] || ""}
                          imagePosition="left"
                          backgroundColor="#EAE4DB1A"
                     />
@@ -84,7 +90,7 @@ Our youth community stands with you, reminding you that you are never too young 
 Whether you're new to faith, returning after time away, or searching for a spiritual home to call your own, Christ Healing Home has a room for you.
 
 Come and be part of what God is building in this generation, your story matters here.`}
-                         image="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop"
+                         image={youthSections[1] || ""}
                          imagePosition="right"
                          backgroundColor="#FFFFFF"
                     />
@@ -105,7 +111,7 @@ Come and be part of what God is building in this generation, your story matters 
                                    style={{
                                         height: "600px",
                                         borderRadius: "24px",
-                                        backgroundImage: "url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=1080&fit=crop')",
+                                        backgroundImage: youthSections[2] ? `url('${youthSections[2]}')` : "none",
                                         backgroundSize: "cover",
                                         backgroundPosition: "center"
                                    }}
@@ -185,7 +191,7 @@ Come and be part of what God is building in this generation, your story matters 
                                    <div className="flex-1">
                                         <div className="relative w-full overflow-hidden rounded-lg" style={{ height: "520px" }}>
                                              <Image
-                                                  src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop"
+                                                  src={youthSections[3] || ""}
                                                   alt="Pastor Reece"
                                                   fill
                                                   className="object-cover"
@@ -215,6 +221,7 @@ More than a pastor, he's a mentor and a friend, someone who listens, challenges,
                          primaryButtonText="Volunteer with CHH Youth"
                          primaryButtonHref="/connect"
                          backgroundColor="#CEC3DF"
+                         backgroundImage={youthCTA}
                     />
                </main>
           </div>

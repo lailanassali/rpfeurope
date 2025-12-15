@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FormInput } from "@/components/common/FormInput";
 import { FormSelect } from "@/components/common/FormSelect";
 import { FormTextarea } from "@/components/common/FormTextarea";
 import { ChhButton } from "@/components/common/ChhButton";
 import { ImageCarousel } from "@/components/common/ImageCarousel";
 
-const carouselImages = [
+const defaultCarouselImages = [
  "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1200&h=800&fit=crop",
  "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=800&fit=crop",
  "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1200&h=800&fit=crop",
@@ -15,7 +15,27 @@ const carouselImages = [
 ];
 
 export default function GiveLifePage() {
+ const [carouselImages, setCarouselImages] = useState<string[]>(defaultCarouselImages);
  const [attendsBranch, setAttendsBranch] = useState("");
+
+ useEffect(() => {
+  // Fetch carousel images from API
+  async function fetchImages() {
+   try {
+    const res = await fetch('/api/images?page=give_life_carousel');
+    if (res.ok) {
+     const images = await res.json();
+     if (Array.isArray(images) && images.length > 0) {
+      const imageUrls = images.map((img: any) => img.image_url);
+      setCarouselImages(imageUrls);
+     }
+    }
+   } catch (error) {
+    console.error('Failed to fetch carousel images:', error);
+   }
+  }
+  fetchImages();
+ }, []);
 
  const handleSubmit = (e: React.FormEvent) => {
   e.preventDefault();

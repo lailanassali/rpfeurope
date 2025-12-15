@@ -6,21 +6,39 @@ import { BMSCard } from "@/components/common/BMSCard";
 import { DevotionalCard } from "@/components/common/DevotionalCard";
 import { FinalCTA } from "@/components/common/FinalCTA";
 
+// Note: This is a client component due to useState/useEffect for resources
+// CTA image will need to be fetched client-side or passed as prop
 export default function ResourcesPage() {
   const [bmsResources, setBmsResources] = useState<any[]>([]);
   const [devotionals, setDevotionals] = useState<any[]>([]);
+  const [ctaImage, setCtaImage] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchResources();
+    fetchCTAImage();
   }, []);
+
+  async function fetchCTAImage() {
+    try {
+      const res = await fetch('/api/admin/images?page=resources_cta');
+      if (res.ok) {
+        const images = await res.json();
+        if (images.length > 0) {
+          setCtaImage(images[0].image_url);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to fetch CTA image:', error);
+    }
+  }
 
   async function fetchResources() {
     try {
       const res = await fetch('/api/resources');
       if (!res.ok) throw new Error();
       const data = await res.json();
-      
+
       // Filter resources by category
       setBmsResources(data.filter((r: any) => r.category === 'bms_stream'));
       setDevotionals(data.filter((r: any) => r.category === 'devotional'));
@@ -71,7 +89,7 @@ export default function ResourcesPage() {
                     title={resource.title}
                     description={resource.description}
                     schedule={resource.schedule}
-                    image={resource.image_url ||"https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&h=600&fit=crop"}
+                    image={resource.image_url || "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&h=600&fit=crop"}
                     linkText={resource.link_text || "Join Live Stream"}
                     linkHref={resource.link_url || "https://youtube.com/@chheurope"}
                     badge={resource.badge_text ? {
@@ -129,7 +147,7 @@ export default function ResourcesPage() {
           subtitle="Faith grows best in community. Whether you're near one of our branches or joining online, there are many ways to stay connected and be part of what God is doing through RPF Europe."
           primaryButtonText="Join Our Ministry"
           primaryButtonHref="/connect"
-          backgroundImage="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1920&h=1080&fit=crop"
+          backgroundImage={ctaImage}
         />
       </main>
     </div>

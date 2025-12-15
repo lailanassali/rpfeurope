@@ -9,16 +9,46 @@ import { ChhButton } from '@/components/common/ChhButton';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 
 const PAGE_OPTIONS = [
- { value: 'home_hero', label: 'Home Hero', isCarousel: false },
- { value: 'home_bottom_hero', label: 'Home Bottom Hero', isCarousel: false },
- { value: 'ministries_carousel', label: 'Ministries Carousel', isCarousel: true },
- { value: 'locations_carousel', label: 'Locations Carousel', isCarousel: true },
- { value: 'connect_carousel', label: 'Connect Carousel', isCarousel: true },
- { value: 'about_hero', label: 'About Hero', isCarousel: false },
- { value: 'youth_hero', label: 'Youth Hero', isCarousel: false },
- { value: 'fellowship_hero', label: 'Fellowship Hero', isCarousel: false },
- { value: 'children_hero', label: 'Children Hero', isCarousel: false },
- { value: 'university_hero', label: 'University Hero', isCarousel: false },
+ // Home Page
+ { value: 'home_hero', label: 'Home - Hero Section', isCarousel: false },
+ { value: 'home_bottom_hero', label: 'Home - Final CTA', isCarousel: false },
+ { value: 'ministries_carousel', label: 'Home - Ministries Carousel', isCarousel: true },
+ { value: 'connect_carousel', label: 'Home - Connect Carousel', isCarousel: true },
+
+ // Youth Ministry
+ { value: 'youth_hero', label: 'Youth - Hero Section', isCarousel: false },
+ { value: 'youth_sections', label: 'Youth - Section Images', isCarousel: true },
+ { value: 'youth_cta', label: 'Youth - Final CTA', isCarousel: false },
+
+ // Fellowship Ministry
+ { value: 'fellowship_hero', label: 'Fellowship - Hero Section', isCarousel: false },
+ { value: 'fellowship_activities', label: 'Fellowship - Activities Carousel', isCarousel: true },
+ { value: 'fellowship_cta', label: 'Fellowship - Final CTA', isCarousel: false },
+
+ // Children's Ministry
+ { value: 'children_hero', label: 'Children - Hero Section', isCarousel: false },
+ { value: 'children_activities', label: 'Children - Activities', isCarousel: true },
+ { value: 'children_cta', label: 'Children - Final CTA', isCarousel: false },
+
+ // University Ministry
+ { value: 'university_hero', label: 'University - Hero Section', isCarousel: false },
+ { value: 'university_activities', label: 'University - Activities', isCarousel: true },
+ { value: 'university_cta', label: 'University - Final CTA', isCarousel: false },
+
+ // About Page
+ { value: 'about_hero', label: 'About - Hero Section', isCarousel: false },
+ { value: 'about_cta', label: 'About - Final CTA', isCarousel: false },
+
+ // Resources Page
+ { value: 'resources_cta', label: 'Resources - Final CTA', isCarousel: false },
+
+ // Connect Page Tabs
+ { value: 'connect_baptism', label: 'Connect - Baptism Tab', isCarousel: false },
+ { value: 'connect_counselling', label: 'Connect - Counselling Tab', isCarousel: false },
+ { value: 'connect_mentorship', label: 'Connect - Mentorship Tab', isCarousel: false },
+ { value: 'connect_serve', label: 'Connect - Serve Tab', isCarousel: false },
+ { value: 'connect_testimonies', label: 'Connect - Testimonies Tab', isCarousel: false },
+ { value: 'connect_prayer', label: 'Connect - Prayer Tab', isCarousel: false },
 ];
 
 export default function ImagesPage() {

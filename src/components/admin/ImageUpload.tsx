@@ -115,7 +115,7 @@ export function ImageUpload({ value, onChange, label, required }: ImageUploadPro
          Click to upload image
         </p>
         <p className="text-xs text-gray-500">
-         PNG, JPG, GIF up to 5MB
+         PNG, JPG, GIF up to 1MB
         </p>
        </>
       )}

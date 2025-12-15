@@ -4,13 +4,19 @@ import { FinalCTA } from "@/components/common/FinalCTA";
 import { Clock, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { getHeroImage, getCarouselImages } from "@/lib/image-utils";
 
 export const metadata: Metadata = {
      title: "Children's Department | Christ Healing Home",
      description: "Every child is loved, welcomed, and encouraged to grow in faith and character.",
 };
 
-export default function ChildrenPage() {
+export default async function ChildrenPage() {
+     // Fetch images from database
+     const childrenHero = await getHeroImage('children_hero');
+     const childrenActivities = await getCarouselImages('children_activities');
+     const childrenCTA = await getHeroImage('children_cta');
+
      return (
           <div className="w-full flex min-h-screen flex-col font-sans">
                <main className="flex-1">
@@ -21,7 +27,7 @@ export default function ChildrenPage() {
                               className="absolute inset-0 bg-cover bg-center"
                               style={{
                                    backgroundColor: "#382a4dff",
-                                   backgroundImage: "linear-gradient(rgba(89, 66, 123, 0.6), rgba(89, 66, 123, 0.6)), url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1920&h=1080&fit=crop')"
+                                   backgroundImage: childrenHero ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${childrenHero}')` : "#382a4dff"
                               }}
                          />
                          <div className="py-[43px] px-[80px] relative">
@@ -72,7 +78,7 @@ export default function ChildrenPage() {
                                              className="relative w-full overflow-hidden rounded-[4px]"
                                              style={{
                                                   height: "400px",
-                                                  backgroundImage: "url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop')",
+                                                  backgroundImage: childrenActivities[0] ? `url('${childrenActivities[0]}')` : "none",
                                                   backgroundSize: "cover",
                                                   backgroundPosition: "center"
                                              }}
@@ -85,7 +91,7 @@ export default function ChildrenPage() {
                                              className="relative w-full overflow-hidden rounded-[4px]"
                                              style={{
                                                   height: "360px",
-                                                  backgroundImage: "url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop')",
+                                                  backgroundImage: childrenActivities[1] ? `url('${childrenActivities[1]}')` : "none",
                                                   backgroundSize: "cover",
                                                   backgroundPosition: "center"
                                              }}
@@ -98,7 +104,7 @@ export default function ChildrenPage() {
                                              className="relative w-full overflow-hidden rounded-[4px]"
                                              style={{
                                                   height: "400px",
-                                                  backgroundImage: "url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop')",
+                                                  backgroundImage: childrenActivities[2] ? `url('${childrenActivities[2]}')` : "none",
                                                   backgroundSize: "cover",
                                                   backgroundPosition: "center"
                                              }}
@@ -111,7 +117,7 @@ export default function ChildrenPage() {
                                              className="relative w-full overflow-hidden rounded-[4px]"
                                              style={{
                                                   height: "360px",
-                                                  backgroundImage: "url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop')",
+                                                  backgroundImage: childrenActivities[3] ? `url('${childrenActivities[3]}')` : "none",
                                                   backgroundSize: "cover",
                                                   backgroundPosition: "center"
                                              }}
@@ -127,7 +133,7 @@ export default function ChildrenPage() {
                          description={`Sundays and midweek gatherings are filled with worship, laughter, learning and age appropriate activities.
 
 Each moment shared is built on the word of God, providing a strong foundation, preparing young hearts to know the deep love of Christ.`}
-                         image="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop"
+                         image={childrenActivities[0] || ""}
                          imagePosition="right"
                          backgroundColor="#CEC3DF40"
                     />
@@ -140,7 +146,7 @@ Each moment shared is built on the word of God, providing a strong foundation, p
                                    <div className="flex-2 flex items-center justify-center">
                                         <div className="relative w-full overflow-hidden rounded-lg" style={{ height: "500px" }}>
                                              <Image
-                                                  src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop"
+                                                  src={childrenActivities[1] || ""}
                                                   alt="Be Part of the Family"
                                                   fill
                                                   className="object-cover"
@@ -187,7 +193,7 @@ Whether your child is taking their first steps of faith, there is a place for th
                                    style={{
                                         height: "600px",
                                         borderRadius: "24px",
-                                        backgroundImage: "url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1920&h=1080&fit=crop')",
+                                        backgroundImage: childrenActivities[2] ? `url('${childrenActivities[2]}')` : "none",
                                         backgroundSize: "cover",
                                         backgroundPosition: "center"
                                    }}
@@ -255,6 +261,7 @@ Whether your child is taking their first steps of faith, there is a place for th
                          primaryButtonText="Pre-register your child"
                          primaryButtonHref="/ministries/children/register"
                          backgroundColor="#CEC3DF"
+                         backgroundImage={childrenCTA}
                     />
                </main>
           </div>
