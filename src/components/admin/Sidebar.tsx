@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import NextImage from "next/image";
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Calendar, MapPin, FileText, Users, BookOpen, HelpCircle, MessageSquare } from 'lucide-react';
+import { LayoutDashboard, Calendar, MapPin, FileText, Users, BookOpen, HelpCircle, Image, MessageSquare } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 
 interface NavItem {
