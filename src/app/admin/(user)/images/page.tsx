@@ -142,7 +142,7 @@ export default function ImagesPage() {
       <ImageIcon className="size-12 mx-auto mb-2 text-gray-300" />
       <p>No images uploaded yet</p>
      </div>
-    ) : (
+    ) : isCarousel ? (
      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {images.map((img, idx) => (
        <div key={img.id} className="relative group">
@@ -159,6 +159,17 @@ export default function ImagesPage() {
         </button>
         <div className="mt-2 text-sm text-gray-600">Order: {img.order}</div>
        </div>
+      ))}
+     </div>
+    ) : (
+     <div>
+      {images.map((img, idx) => (
+       <img
+        key={img.id}
+        src={img.image_url}
+        alt={`Page Image`}
+        className="w-full h-[300px] object-cover rounded-lg border"
+       />
       ))}
      </div>
     )}
