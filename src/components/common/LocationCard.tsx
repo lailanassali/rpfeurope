@@ -16,7 +16,7 @@ export function LocationCard({ location, image, href = "/locations" }: LocationC
      backgroundImage: `url('${image}')`
     }}
    />
-   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+   <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
    <div className="absolute bottom-0 left-0 right-0 p-6" style={{ backgroundColor: "#0000004D" }}>
     <p className="text-white text-lg font-semibold">{location}</p>
    </div>

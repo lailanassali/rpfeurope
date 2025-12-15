@@ -27,7 +27,7 @@ export function DevotionalCard({
    style={{ boxShadow: "0px 2px 10px 0px #0000000D" }}
   >
    {/* Image - Left */}
-   <div className="w-[140px] h-full flex-shrink-0">
+   <div className="w-[140px] h-full shrink-0">
     <img
      src={image}
      alt={`${volume} - ${title}`}

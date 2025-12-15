@@ -58,7 +58,7 @@ export function SectionContent({
       )}
 
       {description && (
-        <div className={cn("text-[18px] leading-relaxed mt-[16px]",
+        <div className={cn("text-[18px] leading-relaxed mt-[16px] w-10/12",
           textColor === "white" ? "text-white/90" : "text-black"
         )}>
           {description.split('\n').map((paragraph, index) => (

@@ -11,13 +11,13 @@ interface FormSelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 
 export function FormSelect({ label, options, error, placeholder, ...props }: FormSelectProps) {
   return (
-    <div className="mb-4">
+    <div className="mb-5">
       <label className="block text-[16px] text-[#211F1F] font-medium mb-2">
         {label}
       </label>
       <select
         {...props}
-        className={`w-full h-[50px] px-4 text-[14px] border rounded-[8px] outline-none focus:ring-2 focus:ring-primary transition-all bg-white ${error ? "border-red-500" : "border-[#dde6f0]"
+        className={`w-full h-[50px] px-4 text-[14px] border rounded-[8px] outline-none focus:ring-2 focus:ring-primary transition-all bg-transparent ${error ? "border-red-500" : "border-[#dde6f0]"
           } [&>option:first-child]:text-[#ACACAC]`}
       >
         <option value="" className="text-[#ACACAC]">

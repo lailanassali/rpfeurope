@@ -8,8 +8,7 @@ import { useDebounce } from "@/hooks/useDebounce";
 interface Location {
   slug: string;
   title: string;
-  serviceType: string;
-  date: string;
+  services: string[];  // Changed from serviceType and date to services array
   address: string;
   image: string;
   mapLink: string;
@@ -70,15 +69,18 @@ export function LocationTabs({ tabs }: LocationTabsProps) {
       {/* Tab Navigation and Search */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
         {/* Tabs */}
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-3 flex-wrap">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-3 rounded-lg font-medium transition-colors ${activeTab === tab.id
-                ? "bg-primary text-white"
+              className={`px-[10px] h-[44px] rounded-[8px] transition-colors ${activeTab === tab.id
+                ? "bg-primary text-white font-bold"
                 : "bg-transparent text-black hover:bg-gray-100"
                 }`}
+              style={{
+                border: activeTab === tab.id ? 'none' : '0.5px solid rgba(229, 229, 229, 0.5)'
+              }}
             >
               {tab.name}
             </button>
@@ -100,7 +102,7 @@ export function LocationTabs({ tabs }: LocationTabsProps) {
 
       {/* Active Location Heading */}
       <h2 className="text-[40px] font-semibold text-black mt-[98px] mb-[46px]">
-        {tabs.find(tab => tab.id === filteredLocationsWithTab.tabId)?.name || ""}
+        {tabs.find(tab => tab.id === filteredLocationsWithTab.tabId)?.name || ""} Branches
       </h2>
 
       {/* Location Cards Grid */}
@@ -112,8 +114,7 @@ export function LocationTabs({ tabs }: LocationTabsProps) {
               slug={location.slug}
               image={location.image}
               title={location.title}
-              serviceType={location.serviceType}
-              date={location.date}
+              services={location.services}
               address={location.address}
               mapLink={location.mapLink}
             />

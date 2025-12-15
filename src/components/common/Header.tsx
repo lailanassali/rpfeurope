@@ -40,37 +40,37 @@ const drawerGetInvolvedItems: MenuItemProps[] = [
   {
     title: "Baptism",
     description: "Take your next step in faith",
-    href: "/baptism",
+    href: "/connect?tab=baptism",
     icon: <Users className="size-5 text-muted-foreground" />,
   },
   {
     title: "Join a Department",
     description: "Discover the Joy of Serving",
-    href: "/join-department",
+    href: "/connect?tab=serve",
     icon: <HandshakeIcon className="size-5 text-muted-foreground" />,
   },
   {
     title: "Prayer requests",
     description: "we believe in the power of intercession.",
-    href: "/prayer-requests",
+    href: "/connect?tab=prayer",
     icon: <Heart className="size-5 text-muted-foreground" />,
   },
   {
     title: "Testimonies",
     description: "What Has God Done for You?",
-    href: "/testimonies",
+    href: "/connect?tab=testimony",
     icon: <MessagesSquare className="size-5 text-muted-foreground" />,
   },
   {
     title: "Join a mentorship group",
     description: "Grow in Faith Together.",
-    href: "/mentorship",
+    href: "/connect?tab=mentorship",
     icon: <UserPlus className="size-5 text-muted-foreground" />,
   },
   {
     title: "Support & Counselling",
     description: "we would be honoured to stand with you",
-    href: "/support-counselling",
+    href: "/connect?tab=counselling",
     icon: <Heart className="size-5 text-muted-foreground" />,
   },
 ];

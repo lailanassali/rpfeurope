@@ -48,7 +48,7 @@ export function InfoCard({
       )}
       <h3 className="text-xl font-bold leading-tight text-primary">{title}</h3>
      </CardHeader>
-     <CardContent className="py-2 flex-grow">
+     <CardContent className="py-2 grow">
       <p className="text-muted-foreground text-sm line-clamp-3">
        {description}
       </p>

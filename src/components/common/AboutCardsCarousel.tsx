@@ -30,7 +30,7 @@ export function AboutCardsCarousel({ images }: AboutCardsCarouselProps) {
               return (
                 <div
                   key={i}
-                  className="flex-shrink-0 relative h-[400px] overflow-hidden group cursor-pointer"
+                  className="shrink-0 relative h-[400px] overflow-hidden group cursor-pointer"
                   style={{ width }}
                 >
                   <div
@@ -40,7 +40,7 @@ export function AboutCardsCarousel({ images }: AboutCardsCarouselProps) {
                       backgroundImage: `url('${image}')`
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
                 </div>
               );
             })}

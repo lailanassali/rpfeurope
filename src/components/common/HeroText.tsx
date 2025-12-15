@@ -32,8 +32,8 @@ export function HeroText({
  subtitleWeight = 500
 }: HeroTextProps) {
  return (
-  <div className="py-[43px] px-[80px] relative">
-   <div className="">
+  <div className="py-[43px] px-[80px] relative w-1/2">
+   <div className="w-full">
     <h2
      className="text-white mb-[12px]"
      style={{ fontSize: `${headingSize}px`, fontWeight: headingWeight }}
@@ -41,7 +41,7 @@ export function HeroText({
      {heading}
     </h2>
     {subtitle && <p
-     className="text-white/90"
+     className="text-white/90 w-full"
      style={{ fontSize: `${subtitleSize}px`, fontWeight: subtitleWeight }}
     >
      {subtitle}

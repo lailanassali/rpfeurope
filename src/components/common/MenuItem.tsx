@@ -91,11 +91,11 @@ export function MenuItem({
      className
     )}
    >
-    <div className="flex-shrink-0 mt-1 text-[#000000B2]">{icon}</div>
+    <div className="shrink-0 mt-1 text-[#000000B2]">{icon}</div>
     <div className="flex-1">
      <h3 className="font-medium text-[14px] text-black mb-1">{title}</h3>
      {description && (
-      <p className="text-[12px] text-black text-[#000000B2]">{description}</p>
+      <p className="text-[12px] text-[#000000B2]">{description}</p>
      )}
     </div>
    </Link>

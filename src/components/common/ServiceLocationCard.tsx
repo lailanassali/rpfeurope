@@ -7,8 +7,7 @@ interface ServiceLocationCardProps {
   slug: string;
   image: string;
   title: string;
-  serviceType: string;
-  date: string;
+  services: string[];  // Changed from serviceType and date to services array
   address: string;
   mapLink: string;
 }
@@ -17,8 +16,7 @@ export function ServiceLocationCard({
   slug,
   image,
   title,
-  serviceType,
-  date,
+  services,
   address,
   mapLink
 }: ServiceLocationCardProps) {
@@ -30,13 +28,13 @@ export function ServiceLocationCard({
 
   return (
     <div 
-      className="group cursor-pointer overflow-hidden rounded-lg"
+      className="group cursor-pointer overflow-hidden rounded-lg border border-gray-200 hover:shadow-lg transition-shadow"
       onClick={handleCardClick}
     >
       {/* Image */}
       <div className="relative h-[200px] w-full overflow-hidden">
         <img
-          src={image}
+          src={image || 'https://images.unsplash.com/photo-1507692049790-de58290a4334?w=800&h=600&fit=crop'}
           alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -45,9 +43,21 @@ export function ServiceLocationCard({
       {/* Content */}
       <div className="p-4">
         <h3 className="text-[20px] font-semibold text-black mb-2">{title}</h3>
-        <p className="text-[12px] font-normal text-black/70 mb-1">{serviceType}</p>
-        <p className="text-[12px] font-normal text-black/70 mb-3">{date}</p>
-        <div className="flex items-center justify-between">
+        
+        {/* Display all services */}
+        {services && services.length > 0 ? (
+          <div className="mb-3 space-y-1">
+            {services.map((service, idx) => (
+              <p key={idx} className="text-[12px] font-normal text-black/70">
+                {service}
+              </p>
+            ))}
+          </div>
+        ) : (
+          <p className="text-[12px] font-normal text-black/70 mb-3">No services listed</p>
+        )}
+        
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
           <p className="text-[14px] font-normal text-black/80 flex-1">{address}</p>
           <a
             href={mapLink}
