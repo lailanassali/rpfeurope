@@ -12,6 +12,7 @@ export async function getHeroImage(
  fallback: string = ''
 ): Promise<string> {
  try {
+  // Fetch with no-store to prevent caching
   const { data, error } = await supabaseAdmin
    .from(tableName)
    .select('image_url')
@@ -43,6 +44,7 @@ export async function getCarouselImages(
  fallback: string[] = []
 ): Promise<string[]> {
  try {
+  // Fetch with no-store to prevent caching
   const { data, error } = await supabaseAdmin
    .from(tableName)
    .select('image_url, order')

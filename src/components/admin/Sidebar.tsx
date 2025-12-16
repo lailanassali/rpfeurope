@@ -23,6 +23,7 @@ const navItems: NavItem[] = [
   { name: 'Resources', href: '/admin/resources', icon: <BookOpen className="size-5" />, superAdminOnly: true },
   { name: 'FAQs', href: '/admin/faqs', icon: <HelpCircle className="size-5" />, superAdminOnly: true },
   { name: 'Images', href: '/admin/images', icon: <Image className="size-5" />, superAdminOnly: true },
+  { name: 'Privacy Policy', href: '/admin/privacy-policy', icon: <FileText className="size-5" />, superAdminOnly: true },
   { name: 'Users', href: '/admin/users', icon: <UserCog className="size-5" />, superAdminOnly: true },
   { name: 'Profile', href: '/admin/profile', icon: <UserCircle className="size-5" /> },
   { name: 'Email Settings', href: '/admin/settings/email', icon: <Mail className="size-5" />, superAdminOnly: true },

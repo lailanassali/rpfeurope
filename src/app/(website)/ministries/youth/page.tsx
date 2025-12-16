@@ -41,6 +41,9 @@ export const metadata: Metadata = {
      description: "A Generation Rising in Christ. A space where young people encounter God, build real friendships, and discover who they are in Him.",
 };
 
+// Revalidate this page every 60 seconds (ISR)
+export const revalidate = 60;
+
 export default async function YouthPage() {
      // Fetch images from database
      const youthHero = await getHeroImage('youth_hero');

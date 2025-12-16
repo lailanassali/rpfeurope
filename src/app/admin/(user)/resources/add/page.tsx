@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { FormInput } from '@/components/common/FormInput';
 import { FormTextarea } from '@/components/common/FormTextarea';
+import { FormSelect } from '@/components/common/FormSelect';
 import { ImageUpload } from '@/components/admin/ImageUpload';
 import { ChhButton } from '@/components/common/ChhButton';
 
@@ -15,11 +16,14 @@ export default function AddResourcePage() {
   title: '',
   description: '',
   link_text: '',
-  link_href: '',
+  link_url: '',
   image_url: '',
   category: '',
   badge_text: '',
   badge_color: '',
+  schedule: '',
+  author: '',
+  volume: '',
  });
 
  const handleSubmit = async (e: React.FormEvent) => {
@@ -54,9 +58,49 @@ export default function AddResourcePage() {
     <ImageUpload label="Resource Image" value={formData.image_url} onChange={(url) => setFormData({ ...formData, image_url: url })} />
     <div className="grid grid-cols-2 gap-4">
      <FormInput label="Link Text" value={formData.link_text} onChange={(e) => setFormData({ ...formData, link_text: e.target.value })} placeholder="e.g., Read More" />
-     <FormInput label="Link URL" value={formData.link_href} onChange={(e) => setFormData({ ...formData, link_href: e.target.value })} placeholder="https://" />
+     <FormInput label="Link URL" value={formData.link_url} onChange={(e) => setFormData({ ...formData, link_url: e.target.value })} placeholder="https://" />
     </div>
-    <FormInput label="Category (Optional)" value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} />
+
+    <FormSelect
+     label="Category"
+     value={formData.category}
+     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+     options={[
+      { value: '', label: 'Select Category' },
+      { value: 'bms_stream', label: 'BMS Stream' },
+      { value: 'devotional', label: 'Devotional' },
+     ]}
+     required
+    />
+
+    {/* BMS Stream specific fields */}
+    {formData.category === 'bms_stream' && (
+     <FormInput
+      label="Schedule"
+      value={formData.schedule}
+      onChange={(e) => setFormData({ ...formData, schedule: e.target.value })}
+      placeholder="e.g., Monday – Friday, 7:00–8:00 AM (GMT)"
+     />
+    )}
+
+    {/* Devotional specific fields */}
+    {formData.category === 'devotional' && (
+     <>
+      <FormInput
+       label="Author"
+       value={formData.author}
+       onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+       placeholder="e.g., By CHH Teaching Team"
+      />
+      <FormInput
+       label="Volume"
+       value={formData.volume}
+       onChange={(e) => setFormData({ ...formData, volume: e.target.value })}
+       placeholder="e.g., Volume 1"
+      />
+     </>
+    )}
+
     <div className="grid grid-cols-2 gap-4">
      <FormInput label="Badge Text (Optional)" value={formData.badge_text} onChange={(e) => setFormData({ ...formData, badge_text: e.target.value })} />
      <FormInput label="Badge Color" type="color" value={formData.badge_color} onChange={(e) => setFormData({ ...formData, badge_color: e.target.value })} />

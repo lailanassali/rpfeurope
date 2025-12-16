@@ -104,7 +104,7 @@ export function Footer() {
        title="Quick Links"
        links={[
         { text: "About", href: "/about" },
-        { text: "Ministries", href: "/ministry" },
+        { text: "Ministries", href: "/ministries/youth" },
         { text: "Events", href: "/events" },
         { text: "Privacy Policy", href: "/privacy" }
        ]}
@@ -116,11 +116,11 @@ export function Footer() {
       <FooterLinkColumn
        title="Get Involved"
        links={[
-        { text: "Baptism", href: "/baptism" },
-        { text: "Support & Counseling", href: "/support" },
-        { text: "Testimonies", href: "/testimonies" },
-        { text: "Prayer Requests", href: "/prayer" },
-        { text: "Mentorship Group", href: "/mentorship" }
+        { text: "Baptism", href: "/connect?tab=baptism" },
+        { text: "Support & Counseling", href: "/connect?tab=counselling" },
+        { text: "Testimonies", href: "/connect?tab=testimonies" },
+        { text: "Prayer Requests", href: "/connect?tab=prayer" },
+        { text: "Mentorship Group", href: "/connect?tab=mentorship" }
        ]}
       />
      </div>
@@ -130,7 +130,7 @@ export function Footer() {
       <FooterLinkColumn
        title="Get in Touch"
        links={[
-        { text: "Locations", href: "/locations" },
+        { text: "Locations", href: "/join-service" },
         { text: "Resources", href: "/resources" }
        ]}
       />

@@ -157,8 +157,10 @@ ON CONFLICT (email) DO NOTHING;
 -- ========================================
 -- ENABLE ROW LEVEL SECURITY (Optional but recommended)
 -- ========================================
--- ALTER TABLE events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE events ENABLE ROW LEVEL SECURITY;
 -- ALTER TABLE resources ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Enable read access for all users" ON events FOR SELECT USING (true);
 -- ... etc
 
 -- ========================================

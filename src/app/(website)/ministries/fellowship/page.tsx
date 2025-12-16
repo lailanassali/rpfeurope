@@ -12,6 +12,9 @@ export const metadata: Metadata = {
                 "A home for everyone seeking God's presence, growing in faith, and walking in purpose.",
 };
 
+// Revalidate this page every 60 seconds (ISR)
+export const revalidate = 60;
+
 export default async function FellowshipPage() {
         // Fetch images from database
         const fellowshipHero = await getHeroImage('fellowship_hero');

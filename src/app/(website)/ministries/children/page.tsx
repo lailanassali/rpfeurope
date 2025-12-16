@@ -11,6 +11,9 @@ export const metadata: Metadata = {
      description: "Every child is loved, welcomed, and encouraged to grow in faith and character.",
 };
 
+// Revalidate this page every 60 seconds (ISR)
+export const revalidate = 60;
+
 export default async function ChildrenPage() {
      // Fetch images from database
      const childrenHero = await getHeroImage('children_hero');

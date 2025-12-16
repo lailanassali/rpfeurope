@@ -11,6 +11,9 @@ export const metadata: Metadata = {
      description: "A place where students grow in faith, build lasting friendships, and live boldly for Christ.",
 };
 
+// Revalidate this page every 60 seconds (ISR)
+export const revalidate = 60;
+
 // Sample campus data (images will be fetched externally)
 const campuses = [
      {

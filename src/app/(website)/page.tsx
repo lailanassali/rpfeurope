@@ -33,6 +33,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Revalidate this page every 60 seconds (ISR)
+export const revalidate = 60;
+
 
 // Fetch locations from database
 async function getLocations() {
