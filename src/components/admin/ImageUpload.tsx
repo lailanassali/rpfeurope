@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { X, Image as ImageIcon } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
@@ -15,6 +15,10 @@ export function ImageUpload({ value, onChange, label, required }: ImageUploadPro
  const [isUploading, setIsUploading] = useState(false);
  const [preview, setPreview] = useState<string | undefined>(value);
  const fileInputRef = useRef<HTMLInputElement>(null);
+
+ useEffect(() => {
+  setPreview(value);
+ }, [value]);
 
  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
   const file = e.target.files?.[0];

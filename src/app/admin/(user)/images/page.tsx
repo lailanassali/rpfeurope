@@ -78,8 +78,10 @@ export default function ImagesPage() {
   }
  }
 
- async function handleUpload() {
-  if (!newImageUrl) {
+ async function handleUpload(urlOverride?: string) {
+  const urlToUse = typeof urlOverride === 'string' ? urlOverride : newImageUrl;
+
+  if (!urlToUse) {
    toast.error('Please upload an image');
    return;
   }
@@ -91,7 +93,7 @@ export default function ImagesPage() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
      page_identifier: selectedPage,
-     image_url: newImageUrl,
+     image_url: urlToUse,
      is_carousel: isCarousel,
      order: images.length,
     }),
@@ -150,12 +152,17 @@ export default function ImagesPage() {
     <h3 className="font-semibold mb-4">Upload New Image</h3>
     <ImageUpload
      value={newImageUrl}
-     onChange={setNewImageUrl}
+     onChange={(url) => {
+      setNewImageUrl(url);
+      if (url) {
+       handleUpload(url);
+      }
+     }}
      label={isCarousel ? 'Add Image to Carousel' : 'Replace Page Image'}
     />
     <div className="mt-4">
      <ChhButton
-      onClick={handleUpload}
+      onClick={() => handleUpload()}
       disabled={isLoading || !newImageUrl}
       className="bg-primary text-white px-6 py-2 h-auto"
      >
