@@ -36,7 +36,16 @@ const PAGE_OPTIONS = [
  { value: 'university_cta', label: 'University - Final CTA', isCarousel: false },
 
  // About Page
- { value: 'about_hero', label: 'About - Hero Section', isCarousel: false },
+ { value: 'about_carousel', label: 'About - Hero Carousel', isCarousel: true },
+ { value: 'about_mission', label: 'About - Mission Section', isCarousel: false },
+ { value: 'about_beliefs', label: 'About - Beliefs Section', isCarousel: false },
+ { value: 'about_love', label: 'About - Love Card', isCarousel: false },
+ { value: 'about_prayer', label: 'About - Prayer Card', isCarousel: false },
+ { value: 'about_worship', label: 'About - Worship Card', isCarousel: false },
+ { value: 'about_leadership', label: 'About - Leadership (Pastor E-Ben)', isCarousel: false },
+ { value: 'about_sunday', label: 'About - Sunday Service Card', isCarousel: false },
+ { value: 'about_bible', label: 'About - Bible Study Card', isCarousel: false },
+ { value: 'about_firenight', label: 'About - Fire Night Card', isCarousel: false },
  { value: 'about_cta', label: 'About - Final CTA', isCarousel: false },
 
  // Resources Page

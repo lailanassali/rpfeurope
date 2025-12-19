@@ -14,17 +14,27 @@ export function AboutCardsCarousel({ images }: AboutCardsCarouselProps) {
       {/* Carousel Container */}
       <div className="relative px-4">
         <div className="overflow-hidden">
-          {/* Width distribution: 12.5%, 37.5%, 37.5%, 12.5% */}
           <div className="flex gap-2">
             {images.map((image, i) => {
-              // Calculate width based on position: first=12.5%, middle=37.5%, last=12.5%
+              // Calculate width based on total number of images
               let width;
-              if (i === 0) {
-                width = "12.5%"; // First image - half
-              } else if (i === images.length - 1) {
-                width = "12.5%"; // Last image - half
+              const count = images.length;
+
+              if (count === 1) {
+                width = "100%";
+              } else if (count === 2) {
+                width = "50%";
+              } else if (count === 3) {
+                width = "33.33%";
               } else {
-                width = "37.5%"; // Middle images - full
+                // For 4 or more images, use the division formula
+                if (i === 0) {
+                  width = "12.5%"; // First image - half
+                } else if (i === count - 1) {
+                  width = "12.5%"; // Last image - half
+                } else {
+                  width = "37.5%"; // Middle images - full
+                }
               }
 
               return (

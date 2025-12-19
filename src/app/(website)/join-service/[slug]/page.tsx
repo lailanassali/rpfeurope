@@ -58,18 +58,17 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
    }
 
    const services = parseServices(location.services);
+   const contacts = parseServices(location.contact); // Using same helper since logic is identical (split by |)
    const isCampus = location.tag === 'CHH on Campus';
 
-   // Sample images - in real scenario, these could be stored in database or fetched separately
-   const carouselImages = location.image_url ? [
-      location.image_url,
-      "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1200&h=800&fit=crop",
-   ] : [
-      "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1200&h=800&fit=crop",
-   ];
+   // Use dynamic carousel images if available, otherwise fallback
+   const carouselImages = (location.carousel_images && location.carousel_images.length > 0)
+      ? location.carousel_images
+      : [
+         "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1200&h=800&fit=crop",
+         "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=800&fit=crop",
+         "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1200&h=800&fit=crop",
+      ];
 
    return (
       <div className="flex min-h-screen flex-col">
@@ -105,9 +104,9 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
             <section className="pt-16 pb-24 bg-white">
                <div className="container w-11/12 px-4 mx-auto">
                   <SectionContent
-                     heading="We Look Forward to Welcoming You"
-                     description="We warmly invite you to join us for our Sunday and midweek gatherings, where you'll experience heartfelt worship, practical biblical teaching, and a strong sense of community. Our fellowships are built on love, support, and genuine connection."
-                     quote="Whether you are new to faith, returning after time away, or seeking a spiritual home, there is a place for you here at CHH."
+                     heading={location.welcome_heading || "We Look Forward to Welcoming You"}
+                     description={location.welcome_description || "We warmly invite you to join us for our Sunday and midweek gatherings, where you'll experience heartfelt worship, practical biblical teaching, and a strong sense of community."}
+                     quote={location.welcome_quote || "Whether you are new to faith, returning after time away, or seeking a spiritual home, there is a place for you here at CHH."}
                      alignment="left"
                      headingSize="small"
                   />
@@ -133,7 +132,7 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
                      {/* Image */}
                      <div className="w-full lg:w-1/2">
                         <img
-                           src={location.image_url || 'https://images.unsplash.com/photo-1519491050282-cf00c82424b4?w=1000&h=1200&fit=crop'}
+                           src={location.address_image_url || location.image_url || 'https://images.unsplash.com/photo-1519491050282-cf00c82424b4?w=1000&h=1200&fit=crop'}
                            alt={location.name}
                            className="w-full h-[542px] object-cover rounded-lg"
                         />
@@ -162,17 +161,36 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
                            <div>
                               <h3 className="text-[24px] font-semibold mb-2">How to Find Us</h3>
                               <p className="text-[16px] font-normal mb-4">Check with the campus fellowship for specific meeting locations.</p>
+                              {location.whatsapp_link && (
+                                 <a href={location.whatsapp_link} target="_blank" rel="noopener noreferrer">
+                                    <ChhButton className="bg-white text-[#6F5299] hover:bg-gray-100 rounded-lg h-12">
+                                       <span>Join Our WhatsApp Group</span>
+                                       <ArrowRight className="size-5" />
+                                    </ChhButton>
+                                 </a>
+                              )}
                            </div>
-                        ) : location.map_link ? (
+                        ) : (
                            <div>
-                              <a href={location.map_link} target="_blank" rel="noopener noreferrer">
-                                 <ChhButton className="bg-white text-[#6F5299] hover:bg-gray-100">
-                                    <span>Get Directions</span>
-                                    <ArrowRight className="size-5" />
-                                 </ChhButton>
-                              </a>
+                              {contacts.length > 0 && (
+                                 <div className="mb-8">
+                                    <h3 className="text-[24px] font-semibold mb-2">Contact Us</h3>
+                                    {contacts.map((contact, index) => (
+                                       <p key={index} className="text-[16px] font-normal mb-1">{contact}</p>
+                                    ))}
+                                 </div>
+                              )}
+
+                              {location.map_link && (
+                                 <a href={location.map_link} target="_blank" rel="noopener noreferrer">
+                                    <ChhButton className="bg-white text-[#6F5299] hover:bg-gray-100 rounded-lg h-12">
+                                       <span>Get Directions</span>
+                                       <ArrowRight className="size-5" />
+                                    </ChhButton>
+                                 </a>
+                              )}
                            </div>
-                        ) : null}
+                        )}
                      </div>
                   </div>
                </div>

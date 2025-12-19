@@ -33,9 +33,8 @@ export const metadata: Metadata = {
   },
 };
 
-// Revalidate this page every 60 seconds (ISR)
-export const revalidate = 60;
-
+// Force dynamic rendering to ensure fresh data fetch on every request
+export const dynamic = 'force-dynamic';
 
 // Fetch locations from database
 async function getLocations() {
@@ -188,7 +187,7 @@ export default async function Home() {
 
             {carouselItems.length > 0 ? (
               <LocationsCarousel
-                rows={2}
+                rows={carouselItems.length > 8 ? 2 : 1}
                 showIndicators={false}
                 items={carouselItems}
               />

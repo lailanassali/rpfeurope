@@ -42,10 +42,12 @@ export function ImageCarousel({
   }, [autoplay, currentIndex]);
 
   if (layout === "multi") {
-    // Get 4 images to display based on current index
+    // Get images to display based on current index
     const getVisibleImages = () => {
       const visible = [];
-      for (let i = 0; i < 4; i++) {
+      const limit = Math.min(images.length, 4);
+
+      for (let i = 0; i < limit; i++) {
         const index = (currentIndex + i) % images.length;
         visible.push({ image: images[index], originalIndex: index });
       }
@@ -58,14 +60,25 @@ export function ImageCarousel({
       <div className="relative w-full overflow-hidden" style={{ height: `${height}px` }}>
         <div className="flex gap-2 h-full">
           {visibleImages.map((item, i) => {
-            // Calculate width based on position: first=12.5%, middle=37.5%, last=12.5%
+            // Calculate width based on total number of images
             let width;
-            if (i === 0) {
-              width = "12.5%";
-            } else if (i === 3) {
-              width = "12.5%";
+            const totalCount = images.length;
+
+            if (totalCount === 1) {
+              width = "100%";
+            } else if (totalCount === 2) {
+              width = "50%";
+            } else if (totalCount === 3) {
+              width = "33.33%";
             } else {
-              width = "37.5%";
+              // 4 or more logic (existing)
+              if (i === 0) {
+                width = "12.5%";
+              } else if (i === 3) {
+                width = "12.5%";
+              } else {
+                width = "37.5%";
+              }
             }
 
             return (

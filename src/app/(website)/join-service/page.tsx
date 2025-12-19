@@ -5,6 +5,8 @@ import { LocationTabs } from "@/components/common/LocationTabs";
 import { FinalCTA } from "@/components/common/FinalCTA";
 import { supabaseAdmin } from "@/lib/supabase";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
        title: "Join a Service | CHH Europe",
        description: "Find a Christ Healing Home location near you and join us for worship.",
