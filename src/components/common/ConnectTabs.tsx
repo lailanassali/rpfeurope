@@ -92,12 +92,12 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
   return (
     <div className="w-full">
       {/* Tab Navigation */}
-      <div className="flex md:gap-3 gap-1 flex-wrap md:mb-16 mb-10">
+      <div className="flex md:gap-3 gap-1 flex-nowrap md:flex-wrap overflow-x-auto md:mb-16 mb-10 pb-2 md:pb-0 scrollbar-hide">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => handleTabClick(tab.id)}
-            className={`px-[10px] h-[44px] w-[160px] rounded-[8px] transition-colors ${activeTab === tab.id
+            className={`px-[10px] h-[44px] min-w-[160px] rounded-[8px] transition-colors ${activeTab === tab.id
               ? "bg-primary text-white font-bold"
               : "bg-transparent text-black hover:bg-gray-100 border border-[#f2f4f6b9]"
               }`}

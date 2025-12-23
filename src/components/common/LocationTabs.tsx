@@ -67,9 +67,9 @@ export function LocationTabs({ tabs }: LocationTabsProps) {
   return (
     <div className="w-full">
       {/* Tab Navigation and Search */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:mb-8 mb-4">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:mb-8 mb-4 overflow-x-auto scrollbar-hide">
         {/* Tabs */}
-        <div className="flex md:gap-3 gap-1 flex-wrap">
+        <div className="flex md:gap-3 gap-1 flex-nowrap md:flex-wrap overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -86,9 +86,8 @@ export function LocationTabs({ tabs }: LocationTabsProps) {
             </button>
           ))}
         </div>
-
         {/* Search Input */}
-        <div className="relative w-full md:w-auto md:min-w-[300px]">
+        <div className="relative w-full md:w-auto md:min-w-[300px] md:block hidden">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
           <input
             type="text"
@@ -98,6 +97,17 @@ export function LocationTabs({ tabs }: LocationTabsProps) {
             className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           />
         </div>
+      </div>
+      {/* Search Input */}
+      <div className="relative w-full md:w-auto md:min-w-[300px] md:hidden block">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
+        <input
+          type="text"
+          placeholder="Search locations..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+        />
       </div>
 
       {/* Active Location Heading */}
