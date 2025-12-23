@@ -114,7 +114,7 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
       <div className="flex flex-col lg:flex-row gap-12">
         {/* Left: Content - 50% */}
         <div className="lg:w-1/2">
-          <h2 className="text-[32px] font-bold text-black mb-6">{currentTab.title}</h2>
+          <h2 className="md:text-[32px] text-[24px] font-bold text-black md:mb-6 mb-4">{currentTab.title}</h2>
 
           {currentTab.description.map((paragraph, index) => (
             <p key={index} className="text-[16px] text-black/80 mb-6 leading-relaxed">
@@ -135,7 +135,7 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
           <img
             src={currentTab.image}
             alt={currentTab.title}
-            className="w-full max-h-[534px] object-cover rounded-[12px]"
+            className="w-full md:max-h-[534px] max-h-[300px] object-cover rounded-[12px] md:mt-[40px] mt-8"
           />
         </div>
 
