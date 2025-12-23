@@ -32,14 +32,15 @@ export function EventRegistrationModal({ isOpen, onClose, eventSlug, eventTitle 
     body: JSON.stringify(formData),
    });
 
-   if (!response.ok) throw new Error('Registration failed');
+   const data = await response.json();
+   if (!response.ok) throw new Error(data.error || 'Registration failed');
 
    toast.success('Successfully registered for the event!');
    setFormData({ name: '', email: '', phone: '' });
    onClose();
-  } catch (error) {
+  } catch (error: any) {
    console.error('Registration error:', error);
-   toast.error('Failed to register. Please try again.');
+   toast.error(error.message || 'Failed to register. Please try again.');
   } finally {
    setIsLoading(false);
   }

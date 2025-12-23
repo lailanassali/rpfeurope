@@ -78,7 +78,7 @@ export default function UsersPage() {
     </ChhButton>
    </div>
 
-   <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
+   <div className="bg-white rounded-lg shadow-sm border overflow-x-auto">
     <table className="w-full">
      <thead className="bg-gray-50 border-b">
       <tr>
@@ -102,7 +102,7 @@ export default function UsersPage() {
          <td className="px-6 py-4 text-sm text-gray-700">{user.email}</td>
          <td className="px-6 py-4">
           <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-           {user.role}
+           {user.role === 'superadmin' ? 'Super Admin' : 'Admin'}
           </span>
          </td>
          <td className="px-6 py-4">

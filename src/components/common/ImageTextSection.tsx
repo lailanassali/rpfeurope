@@ -24,30 +24,39 @@ export function ImageTextSection({
  quote
 }: ImageTextSectionProps) {
  return (
-  <section style={{ backgroundColor, paddingTop: paddingY, paddingBottom: paddingY }}>
+  <section
+   className="py-[50px] md:py-[(--padding-y)]"
+   style={{
+    backgroundColor,
+    "--padding-y": paddingY
+   } as React.CSSProperties}
+  >
    <div className="container w-11/12 mx-auto px-4">
     <div
-     className={`flex items-center ${imagePosition === "left" ? "flex-row-reverse" : ""}`}
+     className={`flex items-center md:flex-row flex-col ${imagePosition === "left" ? "md:flex-row-reverse" : ""}`}
      style={{ gap }}
     >
      {/* Text - aligned left */}
-     <div className="flex-3 text-left">
-      <h2 className="text-[48px] font-bold mb-6" style={{ color: "#111111" }}>
+     <div className="md:flex-3 flex-1 text-left">
+      <h2 className="text-[24px] font-bold mb-6 md:text-[48px]" style={{ color: "#111111" }}>
        {heading}
       </h2>
-      <div className="text-[20px] whitespace-pre-line" style={{ color: "#373737" }}>
+      <div className="text-[16px] md:text-[20px] whitespace-pre-line" style={{ color: "#373737" }}>
        {description}
       </div>
       {quote && (
-       <p className="text-[24px] font-normal mt-8" style={{ color: "#463460" }}>
+       <p className="text-[18px] md:text-[24px] font-normal mt-8" style={{ color: "#463460" }}>
         {quote}
        </p>
       )}
      </div>
 
      {/* Image - aligned center */}
-     <div className="flex-2 flex items-center justify-center">
-      <div className="relative w-full overflow-hidden rounded-lg" style={{ height: imageHeight }}>
+     <div className="md:flex-2 w-full flex-1 flex items-center justify-center">
+      <div
+       className="relative w-full overflow-hidden rounded-lg h-[400px] md:h-[(--image-height)]"
+       style={{ "--image-height": imageHeight } as React.CSSProperties}
+      >
        <Image
         src={image}
         alt={heading}

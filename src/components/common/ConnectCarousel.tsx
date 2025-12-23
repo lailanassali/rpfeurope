@@ -54,9 +54,9 @@ export function ConnectCarousel({ items, autoplay = false }: ConnectCarouselProp
   };
 
   return (
-    <div className="w-full mt-14">
+    <div className="w-full md:mt-14 mt-4">
       {/* Navigation Arrows - Aligned to extreme left */}
-      <div className="flex justify-end gap-3 mb-12">
+      <div className="flex justify-end gap-3 md:mb-12 mb-6">
         <button
           onClick={goToPrevious}
           disabled={!canGoPrevious}

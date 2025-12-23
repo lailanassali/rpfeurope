@@ -6,7 +6,6 @@ import { Toaster } from 'react-hot-toast';
 import { ConnectTabs } from "@/components/common/ConnectTabs";
 import { FAQAccordion } from "@/components/common/FAQAccordion";
 import { TestimonialCarousel } from "@/components/common/TestimonialCarousel";
-import image from "next/image";
 
 
 // Separate component that uses useSearchParams
@@ -122,15 +121,15 @@ function ConnectPageContent() {
          description: [
             "The book of Revelation tells us:",
             "They overcame him by the blood of the Lamb and by the word of their testimony. — Revelation 12: 11",
-         "Your story could be the spark that ignites someone else's faith. Whether  you have recently given your life to Christ, rededicated your heart to him, or experienced His goodness in a specific way, it could be healing, restoration, transformation, deliverance, or we would love to hear your testimony — every testimony glorifies Jesus and encourages others to believe for their own breakthrough."
+            "Your story could be the spark that ignites someone else's faith. Whether  you have recently given your life to Christ, rededicated your heart to him, or experienced His goodness in a specific way, it could be healing, restoration, transformation, deliverance, or we would love to hear your testimony — every testimony glorifies Jesus and encourages others to believe for their own breakthrough."
          ],
          quote: ["Let the redeemed of the Lord say so, Whom He has redeemed from the hand of the enemy — Psalm 107: 2"],
-      image: connectImages.testimonies || "",
-            formTitle: "What Has God Done For You?",
-            formDescription: "By sharing what God has done in your life, you not only glorify Him but also encourage others to believe that He can do it again. Please take a moment to complete the form below",
-            formFields: ["fullName", "email", "phone", "testimonyCategory", "sharePublicly", "testimony", "preferredContact"],
-            submitText: "Share My Testimony"
-   },
+         image: connectImages.testimonies || "",
+         formTitle: "What Has God Done For You?",
+         formDescription: "By sharing what God has done in your life, you not only glorify Him but also encourage others to believe that He can do it again. Please take a moment to complete the form below",
+         formFields: ["fullName", "email", "phone", "testimonyCategory", "sharePublicly", "testimony", "preferredContact"],
+         submitText: "Share My Testimony"
+      },
       {
          id: "prayer",
          name: "Prayer Request",
@@ -153,19 +152,19 @@ function ConnectPageContent() {
       <div className="flex min-h-screen flex-col">
          <main className="flex-1">
             {/* Header Section */}
-            <section className="py-24 bg-white">
+            <section className="md:py-24 py-8 bg-white">
                <div className="container w-11/12 px-4 mx-auto text-left">
-                  <h1 className="text-[40px] font-bold text-black mb-6 text-left">
+                  <h1 className="md:text-[40px] text-[24px] font-bold text-black mb-6 text-left">
                      We're Here For You - Get Connected. Grow Together.
                   </h1>
-                  <p className="text-[20px] text-black/70 text-left w-11/12">
+                  <p className="md:text-[20px] text-[16px] text-black/70 text-left w-11/12">
                      Whether you're taking your next step of faith, seeking guidance, or looking to serve — there's a place for you here at RPF. Choose an area below and start your journey.
                   </p>
                </div>
             </section>
 
             {/* Connect Tabs Section */}
-            <section className="pt-24 pb-40 bg-gray-50">
+            <section className="md:pt-24 md:pb-40 pt-5 pb-5 bg-gray-50">
                <div className="container w-11/12 px-4 mx-auto">
                   <ConnectTabs tabs={connectTabs} setActiveTab={setActiveTab} activeTab={activeTab} />
                </div>
@@ -175,13 +174,13 @@ function ConnectPageContent() {
             {activeTab === "testimonies" ? (
                <TestimonialCarousel />
             ) : (
-               <section className="py-24 bg-[#CEC3DF4D]">
-                  <div className="container w-11/12 mx-auto px-[56px]">
+               <section className="md:py-24 py-16 bg-[#CEC3DF4D]">
+                  <div className="container md:w-11/12 w-full mx-auto md:px-[56px] px-4">
                      <div className="text-center mb-8">
-                        <h2 className="text-[40px] font-bold text-black mb-4">
+                        <h2 className="md:text-[40px] text-xl font-bold text-black mb-4">
                            Frequently Asked Questions
                         </h2>
-                        <p className="text-[18px] text-black">
+                        <p className="md:text-[18px] text-[14px] text-black">
                            Got questions? We've got answers!
                         </p>
                      </div>

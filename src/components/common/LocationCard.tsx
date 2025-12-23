@@ -8,7 +8,7 @@ interface LocationCardProps {
 
 export function LocationCard({ location, image, href = "/locations" }: LocationCardProps) {
  return (
-  <Link href={href} className="relative h-[467px] overflow-hidden group cursor-pointer" style={{ borderRadius: '4px' }}>
+  <Link href={href} className="relative md:h-[467px] h-[300px] overflow-hidden group cursor-pointer" style={{ borderRadius: '4px' }}>
    <div
     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
     style={{

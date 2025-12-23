@@ -75,7 +75,7 @@ export default async function Home() {
 
       <main className="flex-1">
         {/* 1. Hero Section */}
-        <section className="relative h-[500px] md:h-[600px] lg:h-[700px] w-full flex items-end overflow-hidden">
+        <section className="relative h-[400px] md:h-[600px] lg:h-[700px] w-full flex items-end overflow-hidden">
           {/* Background with overlay */}
           <div
             className="absolute inset-0 bg-cover bg-center"

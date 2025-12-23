@@ -85,7 +85,7 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
             </section>
 
             <section
-               className="container mx-auto px-4 relative h-[650px] w-11/12 flex items-end overflow-hidden"
+               className="container mx-auto px-4 relative md:h-[650px] h-[450px] w-11/12 flex items-end overflow-hidden"
             >
                {/* Background with overlay */}
                <div
@@ -101,7 +101,7 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
             </section>
 
             {/* Welcome Section */}
-            <section className="pt-16 pb-24 bg-white">
+            <section className="md:pt-16 pt-12 md:pb-24 pb-12 bg-white">
                <div className="container w-11/12 px-4 mx-auto">
                   <SectionContent
                      heading={location.welcome_heading || "We Look Forward to Welcoming You"}
@@ -114,7 +114,7 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
             </section>
 
             {/* Image Carousel */}
-            <section className="py-24 bg-gray-50">
+            <section className="md:py-24 py-12 bg-gray-50">
                <div className="container mx-auto">
                   <ImageCarousel
                      images={carouselImages}
@@ -126,7 +126,7 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
             </section>
 
             {/* Location Info Section */}
-            <section className="py-24">
+            <section className="md:py-24 py-12">
                <div className="container w-11/12 px-4 mx-auto">
                   <div className="flex flex-col lg:flex-row items-center gap-[72px]">
                      {/* Image */}
@@ -134,7 +134,7 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
                         <img
                            src={location.address_image_url || location.image_url || 'https://images.unsplash.com/photo-1519491050282-cf00c82424b4?w=1000&h=1200&fit=crop'}
                            alt={location.name}
-                           className="w-full h-[542px] object-cover rounded-lg"
+                           className="w-full md:h-[542px] h-[362px] object-cover rounded-lg"
                         />
                      </div>
 
@@ -142,16 +142,16 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
                      <div className="w-full lg:w-1/2 bg-[#6F5299] rounded-[12px] p-[32px_32px_64px_32px] text-white">
                         {/* Address */}
                         <div className="mb-8">
-                           <h3 className="text-[24px] font-semibold mb-2">Address</h3>
-                           <p className="text-[16px] font-normal">{location.address || 'Address not available'}</p>
+                           <h3 className="md:text-[24px] text-[18px] font-semibold mb-2">Address</h3>
+                           <p className="md:text-[16px] text-[14px] font-normal">{location.address || 'Address not available'}</p>
                         </div>
 
                         {/* Service Times */}
                         {services.length > 0 && (
                            <div className="mb-8">
-                              <h3 className="text-[24px] font-semibold mb-2">Service Times</h3>
+                              <h3 className="md:text-[24px] text-[18px] font-semibold mb-2">Service Times</h3>
                               {services.map((service, index) => (
-                                 <p key={index} className="text-[16px] font-normal mb-1">{service}</p>
+                                 <p key={index} className="md:text-[16px] text-[14px] font-normal mb-1">{service}</p>
                               ))}
                            </div>
                         )}
@@ -159,8 +159,8 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
                         {/* Campus Info or Map Link */}
                         {isCampus ? (
                            <div>
-                              <h3 className="text-[24px] font-semibold mb-2">How to Find Us</h3>
-                              <p className="text-[16px] font-normal mb-4">Check with the campus fellowship for specific meeting locations.</p>
+                              <h3 className="md:text-[24px] text-[18px] font-semibold mb-2">How to Find Us</h3>
+                              <p className="md:text-[16px] text-[14px] font-normal mb-4">Check with the campus fellowship for specific meeting locations.</p>
                               {location.whatsapp_link && (
                                  <a href={location.whatsapp_link} target="_blank" rel="noopener noreferrer">
                                     <ChhButton className="bg-white text-[#6F5299] hover:bg-gray-100 rounded-lg h-12">
@@ -174,9 +174,9 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
                            <div>
                               {contacts.length > 0 && (
                                  <div className="mb-8">
-                                    <h3 className="text-[24px] font-semibold mb-2">Contact Us</h3>
+                                    <h3 className="md:text-[24px] text-[18px] font-semibold mb-2">Contact Us</h3>
                                     {contacts.map((contact, index) => (
-                                       <p key={index} className="text-[16px] font-normal mb-1">{contact}</p>
+                                       <p key={index} className="md:text-[16px] text-[14px] font-normal mb-1">{contact}</p>
                                     ))}
                                  </div>
                               )}

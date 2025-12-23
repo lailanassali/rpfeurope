@@ -73,21 +73,21 @@ export function TestimonialCarousel({ testimonials: propsTestimonials }: Testimo
  const testimonialText = currentTestimonial.testimony || currentTestimonial.text || '';
 
  return (
-  <div className="bg-[#F7E7D826] py-24">
+  <div className="bg-[#F7E7D826] md:py-24 py-10">
    <div className="container w-11/12 mx-auto px-4">
-    <div className="bg-[#F7E7D8B2] p-16 rounded-3xl">
+    <div className="bg-[#F7E7D8B2] md:p-16 p-10 rounded-3xl">
      {/* Testimonial Text */}
-     <p className="text-black text-[18px] leading-relaxed">
+     <p className="text-black md:text-[18px] text-[16px] leading-relaxed">
       "{testimonialText}"
      </p>
 
      {/* Testifier Name */}
-     <p className="text-[#1F172B] text-[24px] font-semibold mt-8">
+     <p className="text-[#1F172B] md:text-[24px] text-[18px] font-semibold mt-8">
       - {currentTestimonial.name}
      </p>
 
      {/* Navigation Controls */}
-     <div className="flex justify-end gap-6 mt-[83px]">
+     <div className="flex md:justify-end justify-center gap-6 mt-[43px] md:mt-[83px]">
       <button
        onClick={goToPrevious}
        className="p-3 rounded-lg border-[0.5px] border-black bg-transparent hover:bg-black/10 transition-colors"

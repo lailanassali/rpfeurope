@@ -8,6 +8,9 @@ import { FormSelect } from '@/components/common/FormSelect';
 import { FormTextarea } from '@/components/common/FormTextarea';
 import { ImageUpload } from '@/components/admin/ImageUpload';
 import { ChhButton } from '@/components/common/ChhButton';
+import { DynamicStringList } from '@/components/admin/DynamicStringList';
+import { FAQInputList } from '@/components/admin/FAQInputList';
+import { WhatToExpectInputList } from '@/components/admin/WhatToExpectInputList';
 
 interface EventFormData {
   title: string;
@@ -21,6 +24,10 @@ interface EventFormData {
   category: string;
   badge_text: string;
   badge_color: string;
+  quote: string;
+  key_highlights: string[];
+  what_to_expect: { title: string; description: string; image: string }[];
+  faqs: { question: string; answer: string }[];
 }
 
 interface EventFormProps {
@@ -43,9 +50,13 @@ export function EventForm({ initialData, eventId }: EventFormProps) {
     category: initialData?.category || '',
     badge_text: initialData?.badge_text || '',
     badge_color: initialData?.badge_color || '',
+    quote: initialData?.quote || '',
+    key_highlights: initialData?.key_highlights || [],
+    what_to_expect: initialData?.what_to_expect || [],
+    faqs: initialData?.faqs || [],
   });
 
-  const handleChange = (field: keyof EventFormData, value: string) => {
+  const handleChange = (field: keyof EventFormData, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
 
     // Auto-generate slug from title
@@ -112,7 +123,7 @@ export function EventForm({ initialData, eventId }: EventFormProps) {
             required
           />
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormInput
               label="Location"
               value={formData.location}
@@ -136,7 +147,7 @@ export function EventForm({ initialData, eventId }: EventFormProps) {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormInput
               label="Date"
               type="date"
@@ -169,7 +180,15 @@ export function EventForm({ initialData, eventId }: EventFormProps) {
             rows={5}
           />
 
-          <div className="grid grid-cols-2 gap-4">
+          <FormTextarea
+            label="Quote"
+            value={formData.quote}
+            onChange={(e) => handleChange('quote', e.target.value)}
+            rows={3}
+            placeholder="Inspiring quote for the event..."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormInput
               label="Badge Text (Optional)"
               value={formData.badge_text}
@@ -185,6 +204,34 @@ export function EventForm({ initialData, eventId }: EventFormProps) {
             />
           </div>
         </div>
+      </div>
+
+      {/* Dynamic Sections */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 space-y-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Additional Information</h3>
+
+        <DynamicStringList
+          label="Key Highlights"
+          items={formData.key_highlights}
+          onChange={(items) => handleChange('key_highlights', items)}
+          placeholder="Add a highlight..."
+        />
+
+        <div className="border-t border-gray-100 pt-6"></div>
+
+        <WhatToExpectInputList
+          label="What to Expect"
+          items={formData.what_to_expect}
+          onChange={(items) => handleChange('what_to_expect', items)}
+        />
+
+        <div className="border-t border-gray-100 pt-6"></div>
+
+        <FAQInputList
+          label="Frequently Asked Questions (FAQs)"
+          items={formData.faqs}
+          onChange={(items) => handleChange('faqs', items)}
+        />
       </div>
 
       <div className="flex items-center gap-4 justify-end">

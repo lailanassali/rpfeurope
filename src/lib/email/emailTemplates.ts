@@ -39,12 +39,12 @@ export function BaseEmailTemplate({ title, preheader, content, ctaButton }: Base
   <div class="email-container">
     <!-- Header with Logo -->
     <div class="header">
-      <img src="${process.env.NEXT_PUBLIC_APP_URL}/rpflogo.png" alt="CHH Europe Logo" class="logo">
+      <img src="${process.env.NEXT_PUBLIC_APP_URL}/assets/rpflogo.png" alt="CHH Europe Logo" class="logo">
     </div>
 
-  < !--Main Content-- >
-    <div class="content" >
-      <h1>${title} </h1>
+    <!-- Main Content -->
+    <div class="content">
+      <h1>${title}</h1>
       ${content}
       ${ctaButton ? `
         <div style="text-align: center;">
@@ -52,31 +52,31 @@ export function BaseEmailTemplate({ title, preheader, content, ctaButton }: Base
         </div>
       ` : ''
     }
-</div>
+    </div>
 
-  < !--Footer -->
-    <div class="footer" >
-      <div class="divider" > </div>
+    <!-- Footer -->
+    <div class="footer">
+      <div class="divider"></div>
 
-        < !--Social Icons-- >
-          <div class="social-icons" >
-            <a href="https://facebook.com/chheurope" > <img src="https://img.icons8.com/color/48/facebook.png" alt = "Facebook" > </a>
-              < a href = "https://twitter.com/chheurope" > <img src="https://img.icons8.com/color/48/twitter.png" alt = "Twitter" > </a>
-                < a href = "https://instagram.com/chheurope" > <img src="https://img.icons8.com/color/48/instagram-new.png" alt = "Instagram" > </a>
-                  < a href = "https://youtube.com/@chheurope" > <img src="https://img.icons8.com/color/48/youtube-play.png" alt = "YouTube" > </a>
-                    </div>
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="https://facebook.com/chheurope"><img src="https://img.icons8.com/color/48/facebook.png" alt="Facebook"></a>
+        <a href="https://twitter.com/chheurope"><img src="https://img.icons8.com/color/48/twitter.png" alt="Twitter"></a>
+        <a href="https://instagram.com/chheurope"><img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram"></a>
+        <a href="https://youtube.com/@chheurope"><img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube"></a>
+      </div>
 
-                    < p style = "margin: 10px 0;" > Christ Healing Home Europe </p>
-                      < p style = "margin: 5px 0;" > Where Worship Meets Community </p>
-                        < p style = "margin: 15px 0; font-size: 12px; color: #999999;" >
-                          You received this email because you are part of the CHH Europe community.<br>
-        If you have any questions, please contact us at < a href = "mailto:info@chheurope.com" style = "color: #667eea;" > info@chheurope.com</a>
-  </p>
+      <p style="margin: 10px 0;">Christ Healing Home Europe</p>
+      <p style="margin: 5px 0;">Where Worship Meets Community</p>
+      <p style="margin: 15px 0; font-size: 12px; color: #999999;">
+        You received this email because you are part of the CHH Europe community.<br>
+        If you have any questions, please contact us at <a href="mailto:info@chheurope.com" style="color: #667eea;">info@chheurope.com</a>
+      </p>
+    </div>
   </div>
-  </div>
-  </body>
-  </html>
-    `.trim();
+</body>
+</html>
+  `.trim();
 }
 
 // Specific email templates
@@ -85,10 +85,10 @@ export function welcomeUserEmail(name: string, resetLink: string): string {
     title: 'Welcome to CHH Europe Admin',
     preheader: 'Set up your account password',
     content: `
-  < p > Hello ${name}, </p>
-    < p > Welcome to the CHH Europe admin panel! Your account has been created successfully.</p>
-      < p > To get started, please set up your password by clicking the button below: </p>
-        `,
+      <p>Hello ${name},</p>
+      <p>Welcome to the CHH Europe admin panel! Your account has been created successfully.</p>
+      <p>To get started, please set up your password by clicking the button below:</p>
+    `,
     ctaButton: {
       text: 'Set Up Password',
       url: resetLink,
@@ -101,11 +101,11 @@ export function passwordResetEmail(name: string, resetLink: string): string {
     title: 'Reset Your Password',
     preheader: 'Click to reset your password',
     content: `
-        < p > Hello ${name}, </p>
-          < p > We received a request to reset your password.Click the button below to create a new password: </p>
-            < p style = "color: #666; font-size: 14px;" > This link will expire in 1 hour for security reasons.</p>
-              < p > If you didn't request this, please ignore this email.</p>
-                `,
+      <p>Hello ${name},</p>
+      <p>We received a request to reset your password. Click the button below to create a new password:</p>
+      <p style="color: #666; font-size: 14px;">This link will expire in 1 hour for security reasons.</p>
+      <p>If you didn't request this, please ignore this email.</p>
+    `,
     ctaButton: {
       text: 'Reset Password',
       url: resetLink,
@@ -115,7 +115,7 @@ export function passwordResetEmail(name: string, resetLink: string): string {
 
 export function formSubmissionEmail(formType: string, data: any): string {
   const formattedData = Object.entries(data)
-    .map(([key, value]) => `< tr > <td style="padding: 10px; border: 1px solid #e0e0e0; font-weight: bold;" > ${key} </td><td style="padding: 10px; border: 1px solid #e0e0e0;">${value}</td > </tr>`)
+    .map(([key, value]) => `<tr><td style="padding: 10px; border: 1px solid #e0e0e0; font-weight: bold;">${key}</td><td style="padding: 10px; border: 1px solid #e0e0e0;">${value}</td></tr>`)
     .join('');
 
   return BaseEmailTemplate({

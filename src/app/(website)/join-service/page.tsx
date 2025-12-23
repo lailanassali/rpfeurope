@@ -99,7 +99,7 @@ export default async function JoinServicePage() {
                      <main className="flex-1">
                             {/* Hero Section */}
                             <section
-                                   className="relative h-[650px] w-full flex items-end overflow-hidden"
+                                   className="relative h-[450px] md:h-[650px] w-full flex items-end overflow-hidden"
                             >
                                    {/* Background with overlay */}
                                    <div
@@ -116,7 +116,7 @@ export default async function JoinServicePage() {
                             </section>
 
                             {/* Who We Are Section */}
-                            <section className="py-24 bg-white">
+                            <section className="md:py-24 py-10 bg-white">
                                    <div className="container w-11/12 px-4 mx-auto">
                                           <SectionContent
                                                  heading="We Look Forward to Welcoming You"
@@ -133,7 +133,7 @@ place for you here at CHH.'
                             </section>
 
                             {/* Locations Section */}
-                            <section id="locations" className="py-24 bg-gray-50">
+                            <section id="locations" className="md:py-24 py-10 bg-gray-50">
                                    <div className="container w-11/12 px-4 mx-auto">
                                           {locationTabs.length > 0 ? (
                                                  <LocationTabs tabs={locationTabs} />

@@ -74,9 +74,9 @@ export function FAQAccordion({ items: propsItems, category = 'General' }: FAQAcc
               {item.question}
             </span>
             {openIndex === index ? (
-              <ChevronUp className="size-6 text-black flex-shrink-0" />
+              <ChevronUp className="size-6 text-black flexShrink-0" />
             ) : (
-              <ChevronDown className="size-6 text-black flex-shrink-0" />
+              <ChevronDown className="size-6 text-black flexShrink-0" />
             )}
           </button>
           {openIndex === index && (

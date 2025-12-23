@@ -38,7 +38,7 @@ export function UpcomingEventCard() {
  if (!event) {
   // Fallback content
   return (
-   <div className="relative h-[542px] rounded-2xl overflow-hidden group cursor-pointer">
+   <div className="relative md:h-[542px] h-[480px] rounded-2xl overflow-hidden group cursor-pointer">
     <div
      className="absolute inset-0 bg-cover bg-center"
      style={{

@@ -2,12 +2,17 @@
 
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { Eye, EyeOff } from 'lucide-react';
+import NextImage from "next/image";
+import Link from 'next/link';
 
 export default function AdminLoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/admin/dashboard';
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -28,7 +33,7 @@ export default function AdminLoginPage() {
         toast.error('Invalid email or password');
       } else {
         toast.success('Login successful!');
-        router.push('/admin/dashboard');
+        router.push(callbackUrl);
         router.refresh();
       }
     } catch (error) {
@@ -43,8 +48,14 @@ export default function AdminLoginPage() {
       <div className="max-w-md w-full">
         {/* Logo/Brand */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-4">
-            <span className="text-white font-bold text-2xl">CHH</span>
+          <div className="inline-flex items-center justify-center mb-4">
+            <NextImage
+              src="/assets/rpflogo.png"
+              alt="CHH Logo"
+              width={74}
+              height={70}
+              className="object-contain"
+            />
           </div>
           <h1 className="text-3xl font-bold text-gray-900">Admin Portal</h1>
           <p className="text-gray-600 mt-2">Sign in to manage your content</p>
@@ -70,9 +81,17 @@ export default function AdminLoginPage() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Password
-              </label>
+              <div className="flex items-center justify-between mb-2">
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                  Password
+                </label>
+                <Link
+                  href="/admin/forgot-password"
+                  className="text-sm font-medium text-primary hover:text-primary/80"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
               <div className="relative">
                 <input
                   id="password"
@@ -104,20 +123,20 @@ export default function AdminLoginPage() {
           </form>
 
           {/* Default Credentials Hint */}
-          <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+          {/* <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
             <p className="text-sm text-yellow-800">
               <strong>Default credentials:</strong><br />
               Email: admin@chh.com<br />
               Password: admin123
             </p>
-          </div>
+          </div> */}
         </div>
 
         {/* Footer */}
         <p className="text-center text-gray-500 text-sm mt-6">
           © {new Date().getFullYear()} Christ Healing Home. All rights reserved.
         </p>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }

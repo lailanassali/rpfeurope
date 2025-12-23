@@ -22,18 +22,40 @@ export function LocationsCarousel({
   showIndicators = true,
   autoplay = false
 }: LocationsCarouselProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check initially
+    checkMobile();
+
+    // Add listener
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const effectiveRows = isMobile ? 1 : rows;
+  const itemsToShow = isMobile ? 1 : 4;
+
   // Split items evenly across rows
-  const itemsPerRow = Math.ceil(items.length / rows);
-  const rowsData = Array.from({ length: rows }, (_, rowIndex) => {
+  const itemsPerRow = Math.ceil(items.length / effectiveRows);
+  const rowsData = Array.from({ length: effectiveRows }, (_, rowIndex) => {
     const start = rowIndex * itemsPerRow;
     const end = start + itemsPerRow;
     return items.slice(start, end);
   });
 
   // Independent state for each row
-  const [rowIndices, setRowIndices] = useState<number[]>(Array(rows).fill(0));
+  // We need to reset indices when switching modes to avoid out of bounds
+  const [rowIndices, setRowIndices] = useState<number[]>([]);
 
-  const itemsToShow = 4; // Show 4 items at a time per row
+  // Initialize/Reset indices when effectiveRows loads or changes
+  useEffect(() => {
+    setRowIndices(Array(effectiveRows).fill(0));
+  }, [effectiveRows]);
 
   // Autoplay functionality for all rows
   useEffect(() => {
@@ -41,15 +63,18 @@ export function LocationsCarousel({
 
     const interval = setInterval(() => {
       setRowIndices(prev => {
+        if (prev.length !== effectiveRows) return prev; // Guard against mismatch during render
         return prev.map((currentIndex, rowIndex) => {
-          const maxIndex = Math.max(0, rowsData[rowIndex].length - itemsToShow);
+          const rowItems = rowsData[rowIndex];
+          if (!rowItems) return 0;
+          const maxIndex = Math.max(0, rowItems.length - itemsToShow);
           return currentIndex >= maxIndex ? 0 : currentIndex + 1;
         });
       });
     }, 3000); // Change slide every 3 seconds
 
     return () => clearInterval(interval);
-  }, [autoplay, rowsData, itemsToShow]);
+  }, [autoplay, rowsData, itemsToShow, effectiveRows]);
 
   const goToPrevious = (rowIndex: number) => {
     setRowIndices(prev => {
@@ -80,11 +105,16 @@ export function LocationsCarousel({
     });
   };
 
+  // If we haven't initialized indices yet, render nothing or loading state to prevent flash
+  if (rowIndices.length !== effectiveRows) {
+    return <div className="w-full h-[400px]"></div>;
+  }
+
   return (
     <div className="w-full">
       <div className="space-y-3">
         {rowsData.map((rowItems, rowIndex) => {
-          const currentIndex = rowIndices[rowIndex];
+          const currentIndex = rowIndices[rowIndex] || 0;
           const totalPages = Math.max(1, rowItems.length - itemsToShow + 1);
           const visibleItems = rowItems.slice(currentIndex, currentIndex + itemsToShow);
           const canGoPrevious = currentIndex > 0;
@@ -93,11 +123,11 @@ export function LocationsCarousel({
           return (
             <div key={`row-${rowIndex}`} className="relative">
               {/* Row Container */}
-              <div className="grid grid-cols-4 gap-3">
+              <div className={`grid gap-3 ${isMobile ? 'grid-cols-1' : 'grid-cols-4'}`}>
                 {visibleItems.map((item, index) => (
                   <div
                     key={`row${rowIndex}-item${index}`}
-                    className="relative h-[467px] overflow-hidden group cursor-pointer"
+                    className="relative md:h-[467px] h-[400px] overflow-hidden group cursor-pointer"
                     style={{ borderRadius: '4px' }}
                   >
                     <div

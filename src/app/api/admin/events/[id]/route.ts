@@ -40,7 +40,10 @@ export async function PUT(
   if (tokenOrError instanceof NextResponse) return tokenOrError;
 
   const body = await request.json();
-  const { title, slug, image_url, location, date, time, venue, description, category, badge_text, badge_color } = body;
+  const {
+   title, slug, image_url, location, date, time, venue, description, category,
+   badge_text, badge_color, quote, key_highlights, what_to_expect, faqs
+  } = body;
 
   const { id } = await params;
 
@@ -58,6 +61,10 @@ export async function PUT(
     category,
     badge_text,
     badge_color,
+    quote,
+    key_highlights,
+    what_to_expect,
+    faqs,
     updated_at: new Date().toISOString(),
    })
    .eq('id', id)

@@ -44,6 +44,10 @@ CREATE TABLE IF NOT EXISTS events (
   category VARCHAR(100),
   badge_text VARCHAR(50),
   badge_color VARCHAR(20),
+  key_highlights JSONB DEFAULT '[]'::JSONB,
+  what_to_expect JSONB DEFAULT '[]'::JSONB,
+  faqs JSONB DEFAULT '[]'::JSONB,
+  quote TEXT,
   created_by UUID REFERENCES users(id),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()

@@ -92,14 +92,14 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
   return (
     <div className="w-full">
       {/* Tab Navigation */}
-      <div className="flex gap-3 flex-wrap mb-16">
+      <div className="flex md:gap-3 gap-1 flex-wrap md:mb-16 mb-10">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => handleTabClick(tab.id)}
             className={`px-[10px] h-[44px] w-[160px] rounded-[8px] transition-colors ${activeTab === tab.id
               ? "bg-primary text-white font-bold"
-              : "bg-transparent text-black hover:bg-gray-100"
+              : "bg-transparent text-black hover:bg-gray-100 border border-[#f2f4f6b9]"
               }`}
             style={{
               border: activeTab === tab.id ? 'none' : '0.5px solid rgba(229, 229, 229, 0.5)'
@@ -125,7 +125,7 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
           {currentTab.quote && (
             <div className="mb-[64px] mt-[40px]">
               {currentTab.quote.map((quote, index) => (
-                <p key={index} className=" text-[#59427B] text-[24px] mb-6">
+                <p key={index} className=" text-[#59427B] md:text-[24px] text-[18px] mb-6">
                   "{quote}"
                 </p>
               ))}
@@ -140,7 +140,7 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
         </div>
 
         {/* Right: Form - 50% */}
-        <div className="lg:w-1/2 px-[48px] py-8 rounded-[16px] border border-[#e5e5e5]/50">
+        <div className="lg:w-1/2 md:px-[48px] py-8 rounded-[16px] md:border border-[#e5e5e5]/50">
           <div className="bg-gray-50 ">
             <h3 className="text-[24px] font-semibold text-[#211F1F] mb-2">{currentTab.formTitle}</h3>
             <p className="text-[14px] text-[#211F1F] mb-10">{currentTab.formDescription}</p>

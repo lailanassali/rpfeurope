@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, MapPin, Handshake } from "lucide-react";
 import { HeroText } from "@/components/common/HeroText";
-import { ChhButton } from "@/components/common/ChhButton";
 import { FAQAccordion } from "@/components/common/FAQAccordion";
+import { EventRegistrationButton } from "@/components/events/EventRegistrationButton";
 import { supabaseAdmin } from "@/lib/supabase";
 import { notFound } from "next/navigation";
 
@@ -56,7 +56,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
     <div className="flex min-h-screen flex-col">
       <main className="flex-1">
         {/* Back Button */}
-        <div className="container w-11/12 px-4 mx-auto pt-[120px] pb-[80px]">
+        <div className="container w-11/12 px-4 mx-auto md:pt-[120px] pt-[40px] md:pb-[80px] pb-[30px]">
           <Link
             href="/events"
             className="inline-flex items-center gap-2 text-black hover:text-primary transition-colors"
@@ -70,7 +70,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
 
         {/* Hero Section */}
         <div className='container w-11/12 px-4 mx-auto'>
-          <section className="relative h-[650px] w-full flex items-end overflow-hidden mb-12">
+          <section className="relative md:h-[650px] h-[450px] w-full flex items-end overflow-hidden mb-12">
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{
@@ -85,7 +85,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
         {/* Main Content - 60/40 Split */}
         <section className="pb-24">
           <div className="container w-11/12 px-4 mx-auto">
-            <div className="flex flex-col lg:flex-row gap-24">
+            <div className="flex flex-col lg:flex-row md:gap-24 gap-12">
               {/* Left Side - 60% */}
               <div className="lg:w-[60%]">
                 {/* Description */}
@@ -95,7 +95,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
 
                 {/* Quote */}
                 {event.quote && (
-                  <div className="text-[#59427B] text-[24px] mb-12">
+                  <div className="text-[#59427B] md:text-[24px] text-[18px] mb-12">
                     "{event.quote}"
                   </div>
                 )}
@@ -103,15 +103,15 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
                 {keyHighlights.length > 0 && (
                   <div className='py-10 border-b-[0.5px] border-t-[0.5px] border-[#cccccc]'>
                     {/* Key Highlights */}
-                    <h3 className="text-[24px] font-bold text-black mb-8">
+                    <h3 className="md:text-[24px] text-[18px] font-bold text-black mb-8">
                       Key highlights from this event:
                     </h3>
 
                     <div className="">
                       {keyHighlights.map((highlight: string, index: number) => (
-                        <div key={index} className="flex items-start gap-4 py-[13px]">
+                        <div key={index} className="flex items-start gap-4 md:py-[13px] py-[6px]">
                           <Handshake className="size-8 text-[#59427B] shrink-0" />
-                          <p className="text-[20px] text-black">{highlight}</p>
+                          <p className="md:text-[20px] text-[16px] text-black">{highlight}</p>
                         </div>
                       ))}
                     </div>
@@ -128,15 +128,15 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
               {/* Right Side - 40% */}
               <div className="lg:w-[40%]">
                 <div
-                  className="p-8 rounded-[24px] border border-[#CEC3DF]"
+                  className="md:p-8 p-6 rounded-[24px] border border-[#CEC3DF]"
                   style={{ boxShadow: "0px 4px 10px 0px #362C461A" }}
                 >
-                  <h2 className="text-[40px] font-bold text-black mb-[20px]">
+                  <h2 className="md:text-[40px] text-[20px] font-bold text-black md:mb-[20px] mb-[10px]">
                     {event.title}
                   </h2>
 
                   {/* Location Badge */}
-                  <div className="mb-12">
+                  <div className="md:mb-12 mb-6">
                     <span className="inline-block border border-[#A25F20] bg-[#FCF5EE] text-[#A25F20] text-[12px] font-medium rounded px-[10px] py-[6px]">
                       {event.category}
                     </span>
@@ -161,11 +161,10 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
                   </div>
 
                   {/* Register Button */}
-                  <Link href={`/events/${event.slug}/register`}>
-                    <ChhButton className="w-full mt-12 bg-primary text-white hover:bg-primary/90 h-[54px] rounded-[4px]">
-                      Register for event
-                    </ChhButton>
-                  </Link>
+                  <EventRegistrationButton
+                    eventSlug={event.slug}
+                    eventTitle={event.title}
+                  />
                 </div>
               </div>
             </div>
@@ -174,9 +173,9 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
 
         {/* What to Expect Section */}
         {whatToExpect.length > 0 && (
-          <section className="py-24 bg-[#FDF8F4]">
+          <section className="md:py-24 py-12 bg-[#FDF8F4]">
             <div className="container w-11/12 px-4 mx-auto">
-              <h2 className="text-[40px] font-bold text-black mb-12">
+              <h2 className="md:text-[40px] text-[20px] font-bold text-black mb-12">
                 What to Expect
               </h2>
 
@@ -203,17 +202,17 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
 
         {/* FAQ Section */}
         {faqs.length > 0 && (
-          <section className="py-24 bg-[#CEC3DF4D]">
+          <section className="md:py-24 py-12 bg-[#CEC3DF4D]">
             <div className="container w-11/12 mx-auto px-[56px]">
               <div className="text-center mb-8">
-                <h2 className="text-[40px] font-bold text-black mb-4">
+                <h2 className="md:text-[40px] text-[20px] font-bold text-black mb-4">
                   Frequently Asked Questions
                 </h2>
-                <p className="text-[18px] text-black">
+                <p className="md:text-[18px] text-[14px] text-black">
                   Got questions? We've got answers!
                 </p>
               </div>
-              <FAQAccordion category="General" />
+              <FAQAccordion items={faqs} />
             </div>
           </section>
         )}

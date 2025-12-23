@@ -81,7 +81,7 @@ export default function LocationsListPage() {
     </div>
    </div>
 
-   <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
+   <div className="bg-white rounded-lg shadow-sm border overflow-x-auto">
     <table className="w-full">
      <thead className="bg-gray-50 border-b">
       <tr>

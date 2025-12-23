@@ -58,7 +58,7 @@ export default function EventsPage() {
     <div className="flex min-h-screen flex-col">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-[650px] w-full flex items-end overflow-hidden">
+        <section className="relative h-[450px] md:h-[650px] w-full flex items-end overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
@@ -73,9 +73,9 @@ export default function EventsPage() {
         </section>
 
         {/* Events Section */}
-        <section className="py-24 bg-white">
+        <section className="py-12 md:py-24 bg-white">
           <div className="container w-11/12 px-4 mx-auto">
-            <h2 className="text-[40px] font-bold text-black mb-12">Upcoming events at CHH</h2>
+            <h2 className="text-[24px] md:text-[40px] font-bold text-black mb-12">Upcoming events at CHH</h2>
 
             {/* Filters */}
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-12">
@@ -87,7 +87,7 @@ export default function EventsPage() {
                     onClick={() => setActiveCategory(category)}
                     className={`px-6 py-3 rounded-lg font-medium transition-colors ${activeCategory === category
                       ? "bg-primary text-white"
-                      : "bg-transparent text-black hover:bg-gray-100"
+                      : "bg-transparent text-black hover:bg-gray-100 border border-[#f2f4f6b9]"
                       }`}
                   >
                     {category}

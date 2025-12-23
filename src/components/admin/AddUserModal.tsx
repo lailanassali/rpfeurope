@@ -17,7 +17,7 @@ export function AddUserModal({ isOpen, onClose, onSuccess }: AddUserModalProps) 
  const [formData, setFormData] = useState({
   name: '',
   email: '',
-  password: '',
+  role: 'admin',
  });
 
  const handleSubmit = async (e: React.FormEvent) => {
@@ -38,7 +38,7 @@ export function AddUserModal({ isOpen, onClose, onSuccess }: AddUserModalProps) 
    }
 
    toast.success('User created! Password setup email sent.');
-   setFormData({ name: '', email: '', password: '' });
+   setFormData({ name: '', email: '', role: 'admin' });
    onSuccess();
   } catch (error: any) {
    toast.error(error.message || 'Failed to create user');
@@ -75,14 +75,17 @@ export function AddUserModal({ isOpen, onClose, onSuccess }: AddUserModalProps) 
       required
      />
 
-     <FormInput
-      label="Temporary Password"
-      type="password"
-      value={formData.password}
-      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-      required
-      placeholder="User will be able to reset this"
-     />
+     <div className="flex flex-col gap-1">
+      <label className="text-sm font-medium text-gray-700">Role</label>
+      <select
+       value={formData.role}
+       onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-white font-inherit"
+      >
+       <option value="admin">Admin</option>
+       <option value="superadmin">Super Admin</option>
+      </select>
+     </div>
 
      <p className="text-sm text-gray-600">
       A password setup email will be sent to the user.

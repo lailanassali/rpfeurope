@@ -2,8 +2,36 @@
 
 import { SessionProvider } from 'next-auth/react';
 import { Toaster } from 'react-hot-toast';
+import { SidebarProvider, useSidebar } from '@/context/SidebarContext';
 import { Sidebar } from '@/components/admin/Sidebar';
 import { AdminHeader } from '@/components/admin/AdminHeader';
+
+function AdminLayoutContent({ children }: { children: React.ReactNode }) {
+ const { isOpen, close } = useSidebar();
+
+ return (
+  <div className="min-h-screen bg-gray-50">
+   <Sidebar />
+
+   {/* Mobile Overlay */}
+   {isOpen && (
+    <div
+     className="fixed inset-0 bg-black/50 z-40 md:hidden"
+     onClick={close}
+    />
+   )}
+
+   <div className="pl-0 md:pl-64 transition-[padding] duration-300">
+    <AdminHeader />
+    <main className="pt-16">
+     <div className="p-4 md:p-6">
+      {children}
+     </div>
+    </main>
+   </div>
+  </div>
+ );
+}
 
 export default function AdminLayout({
  children,
@@ -12,17 +40,9 @@ export default function AdminLayout({
 }) {
  return (
   <SessionProvider>
-   <div className="min-h-screen bg-gray-50">
-    <Sidebar />
-    <div className="pl-64">
-     <AdminHeader />
-     <main className="pt-16">
-      <div className="p-6">
-       {children}
-      </div>
-     </main>
-    </div>
-   </div>
+   <SidebarProvider>
+    <AdminLayoutContent children={children} />
+   </SidebarProvider>
    <Toaster
     position="top-right"
     toastOptions={{

@@ -34,7 +34,10 @@ export async function POST(request: NextRequest) {
   if (tokenOrError instanceof NextResponse) return tokenOrError;
 
   const body = await request.json();
-  const { title, slug, image_url, location, date, time, venue, description, category, badge_text, badge_color } = body;
+  const {
+   title, slug, image_url, location, date, time, venue, description, category,
+   badge_text, badge_color, quote, key_highlights, what_to_expect, faqs
+  } = body;
 
   // Validate required fields
   if (!title || !slug || !location || !date || !time || !venue) {
@@ -55,6 +58,10 @@ export async function POST(request: NextRequest) {
     category,
     badge_text,
     badge_color,
+    quote,
+    key_highlights,
+    what_to_expect,
+    faqs,
     created_by: tokenOrError.id,
    })
    .select()

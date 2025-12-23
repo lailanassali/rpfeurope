@@ -53,7 +53,7 @@ export function Footer() {
       </div>
 
       {/* Quote - 16px space after logo */}
-      <blockquote className="text-white/90 text-sm leading-relaxed mb-10 w-[60%] capitalize">
+      <blockquote className="text-white/90 text-sm leading-relaxed mb-10 md:w-[60%] w-full capitalize">
        &quot;And the LORD went before them by day in a pillar of a cloud, to lead them the way: and by night in a Pillar of Fire, to give them light&quot; - Exodus 13:21
       </blockquote>
 
@@ -138,9 +138,9 @@ export function Footer() {
     </div>
 
     {/* Bottom Section - Copyright and Back to Top */}
-    <div className="my-16 border-t border-white pt-10">
-     <div className="flex justify-between items-center">
-      <p className="text-white text-sm">
+    <div className="md:my-16 border-t border-white pt-10">
+     <div className="flex gap-3 items-center md:flex-row flex-col md:justify-between">
+      <p className="text-white text-sm md:text-left text-center">
        Copyright 2025 Christ Healing Home. All Rights Reserved.
       </p>
       <button

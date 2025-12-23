@@ -67,9 +67,9 @@ export function LocationTabs({ tabs }: LocationTabsProps) {
   return (
     <div className="w-full">
       {/* Tab Navigation and Search */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:mb-8 mb-4">
         {/* Tabs */}
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex md:gap-3 gap-1 flex-wrap">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -101,7 +101,7 @@ export function LocationTabs({ tabs }: LocationTabsProps) {
       </div>
 
       {/* Active Location Heading */}
-      <h2 className="text-[40px] font-semibold text-black mt-[98px] mb-[46px]">
+      <h2 className="md:text-[40px] text-xl font-semibold text-black md:mt-[98px] mt-8 md:mb-[46px] mb-6">
         {tabs.find(tab => tab.id === filteredLocationsWithTab.tabId)?.name || ""} Branches
       </h2>
 

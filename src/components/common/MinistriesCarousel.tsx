@@ -41,18 +41,18 @@ export function MinistriesCarousel({ items, autoplay = false }: MinistriesCarous
  };
 
  return (
-  <div className="flex gap-[32px] items-center justify-center">
+  <div className="flex gap-[32px] items-center justify-center md:w-full w-[90%] mx-auto">
    <button
     onClick={goToPrevious}
-    className="p-3 rounded-[12px] border-[0.5px] border-[#a2a2a2] text-[#a2a2a2] hover:bg-[#a2a2a2] hover:text-white transition-colors"
+    className="p-3 rounded-[12px] border-[0.5px] border-[#a2a2a2] text-[#a2a2a2] hover:bg-[#a2a2a2] hover:text-white transition-colors md:static absolute left-7 top-1/2 z-40"
     aria-label="Previous slide"
    >
     <ArrowLeft className="size-5" />
    </button>
-   <div className="flex-1 max-w-5xl">
+   <div className="flex-1 md:max-w-5xl">
 
     {/* Carousel Container */}
-    <div className="relative h-[500px] md:h-[550px] rounded-3xl overflow-hidden">
+    <div className="relative h-[400px] md:h-[550px] rounded-2xl md:rounded-3xl overflow-hidden">
      {/* Background Image */}
      <div
       className="absolute inset-0 bg-cover bg-center transition-all duration-500"
@@ -99,7 +99,7 @@ export function MinistriesCarousel({ items, autoplay = false }: MinistriesCarous
    </div>
    <button
     onClick={goToNext}
-    className="p-3 rounded-[12px] border-[0.5px] border-[#a2a2a2] text-[#a2a2a2] hover:bg-[#a2a2a2] hover:text-white transition-colors"
+    className="p-3 rounded-[12px] border-[0.5px] border-[#a2a2a2] text-[#a2a2a2] hover:bg-[#a2a2a2] hover:text-white transition-colors md:static absolute right-7 top-1/2 z-40"
     aria-label="Next slide"
    >
     <ArrowRight className="size-5" />

@@ -41,10 +41,10 @@ export function SectionContent({
   const colorClasses = textColor === "white" ? "text-white" : "text-foreground";
 
   const headingSizeClasses = {
-    small: "text-[30px] md:text-[36px]",
-    medium: "text-[40px] md:text-[48px]",
-    large: "text-[60px] md:text-[60px]",
-    xlarge: "text-[72px] md:text-[72px]",
+    small: "text-[20px] md:text-[36px]",
+    medium: "text-[28px] md:text-[48px]",
+    large: "text-[30px] md:text-[60px]",
+    xlarge: "text-[52px] md:text-[72px]",
   };
 
   return (
@@ -52,13 +52,13 @@ export function SectionContent({
 
 
       {heading && (
-        <h1 className={cn("font-bold leading-tight", headingSizeClasses[headingSize], colorClasses)}>
+        <h1 className={cn("font-bold leading-tight md:text-left text-center w-full", headingSizeClasses[headingSize], colorClasses)}>
           {heading}
         </h1>
       )}
 
       {description && (
-        <div className={cn("text-[18px] leading-relaxed mt-[16px] w-10/12",
+        <div className={cn("md:text-lg text-base leading-relaxed mt-[16px] w-full md:w-10/12",
           textColor === "white" ? "text-white/90" : "text-black"
         )}>
           {description.split('\n').map((paragraph, index) => (
@@ -72,20 +72,20 @@ export function SectionContent({
       )}
 
       {quote && (
-        <blockquote className="text-[36px] text-center leading-relaxed text-primary mt-[48px]">
+        <blockquote className="md:text-4xl text-xl text-center leading-relaxed text-primary md:mt-[48px] mt-6">
           "{quote}"
         </blockquote>
       )}
 
       {(primaryButton || secondaryButton) && (
-        <div className="flex flex-wrap gap-4 mt-[24px]">
+        <div className="flex flex-wrap gap-4 md:mt-6 mt-4 md:justify-normal justify-center">
           {primaryButton && (
             <button
               onClick={primaryButton.onClick}
               className={cn(
                 "inline-flex items-center justify-center gap-2",
                 "bg-chh-purple text-chh-purple-foreground hover:bg-chh-purple/90",
-                "font-semibold text-xl px-8 h-14 rounded-[4px]",
+                "font-semibold md:text-xl text-base px-4 h-8 md:px-8 md:h-14 rounded-[4px]",
                 "transition-colors"
               )}
             >
@@ -100,7 +100,7 @@ export function SectionContent({
               onClick={secondaryButton.onClick}
               className={cn(
                 "inline-flex items-center justify-center gap-2",
-                "font-semibold text-xl px-8 h-14 rounded-[4px]",
+                "font-semibold md:text-xl text-base px-4 h-10 md:px-8 md:h-14",
                 "transition-colors",
                 secondaryButton.isOutline
                   ? textColor === "white"

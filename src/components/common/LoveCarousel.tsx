@@ -51,18 +51,18 @@ export function LoveCarousel({
     <div className="relative rounded-2xl border" style={{ backgroundColor: bgColor, borderColor }}>
       {/* Heading positioned half outside the box */}
       <div className="container mx-auto px-4 relative">
-        <h2 className={`text-[48px] font-bold ${textColorClass} mb-0 relative z-10 inline-block pr-8 transform -translate-y-8`}>
+        <h2 className={`text-[24px] md:text-[48px] font-bold ${textColorClass} mb-0 relative z-10 inline-block pr-8 transform -translate-y-6 md:-translate-y-8`}>
           {currentItem.heading}
         </h2>
       </div>
 
       {/* Content Box */}
-      <div className="pt-12 pb-24 px-[64px]">
+      <div className="pt-8 md:pt-12 pb-12 md:pb-24 px-4 md:px-[64px]">
         <div className="container mx-auto px-4">
-          <div className="flex gap-12 items-center">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center">
             {/* Text - 60% */}
-            <div className="w-[60%]">
-              <p className={`text-[18px] font-normal ${textColorClass} leading-relaxed whitespace-pre-line mb-12`}>
+            <div className="w-full md:w-[60%]">
+              <p className={`text-[16px] md:text-[20px] font-normal ${textColorClass} leading-relaxed whitespace-pre-line mb-8 md:mb-12`}>
                 {currentItem.text}
               </p>
 
@@ -99,11 +99,11 @@ export function LoveCarousel({
               )}
             </div>
             {/* Image - 45% */}
-            <div className="w-[45%]">
+            <div className="w-full md:w-[45%]">
               {currentItem.imageTitle && (
-                <h3 className={`text-[32px] font-bold ${textColorClass} mb-4`}>{currentItem.imageTitle}</h3>
+                <h3 className={`text-[20px] md:text-[32px] font-bold ${textColorClass} mb-4`}>{currentItem.imageTitle}</h3>
               )}
-              <div className="relative h-[478px] overflow-hidden rounded-lg">
+              <div className="relative h-[400px] md:h-[478px] overflow-hidden rounded-lg">
                 <Image
                   src={currentItem.image}
                   alt={currentItem.heading}

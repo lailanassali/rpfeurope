@@ -94,17 +94,17 @@ export function Header() {
     <>
       <header className="top-0 z-50 w-full bg-background border-b border-border/40">
         {/* Layered Tabs */}
-        <div className="flex">
-          <ChhButton className="font-bold text-[20px] bg-primary text-primary-foreground w-[220px] p-[10px] h-[70px]">
+        <div className="flex w-full">
+          <ChhButton className="font-bold text-[20px] bg-primary text-primary-foreground w-1/2 md:w-[220px] p-[10px] h-[60px] md:h-[70px]">
             CHH Europe
           </ChhButton>
-          <ChhButton className="font-medium text-[20px] bg-chh-gold text-white w-[220px] p-[10px] h-[70px]">
+          <ChhButton className="font-medium text-[20px] bg-chh-gold text-white w-1/2 md:w-[220px] p-[10px] h-[60px] md:h-[70px]">
             Crusades
           </ChhButton>
         </div>
 
         {/* Main Header */}
-        <div className="flex h-[150px] items-center justify-between px-[80px] py-[40px] bg-[#EAE4DB1A]">
+        <div className="flex h-[100px] md:h-[150px] items-center justify-between px-[20px] py-0 md:px-[80px] md:py-[40px] bg-[#EAE4DB1A]">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Image

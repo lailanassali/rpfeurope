@@ -29,16 +29,25 @@ const navItems: NavItem[] = [
   { name: 'Email Settings', href: '/admin/settings/email', icon: <Mail className="size-5" />, superAdminOnly: true },
 ];
 
+import { useSidebar } from '@/context/SidebarContext';
+
+// ... imports ...
+
 export function Sidebar() {
   const pathname = usePathname();
   const { data: session } = useSession();
+  const { isOpen, close } = useSidebar();
   const isSuperAdmin = session?.user?.role === 'superadmin';
   const filteredNavItems = navItems.filter(item => !item.superAdminOnly || isSuperAdmin);
 
   return (
-    <div className="w-64 bg-white border-r border-gray-200 h-screen fixed left-0 top-0 overflow-y-auto">
+    <div className={`
+      fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 
+      transform transition-transform duration-300 ease-in-out
+      ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0
+    `}>
       <div className="p-6 border-b border-gray-200">
-        <Link href="/admin/dashboard" className="flex items-center gap-2">
+        <Link href="/admin/dashboard" className="flex items-center gap-2" onClick={close}>
           <NextImage
             src="/assets/rpflogo.png"
             alt="CHH Logo"
@@ -50,13 +59,17 @@ export function Sidebar() {
         </Link>
       </div>
 
-      <nav className="p-4">
+      <nav className="p-4 overflow-y-auto h-[calc(100vh-80px)] pb-20">
         <ul className="space-y-2">
           {filteredNavItems.map((item) => {
             const isActive = pathname === item.href || (item.href !== '/admin/dashboard' && pathname.startsWith(item.href));
             return (
               <li key={item.name}>
-                <Link href={item.href} className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isActive ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
+                <Link
+                  href={item.href}
+                  onClick={close}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isActive ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+                >
                   {item.icon}
                   <span className="font-medium">{item.name}</span>
                 </Link>
@@ -74,7 +87,7 @@ export function Sidebar() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-gray-900 truncate">{session.user.name}</p>
-              <p className="text-xs text-gray-500 capitalize">{session.user.role}</p>
+              <p className="text-xs text-gray-500 capitalize">{session.user.role === 'superadmin' ? 'Super Admin' : 'Admin'}</p>
             </div>
           </div>
         </div>

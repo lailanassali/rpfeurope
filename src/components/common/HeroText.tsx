@@ -32,26 +32,24 @@ export function HeroText({
  subtitleWeight = 500
 }: HeroTextProps) {
  return (
-  <div className="py-[43px] px-[80px] relative w-1/2">
+  <div className="py-9 px-8 md:py-[43px] md:px-[80px] relative w-full md:w-1/2">
    <div className="w-full">
     <h2
-     className="text-white mb-[12px]"
-     style={{ fontSize: `${headingSize}px`, fontWeight: headingWeight }}
+     className={`text-white md:mb-3 mb-1 text-[24px] md:text-[${headingSize}px] font-bold md:font-[${headingWeight}]`}
     >
      {heading}
     </h2>
     {subtitle && <p
-     className="text-white/90 w-full"
-     style={{ fontSize: `${subtitleSize}px`, fontWeight: subtitleWeight }}
+     className={`text-white/90 w-full text-[16px] md:text-[${subtitleSize}px] font-medium md:font-[${subtitleWeight}]`}
     >
      {subtitle}
     </p>}
    </div>
    {(primaryButton || secondaryButton) && (
-    <div className="flex gap-[24px] mt-[32px]">
+    <div className="flex md:gap-6 gap-2 justify-between md:justify-normal mt-4 md:mt-8">
      {primaryButton && (
       <Link href={primaryButton.href}>
-       <ChhButton className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold h-[54px] px-[24px] py-[12px] text-[20px] min-w-[240px] rounded-[4px]">
+       <ChhButton className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold h-10 md:h-[54px] md:px-6 px-3 py-0 md:py-3 md:text-xl text-md md:min-w-[240px] rounded-[4px]">
         <span>{primaryButton.text}</span>
         <ArrowRight className="size-5" />
        </ChhButton>
@@ -60,7 +58,7 @@ export function HeroText({
      {secondaryButton && (
       <Link href={secondaryButton.href}>
        <ChhButton
-        className="bg-transparent text-white hover:bg-primary/90 font-semibold h-[54px] px-[24px] py-[12px] text-[20px] min-w-[240px] rounded-[4px]"
+        className="bg-transparent text-white hover:bg-primary/90 font-semibold h-10 md:h-[54px] md:px-6 px-3 py-0 md:py-3 md:text-xl text-md md:min-w-[240px] rounded-[4px]"
         isOutline
        >
         <span>{secondaryButton.text}</span>

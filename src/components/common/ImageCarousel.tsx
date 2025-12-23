@@ -21,6 +21,20 @@ export function ImageCarousel({
   autoplay = false
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check initially
+    checkMobile();
+
+    // Add listener
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -41,7 +55,7 @@ export function ImageCarousel({
     return () => clearInterval(interval);
   }, [autoplay, currentIndex]);
 
-  if (layout === "multi") {
+  if (layout === "multi" && !isMobile) {
     // Get images to display based on current index
     const getVisibleImages = () => {
       const visible = [];

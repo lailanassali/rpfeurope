@@ -18,11 +18,11 @@ export function FinalCTA({
  backgroundColor = "#CEC3DF80"
 }: FinalCTAProps) {
  return (
-  <section className="py-24 relative flex items-center" style={{ backgroundColor }}>
-   <div className="container w-11/12 mx-auto px-4">
+  <section className="md:py-24 py-10 relative flex items-center" style={{ backgroundColor }}>
+   <div className="container md:w-11/12 w-[95%] mx-auto md:px-4 px-0">
     <div className="container relative z-10 px-4">
      <div className="rounded-3xl overflow-hidden">
-      <section className="relative h-[550px] w-full flex items-end overflow-hidden">
+      <section className="relative md:h-[550px] h-[450px] w-full flex items-end overflow-hidden">
        {/* Background with overlay */}
        <div
         className="absolute inset-0 bg-cover bg-center"

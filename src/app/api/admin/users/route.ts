@@ -30,10 +30,15 @@ export async function POST(request: NextRequest) {
   if (tokenOrError instanceof NextResponse) return tokenOrError;
 
   const body = await request.json();
-  const { name, email, password } = body;
+  const { name, email, role = 'admin' } = body;
 
-  if (!name || !email || !password) {
-   return NextResponse.json({ error: 'Name, email, and password are required' }, { status: 400 });
+  if (!name || !email) {
+   return NextResponse.json({ error: 'Name and email are required' }, { status: 400 });
+  }
+
+  // Validate role
+  if (!['admin', 'superadmin'].includes(role)) {
+   return NextResponse.json({ error: 'Invalid role' }, { status: 400 });
   }
 
   // Check if user already exists
@@ -47,8 +52,9 @@ export async function POST(request: NextRequest) {
    return NextResponse.json({ error: 'User with this email already exists' }, { status: 400 });
   }
 
-  // Hash password
-  const hashedPassword = await bcrypt.hash(password, 10);
+  // Generate random password
+  const randomPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
+  const hashedPassword = await bcrypt.hash(randomPassword, 10);
 
   // Generate reset token for first-time password setup
   const resetToken = generateResetToken();
@@ -61,7 +67,7 @@ export async function POST(request: NextRequest) {
     name,
     email,
     password: hashedPassword,
-    role: 'super_admin',
+    role,
     is_active: true,
     reset_token: resetToken,
     reset_token_expires: resetTokenExpires.toISOString(),

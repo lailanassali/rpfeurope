@@ -5,8 +5,13 @@ import { getToken } from 'next-auth/jwt';
 export async function proxy(request: NextRequest) {
  const { pathname } = request.nextUrl;
 
- // Protect /admin routes (except /admin/login)
- if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
+ // Protect /admin routes (except auth pages)
+ if (
+  pathname.startsWith('/admin') &&
+  !pathname.startsWith('/admin/login') &&
+  !pathname.startsWith('/admin/forgot-password') &&
+  !pathname.startsWith('/admin/reset-password')
+ ) {
   const token = await getToken({
    req: request,
    secret: process.env.NEXTAUTH_SECRET,

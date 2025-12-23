@@ -77,7 +77,7 @@ export default async function AboutPage() {
         </section>
 
         {/* Mission & Values Section - with <br/> tags before paragraphs */}
-        <section className="bg-[#CEC3DF33] py-24 mb-20">
+        <section className="bg-[#CEC3DF33] md:py-24 py-5 md:mb-20 mb-5">
           <ImageTextSection
             heading="Mission & Values"
             image={aboutMission}
@@ -87,15 +87,15 @@ export default async function AboutPage() {
         </section>
 
         {/* What We Believe Section - text and quote in same div, aligned left */}
-        <section className="bg-white py-24 mb-20">
+        <section className="bg-white md:py-24 py-5 md:mb-20 mb-16">
           <div className="container w-11/12 mx-auto px-4">
-            <h2 className="text-[48px] font-bold text-black mb-8 text-left">
+            <h2 className="text-[24px] md:text-[48px] font-bold text-black mb-8 text-left">
               What We Believe
             </h2>
-            <div className="flex gap-12 items-center flex-row-reverse">
+            <div className="flex flex-col md:flex-row-reverse gap-6 md:gap-12 items-center">
               {/* Image - 45% */}
-              <div className="w-[45%]">
-                <div className="relative h-[520px] overflow-hidden rounded-lg">
+              <div className="w-full md:w-[45%]">
+                <div className="relative h-[400px] md:h-[520px] overflow-hidden rounded-lg">
                   <img
                     src={aboutBeliefs}
                     alt="What We Believe"
@@ -105,8 +105,8 @@ export default async function AboutPage() {
               </div>
 
               {/* Text and Quote - 60%, aligned left */}
-              <div className="w-[60%] text-left">
-                <p className="text-[18px] font-normal text-black leading-relaxed mb-8">
+              <div className="w-full md:w-[60%] text-left">
+                <p className="text-[16px] md:text-[20px] font-normal text-black leading-relaxed mb-8">
                   Christ Healing Home (CHH) is a Christ-centered church that believes the Bible is God’s Word—the only
                   true and right way to follow Him. Everything we teach is rooted in Scripture, and we are grateful for the
                   new covenant that Christ has made available to all believers. <br /><br />We believe that Jesus Christ is the way, the truth, and the life (John 14:6), and that through Him alone we
@@ -115,7 +115,7 @@ export default async function AboutPage() {
                   the Bride and Body of Christ.
                 </p>
 
-                <blockquote className="text-primary text-[24px] font-normal mt-8">
+                <blockquote className="text-primary text-[18px] md:text-[24px] font-normal mt-8">
                   &quot;We are not a remnant so that we can hide; we are a remnant so that we can
                   make a change. &quot;
                   — Pastor Kelvin
@@ -126,7 +126,7 @@ export default async function AboutPage() {
         </section>
 
         {/* Love Carousel Section - with heading outside box */}
-        <section className="container w-11/12 mx-auto px-4 mb-[118px]">
+        <section className="container w-11/12 mx-auto px-4 md:mb-[118px] mb-12">
           <LoveCarousel
             items={[
               {
