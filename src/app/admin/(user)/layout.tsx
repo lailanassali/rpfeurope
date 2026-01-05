@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import { SidebarProvider, useSidebar } from '@/context/SidebarContext';
 import { Sidebar } from '@/components/admin/Sidebar';
 import { AdminHeader } from '@/components/admin/AdminHeader';
+import NextTopLoader from 'nextjs-toploader';
 
 function AdminLayoutContent({ children }: { children: React.ReactNode }) {
  const { isOpen, close } = useSidebar();
@@ -41,6 +42,7 @@ export default function AdminLayout({
  return (
   <SessionProvider>
    <SidebarProvider>
+    <NextTopLoader color="#6F5299" height={3} showSpinner={false} />
     <AdminLayoutContent children={children} />
    </SidebarProvider>
    <Toaster

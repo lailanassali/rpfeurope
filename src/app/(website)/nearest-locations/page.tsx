@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { ServiceLocationCard } from "@/components/common/ServiceLocationCard";
 import Link from "next/link";
@@ -21,7 +21,7 @@ interface LocationWithDistance {
  distance: number; // in miles
 }
 
-export default function NearestLocationsPage() {
+function NearestLocationsContent() {
  const searchParams = useSearchParams();
  const [locations, setLocations] = useState<LocationWithDistance[]>([]);
  const [isLoading, setIsLoading] = useState(true);
@@ -151,5 +151,25 @@ export default function NearestLocationsPage() {
     </div>
    </main>
   </div>
+ );
+}
+
+export default function NearestLocationsPage() {
+ return (
+  <Suspense
+   fallback={
+    <div className="flex min-h-screen flex-col">
+     <main className="flex-1 py-10 bg-gray-50">
+      <div className="container w-11/12 mx-auto px-4">
+       <div className="flex justify-center items-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+       </div>
+      </div>
+     </main>
+    </div>
+   }
+  >
+   <NearestLocationsContent />
+  </Suspense>
  );
 }

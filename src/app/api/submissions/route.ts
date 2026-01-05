@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     config[item.config_key] = item.config_value;
    });
 
-   const primaryEmail = config.primary_email || 'admin@chheurope.com';
+   const primaryEmail = config.primary_email || 'moakinyemi8@gmail.com';
    const ccEmails = config.cc_emails ? config.cc_emails.split('|').map((e: string) => e.trim()).filter(Boolean) : [];
 
    // Send email
