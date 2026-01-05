@@ -37,7 +37,11 @@ export default function EditLocationPage() {
   welcome_description: '',
   welcome_quote: '',
   address_image_url: '',
+  latitude: null as number | null,
+  longitude: null as number | null,
+  how_to_find_us: '',
  });
+ const [isGeocoding, setIsGeocoding] = useState(false);
 
  useEffect(() => {
   if (id) {
@@ -64,6 +68,9 @@ export default function EditLocationPage() {
     welcome_description: data.welcome_description || '',
     welcome_quote: data.welcome_quote || '',
     address_image_url: data.address_image_url || '',
+    latitude: data.latitude || null,
+    longitude: data.longitude || null,
+    how_to_find_us: data.how_to_find_us || '',
    });
   } catch (error) {
    toast.error('Failed to load location');
@@ -72,6 +79,35 @@ export default function EditLocationPage() {
    setIsFetching(false);
   }
  }
+
+ const geocodeAddress = async (address: string) => {
+  if (!address.trim()) return;
+
+  setIsGeocoding(true);
+  try {
+   const response = await fetch(
+    `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`
+   );
+   const data = await response.json();
+
+   if (data && data.length > 0) {
+    const { lat, lon } = data[0];
+    setFormData(prev => ({
+     ...prev,
+     latitude: parseFloat(lat),
+     longitude: parseFloat(lon),
+    }));
+    toast.success('Location coordinates found!');
+   } else {
+    toast.error('Could not find coordinates for this address');
+   }
+  } catch (error) {
+   console.error('Geocoding error:', error);
+   toast.error('Failed to geocode address');
+  } finally {
+   setIsGeocoding(false);
+  }
+ };
 
  const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
@@ -161,7 +197,40 @@ export default function EditLocationPage() {
 
     <div className="border-t pt-4 mt-4">
      <h3 className="font-semibold text-lg mb-4">Details</h3>
-     <FormTextarea label="Address" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} required />
+     <FormTextarea
+      label="Address"
+      value={formData.address}
+      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+      onBlur={(e) => geocodeAddress(e.target.value)}
+      required
+     />
+
+     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 mb-4">
+      <div>
+       <label className="block text-sm font-medium text-gray-700 mb-1">
+        Latitude {isGeocoding && <span className="text-gray-500">(detecting...)</span>}
+       </label>
+       <input
+        type="text"
+        value={formData.latitude ?? ''}
+        readOnly
+        className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-600"
+        placeholder="Auto-detected from address"
+       />
+      </div>
+      <div>
+       <label className="block text-sm font-medium text-gray-700 mb-1">
+        Longitude {isGeocoding && <span className="text-gray-500">(detecting...)</span>}
+       </label>
+       <input
+        type="text"
+        value={formData.longitude ?? ''}
+        readOnly
+        className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-600"
+        placeholder="Auto-detected from address"
+       />
+      </div>
+     </div>
      <div className='mb-2'>
       <FormTextarea
        label="Services"
@@ -176,12 +245,24 @@ export default function EditLocationPage() {
      </div>
 
      {formData.tag === 'CHH on Campus' ? (
-      <FormInput
-       label="WhatsApp Link"
-       value={formData.whatsapp_link}
-       onChange={(e) => setFormData({ ...formData, whatsapp_link: e.target.value })}
-       placeholder="https://chat.whatsapp.com/..."
-      />
+      <div>
+       <FormTextarea
+        label="How to Find Us"
+        value={formData.how_to_find_us}
+        onChange={(e) => setFormData({ ...formData, how_to_find_us: e.target.value })}
+        placeholder="e.g., Check with the campus fellowship for specific meeting locations."
+        rows={3}
+       />
+       <div className="text-sm text-gray-600 mt-1 mb-4">
+        This will be shown on the website after the address for campus locations.
+       </div>
+       <FormInput
+        label="WhatsApp Link"
+        value={formData.whatsapp_link}
+        onChange={(e) => setFormData({ ...formData, whatsapp_link: e.target.value })}
+        placeholder="https://chat.whatsapp.com/..."
+       />
+      </div>
      ) : (
       <div>
        <FormTextarea

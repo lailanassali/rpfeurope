@@ -8,6 +8,7 @@ interface CardComponentProps {
  linkHref?: string;
  linkText?: string;
  textBgColor?: string;
+ descriptionClassName?: string;
  badge?: {
   title: string;
   bgColor?: string;
@@ -22,6 +23,7 @@ export function CardComponent({
  linkHref = "/connect",
  linkText = "Learn more",
  textBgColor = "#EDEBE433",
+ descriptionClassName,
  badge
 }: CardComponentProps) {
  return (
@@ -41,7 +43,7 @@ export function CardComponent({
     <h3 className="text-xl font-semibold text-black group-hover:text-black transition-colors px-5">
      {title}
     </h3>
-    <p className="text-black text-sm leading-relaxed px-5">
+    <p className={`text-black text-sm leading-relaxed px-5 ${descriptionClassName || ''}`}>
      {description}
     </p>
     <div className="flex items-center justify-between">

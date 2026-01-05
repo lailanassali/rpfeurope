@@ -6,35 +6,10 @@ import { FinalCTA } from "@/components/common/FinalCTA";
 import { Clock, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { getHeroImage, getCarouselImages } from "@/lib/image-utils";
+import { getHeroImage } from "@/lib/image-utils";
+import { getAllLocations, transformLocationsToTabs } from "@/lib/location-utils";
 
-// Sample data for location tabs (keeping static for now as per requirements)
-const locationTabs = [
-     {
-          id: "chh-uk",
-          name: "CHH UK",
-          locations: Array.from({ length: 8 }, (_, i) => ({
-               slug: `chh-uk-youth-${i + 1}`,
-               title: `CHH London Youth ${i + 1}`,
-               services: ["Youth Service - Every Sunday | 12:00 PM"],
-               address: `${i + 1} Youth Hall, London, UK`,
-               image: "",
-               mapLink: `https://maps.google.com/?q=${i + 1}+Youth+Hall+London+UK`
-          }))
-     },
-     {
-          id: "chh-europe",
-          name: "CHH Europe",
-          locations: Array.from({ length: 8 }, (_, i) => ({
-               slug: `chh-europe-youth-${i + 1}`,
-               title: `CHH Paris Youth ${i + 1}`,
-               services: ["Youth Worship - Every Sunday | 1:00 PM"],
-               address: `${i + 1} Rue de Jeunes, Paris, France`,
-               image: "",
-               mapLink: `https://maps.google.com/?q=${i + 1}+Rue+de+Jeunes+Paris+France`
-          }))
-     }
-];
+
 
 export const metadata: Metadata = {
      title: "CHH Youth | Christ Healing Home",
@@ -47,8 +22,15 @@ export const revalidate = 60;
 export default async function YouthPage() {
      // Fetch images from database
      const youthHero = await getHeroImage('youth_hero');
-     const youthSections = await getCarouselImages('youth_sections');
+     const youthPlaceBelong = await getHeroImage('youth_place_belong');
+     const youthRootedFaith = await getHeroImage('youth_rooted_faith');
+     const youthMeetGrow = await getHeroImage('youth_meet_grow');
+     const youthLeadership = await getHeroImage('youth_leadership');
      const youthCTA = await getHeroImage('youth_cta');
+
+     // Fetch all locations and transform to tabs logic as in join-service
+     const locations = await getAllLocations();
+     const locationTabs = transformLocationsToTabs(locations);
 
      return (
           <div className="w-full flex min-h-screen flex-col font-sans">
@@ -78,7 +60,7 @@ export default async function YouthPage() {
                          heading="A Place to Belong"
                          description="Welcome to CHH Youth led by Pastor Reece. In this house, no one is left behind. Every young person has a voice and a place to belong. Here, the youth are encouraged, equipped, and empowered to grow strong in God's word and in who He has called them to be."
                          quote="Don't let anyone look down on you because you are young, but set an example for the believers in speech, in conduct, in love, in faith and in purity. — 1 Timothy 4:12"
-                         image={youthSections[0] || ""}
+                         image={youthPlaceBelong || ""}
                          imagePosition="left"
                          backgroundColor="#EAE4DB1A"
                     />
@@ -93,7 +75,7 @@ Our youth community stands with you, reminding you that you are never too young 
 Whether you're new to faith, returning after time away, or searching for a spiritual home to call your own, Christ Healing Home has a room for you.
 
 Come and be part of what God is building in this generation, your story matters here.`}
-                         image={youthSections[1] || ""}
+                         image={youthRootedFaith || ""}
                          imagePosition="right"
                          backgroundColor="#FFFFFF"
                     />
@@ -114,7 +96,7 @@ Come and be part of what God is building in this generation, your story matters 
                                    style={{
                                         height: "600px",
                                         borderRadius: "24px",
-                                        backgroundImage: youthSections[2] ? `url('${youthSections[2]}')` : "none",
+                                        backgroundImage: youthMeetGrow ? `url('${youthMeetGrow}')` : "none",
                                         backgroundSize: "cover",
                                         backgroundPosition: "center"
                                    }}
@@ -194,7 +176,7 @@ Come and be part of what God is building in this generation, your story matters 
                                    <div className="flex-1">
                                         <div className="relative w-full overflow-hidden rounded-lg" style={{ height: "520px" }}>
                                              <Image
-                                                  src={youthSections[3] || ""}
+                                                  src={youthLeadership || ""}
                                                   alt="Pastor Reece"
                                                   fill
                                                   className="object-cover"

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { LinkIcon } from "lucide-react";
+import { ArrowButtonIcon } from "@/components/icons/ArrowButtonIcon";
 
 export function UpcomingEventCard() {
  const [event, setEvent] = useState<any>(null);
@@ -69,7 +69,7 @@ export function UpcomingEventCard() {
       backgroundImage: `url('${event.image_url || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop'}')`
      }}
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
     <div className="absolute bottom-0 left-0 right-0 p-8">
      <div className="flex items-center justify-between">
       <div>
@@ -78,7 +78,11 @@ export function UpcomingEventCard() {
         <p className="text-white/80 text-lg">{event.location}</p>
        )}
       </div>
-      <LinkIcon className="size-6 text-white" />
+      <ArrowButtonIcon
+       bgColor="white"
+       borderColor="black"
+       arrowColor="black"
+      />
      </div>
     </div>
    </div>

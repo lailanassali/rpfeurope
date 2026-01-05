@@ -1,3 +1,4 @@
+import nodemailer from 'nodemailer';
 import crypto from 'crypto';
 
 interface SendEmailParams {
@@ -9,40 +10,44 @@ interface SendEmailParams {
 
 export async function sendEmail({ to, cc, subject, html }: SendEmailParams) {
  try {
-  const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const FROM_EMAIL = process.env.SMTP_FROM_EMAIL || 'onboarding@resend.dev';
+  const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
+  const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
+  const SMTP_USER = process.env.SMTP_USER;
+  const SMTP_PASS = process.env.SMTP_PASS;
+  const FROM_EMAIL = process.env.SMTP_FROM_EMAIL || SMTP_USER;
 
-  if (!RESEND_API_KEY) {
-   console.error('RESEND_API_KEY not configured');
+  if (!SMTP_USER || !SMTP_PASS) {
+   console.error('SMTP credentials not configured');
    return { success: false, error: 'Email service not configured' };
   }
 
-  const recipients = Array.isArray(to) ? to : [to];
-  const ccRecipients = cc ? (Array.isArray(cc) ? cc : [cc]) : [];
-
-  const response = await fetch('https://api.resend.com/emails', {
-   method: 'POST',
-   headers: {
-    'Authorization': `Bearer ${RESEND_API_KEY}`,
-    'Content-Type': 'application/json',
+  // Create transporter
+  const transporter = nodemailer.createTransport({
+   host: SMTP_HOST,
+   port: SMTP_PORT,
+   secure: SMTP_PORT === 465, // true for 465, false for other ports
+   auth: {
+    user: SMTP_USER,
+    pass: SMTP_PASS,
    },
-   body: JSON.stringify({
-    from: FROM_EMAIL,
-    to: recipients,
-    cc: ccRecipients.length > 0 ? ccRecipients : undefined,
-    subject,
-    html,
-   }),
   });
 
-  if (!response.ok) {
-   const error = await response.json();
-   console.error('Resend API error:', error);
-   return { success: false, error: error.message || 'Failed to send email' };
-  }
+  // Verify connection
+  await transporter.verify();
 
-  const data = await response.json();
-  return { success: true, data };
+  const recipients = Array.isArray(to) ? to.join(', ') : to;
+  const ccRecipients = cc ? (Array.isArray(cc) ? cc.join(', ') : cc) : undefined;
+
+  // Send email
+  const info = await transporter.sendMail({
+   from: FROM_EMAIL,
+   to: recipients,
+   cc: ccRecipients,
+   subject,
+   html,
+  });
+
+  return { success: true, data: { id: info.messageId } };
  } catch (error: any) {
   console.error('Send email error:', error);
   return { success: false, error: error.message || 'Unknown error' };

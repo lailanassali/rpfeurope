@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 interface LocationItem {
   location: string;
   image: string;
+  slug?: string;
 }
 
 interface LocationsCarouselProps {
@@ -125,9 +127,10 @@ export function LocationsCarousel({
               {/* Row Container */}
               <div className={`grid gap-3 ${isMobile ? 'grid-cols-1' : 'grid-cols-4'}`}>
                 {visibleItems.map((item, index) => (
-                  <div
+                  <Link
                     key={`row${rowIndex}-item${index}`}
-                    className="relative md:h-[467px] h-[400px] overflow-hidden group cursor-pointer"
+                    href={item.slug ? `/join-service/${item.slug}` : '#'}
+                    className="relative md:h-[467px] h-[400px] overflow-hidden group cursor-pointer block"
                     style={{ borderRadius: '4px' }}
                   >
                     <div
@@ -145,7 +148,10 @@ export function LocationsCarousel({
                     {/* Navigation arrows - only on first and last visible items */}
                     {index === 0 && canGoPrevious && (
                       <button
-                        onClick={() => goToPrevious(rowIndex)}
+                        onClick={(e) => {
+                          e.preventDefault(); // Prevent link navigation
+                          goToPrevious(rowIndex);
+                        }}
                         className={cn(
                           "absolute left-4 top-1/2 -translate-y-1/2 z-20",
                           "p-3 rounded-[12px] border-[0.5px] transition-colors bg-white backdrop-blur-sm",
@@ -159,7 +165,10 @@ export function LocationsCarousel({
 
                     {index === visibleItems.length - 1 && canGoNext && (
                       <button
-                        onClick={() => goToNext(rowIndex)}
+                        onClick={(e) => {
+                          e.preventDefault(); // Prevent link navigation
+                          goToNext(rowIndex);
+                        }}
                         className={cn(
                           "absolute right-4 top-1/2 -translate-y-1/2 z-20",
                           "p-3 rounded-[12px] border-[0.5px] transition-colors bg-white backdrop-blur-sm",
@@ -170,7 +179,7 @@ export function LocationsCarousel({
                         <ArrowRight className="size-5" />
                       </button>
                     )}
-                  </div>
+                  </Link>
                 ))}
               </div>
 

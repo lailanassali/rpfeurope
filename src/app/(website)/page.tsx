@@ -8,7 +8,10 @@ import { FinalCTA } from "@/components/common/FinalCTA";
 import { supabaseAdmin } from "@/lib/supabase";
 import { UpcomingEventCard } from "@/components/common/UpcomingEventCard";
 import { BMSResourcesSection } from "@/components/common/BMSResourcesSection";
-import { getHeroImage, getCarouselImages } from "@/lib/image-utils";
+import { getHeroImage, getCarouselImages, getConnectTabImages } from "@/lib/image-utils";
+import { CONNECT_TABS_DATA } from "@/lib/connect-data";
+import { Location, slugify } from "@/lib/location-utils";
+import { FindNearestButton } from "@/components/common/FindNearestButton";
 
 
 export const metadata: Metadata = {
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 
 // Fetch locations from database
-async function getLocations() {
+async function getLocations(): Promise<Partial<Location>[]> {
   try {
     const { data, error } = await supabaseAdmin
       .from('locations')
@@ -49,7 +52,7 @@ async function getLocations() {
       return [];
     }
 
-    return data || [];
+    return (data || []) as Partial<Location>[];
   } catch (error) {
     console.error('Error fetching locations:', error);
     return [];
@@ -62,13 +65,14 @@ export default async function Home() {
   // Fetch images from database
   const homeHeroImage = await getHeroImage('home_hero');
   const ministriesImages = await getCarouselImages('ministries_carousel');
-  const connectImages = await getCarouselImages('connect_carousel');
+  const connectImages = await getConnectTabImages();
   const finalCTAImage = await getHeroImage('home_bottom_hero');
 
   // Transform locations for carousel
   const carouselItems = locations.map(loc => ({
-    location: loc.name,
-    image: loc.image_url || ''
+    location: loc.name || '',
+    image: loc.image_url || '',
+    slug: slugify(loc.name || '')
   }));
   return (
     <div className="w-full flex min-h-screen flex-col font-sans">
@@ -92,7 +96,7 @@ export default async function Home() {
             subtitle="Raising Purposeful Followers for Christ"
             primaryButton={{
               text: "Join our Family",
-              href: "/join"
+              href: "/join-service"
             }}
             secondaryButton={{
               text: "About Us",
@@ -175,7 +179,7 @@ export default async function Home() {
                 description="Always wondered what a Christ Healing Home (CHH) service is like? Come and find out. Whether you’re just curious, seeking answers or hungry for more of God, you’re welcome here — a place where lives are transformed by the power and presence of Jesus Christ."
                 secondaryButton={{
                   text: "View all locations",
-                  href: "/locations",
+                  href: "/join-service",
                   icon: true,
                   isOutline: true
                 }}
@@ -229,26 +233,12 @@ export default async function Home() {
               headingSize="medium"
             />
             <ConnectCarousel
-              items={[
-                {
-                  title: "Baptism",
-                  description: "Our baptism services provide a welcoming environment for individuals to publicly declare their commitment to Jesus.",
-                  image: connectImages[0] || "",
-                  linkHref: '/connect?tab=baptism'
-                },
-                {
-                  title: "Testimonies",
-                  description: "every testimony glorifies Jesus and encourages others to believe for their own breakthrough.",
-                  image: connectImages[1] || "",
-                  linkHref: '/connect?tab=testimonies'
-                },
-                {
-                  title: "Support & Counselling",
-                  description: "We offer free counselling and support sessions for anyone in need of encouragement, guidance or prayer.",
-                  image: connectImages[2] || "",
-                  linkHref: '/connect?tab=counselling'
-                }
-              ]}
+              items={CONNECT_TABS_DATA.map(tab => ({
+                title: tab.title,
+                description: tab.description[tab.description.length - 1],
+                image: connectImages[tab.id] || "",
+                linkHref: `/connect?tab=${tab.id}`
+              }))}
             />
           </div>
         </section>
@@ -277,7 +267,10 @@ export default async function Home() {
         </section>
 
         {/* 9. Final CTA Section */}
-        <FinalCTA backgroundImage={finalCTAImage} />
+        <FinalCTA
+          backgroundImage={finalCTAImage}
+          primaryButtonComponent={<FindNearestButton />}
+        />
       </main>
     </div>
   );

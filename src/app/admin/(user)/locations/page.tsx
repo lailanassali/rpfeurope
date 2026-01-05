@@ -13,6 +13,7 @@ export default function LocationsListPage() {
  const [locations, setLocations] = useState<any[]>([]);
  const [isLoading, setIsLoading] = useState(true);
  const [searchQuery, setSearchQuery] = useState('');
+ const [tagFilter, setTagFilter] = useState('all');
  const [deleteId, setDeleteId] = useState<string | null>(null);
  const [isDeleting, setIsDeleting] = useState(false);
 
@@ -48,10 +49,12 @@ export default function LocationsListPage() {
   }
  }
 
- const filtered = locations.filter((l) =>
-  l.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  l.tag?.toLowerCase().includes(searchQuery.toLowerCase())
- );
+ const filtered = locations.filter((l) => {
+  const matchesSearch = l.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+   l.tag?.toLowerCase().includes(searchQuery.toLowerCase());
+  const matchesTag = tagFilter === 'all' || l.tag === tagFilter;
+  return matchesSearch && matchesTag;
+ });
 
  return (
   <div>
@@ -68,8 +71,8 @@ export default function LocationsListPage() {
     </Link>
    </div>
 
-   <div className="mb-6">
-    <div className="relative">
+   <div className="mb-6 flex gap-4">
+    <div className="relative flex-1">
      <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
      <input
       type="text"
@@ -79,6 +82,17 @@ export default function LocationsListPage() {
       className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
      />
     </div>
+    <select
+     value={tagFilter}
+     onChange={(e) => setTagFilter(e.target.value)}
+     className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary bg-white min-w-[200px]"
+    >
+     <option value="all">All Tags</option>
+     <option value="CHH UK">CHH UK</option>
+     <option value="CHH Europe">CHH Europe</option>
+     <option value="CHH Africa">CHH Africa</option>
+     <option value="CHH on Campus">CHH on Campus</option>
+    </select>
    </div>
 
    <div className="bg-white rounded-lg shadow-sm border overflow-x-auto">

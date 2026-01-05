@@ -1,10 +1,12 @@
 import { HeroText } from "./HeroText";
+import { ReactNode } from "react";
 
 interface FinalCTAProps {
  heading?: string;
  subtitle?: string;
  primaryButtonText?: string;
  primaryButtonHref?: string;
+ primaryButtonComponent?: ReactNode;
  backgroundImage?: string;
  backgroundColor?: string;
 }
@@ -14,6 +16,7 @@ export function FinalCTA({
  subtitle = "Christ Healing Home (CHH) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Whether you're new to faith or looking for a church home, we'd love to connect with you.",
  primaryButtonText = "Connect With Us",
  primaryButtonHref = "/connect",
+ primaryButtonComponent,
  backgroundImage = "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=1080&fit=crop",
  backgroundColor = "#CEC3DF80"
 }: FinalCTAProps) {
@@ -34,7 +37,8 @@ export function FinalCTA({
        <HeroText
         heading={heading}
         subtitle={subtitle}
-        primaryButton={{ text: primaryButtonText, href: primaryButtonHref }}
+        primaryButton={primaryButtonComponent ? undefined : { text: primaryButtonText, href: primaryButtonHref }}
+        primaryButtonComponent={primaryButtonComponent}
         headingSize={38}
         headingWeight={600}
         subtitleSize={18}

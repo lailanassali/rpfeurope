@@ -3,6 +3,7 @@
 import { ArrowRight } from "lucide-react";
 import { ChhButton } from "./ChhButton";
 import Link from "next/link";
+import { ReactNode } from "react";
 
 interface ButtonProps {
  text: string;
@@ -14,6 +15,7 @@ interface HeroTextProps {
  heading: string;
  subtitle?: string;
  primaryButton?: ButtonProps;
+ primaryButtonComponent?: ReactNode;
  secondaryButton?: ButtonProps;
  headingSize?: number;
  headingWeight?: number;
@@ -25,6 +27,7 @@ export function HeroText({
  heading,
  subtitle,
  primaryButton,
+ primaryButtonComponent,
  secondaryButton,
  headingSize = 36,
  headingWeight = 700,
@@ -45,16 +48,18 @@ export function HeroText({
      {subtitle}
     </p>}
    </div>
-   {(primaryButton || secondaryButton) && (
+   {(primaryButton || primaryButtonComponent || secondaryButton) && (
     <div className="flex md:gap-6 gap-2 justify-between md:justify-normal mt-4 md:mt-8">
-     {primaryButton && (
+     {primaryButtonComponent ? (
+      primaryButtonComponent
+     ) : primaryButton ? (
       <Link href={primaryButton.href}>
        <ChhButton className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold h-10 md:h-[54px] md:px-6 px-3 py-0 md:py-3 md:text-xl text-md md:min-w-[240px] rounded-[4px]">
         <span>{primaryButton.text}</span>
         <ArrowRight className="size-5" />
        </ChhButton>
       </Link>
-     )}
+     ) : null}
      {secondaryButton && (
       <Link href={secondaryButton.href}>
        <ChhButton

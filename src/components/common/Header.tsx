@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Church, Users, Heart, HandshakeIcon, MessagesSquare, UserPlus, FileText } from "lucide-react";
+import { Menu, X, Church, Users, Heart, HandshakeIcon, MessagesSquare, UserPlus, FileText, Sparkles } from "lucide-react";
 import { ChhButton } from "./ChhButton";
 import { MenuItem, MenuItemProps } from "./MenuItem";
 
@@ -27,6 +27,15 @@ const ministriesDropdown: MenuItemProps[] = [
     title: "University Fellowships",
     description: "University Fellowships are campus-based communities across the UK and Europe.",
     href: "/ministries/university",
+  },
+];
+
+const drawerGiveLifeItems: MenuItemProps[] = [
+  {
+    title: "Give your life to Christ",
+    description: "Start your journey in faith",
+    href: "/give-life",
+    icon: <Sparkles className="size-5 text-muted-foreground" />,
   },
 ];
 
@@ -92,7 +101,7 @@ export function Header() {
 
   return (
     <>
-      <header className="top-0 z-50 w-full bg-background border-b border-border/40">
+      <header className="sticky top-0 z-50 w-full bg-background border-b border-border/40">
         {/* Layered Tabs */}
         <div className="flex w-full">
           <ChhButton className="font-bold text-[20px] bg-primary text-primary-foreground w-1/2 md:w-[220px] p-[10px] h-[60px] md:h-[70px]">
@@ -164,6 +173,8 @@ export function Header() {
 
             {/* Drawer Content */}
             <div className="p-6 space-y-[24px]">
+
+
               {/* Get Involved Section */}
               <div>
                 <h3 className="text-[14px] font-medium py-[12px] text-black mb-[12px]" style={{ borderBottom: '0.5px solid #0000001A' }}>Get Involved</h3>
@@ -183,6 +194,20 @@ export function Header() {
                 <h3 className="text-[14px] font-medium py-[12px] text-black mb-[12px]" style={{ borderBottom: '0.5px solid #0000001A' }}>Discover</h3>
                 <div className="">
                   {drawerDiscoverItems.map((item, index) => (
+                    <MenuItem
+                      key={index}
+                      {...item}
+                      onClick={closeDrawer}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Give Life Section - Start Here */}
+              <div>
+                <h3 className="text-[14px] font-medium py-[12px] text-black mb-[12px]" style={{ borderBottom: '0.5px solid #0000001A' }}>Start Here</h3>
+                <div className="">
+                  {drawerGiveLifeItems.map((item, index) => (
                     <MenuItem
                       key={index}
                       {...item}

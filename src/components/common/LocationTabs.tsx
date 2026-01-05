@@ -8,8 +8,9 @@ import { useDebounce } from "@/hooks/useDebounce";
 interface Location {
   slug: string;
   title: string;
-  services: string[];  // Changed from serviceType and date to services array
+  services: string[];
   address: string;
+  howToFindUs: string;
   image: string;
   mapLink: string;
 }
@@ -127,6 +128,7 @@ export function LocationTabs({ tabs }: LocationTabsProps) {
               services={location.services}
               address={location.address}
               mapLink={location.mapLink}
+              howToFindUs={location.howToFindUs}
             />
           ))
         ) : (

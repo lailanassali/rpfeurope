@@ -93,6 +93,7 @@ export function ConnectCarousel({ items, autoplay = false }: ConnectCarouselProp
             image={item.image}
             title={item.title}
             description={item.description}
+            descriptionClassName="line-clamp-3"
             linkHref={item.linkHref}
             linkText='Learn more'
           />

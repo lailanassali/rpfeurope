@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -80,39 +81,71 @@ export function SectionContent({
       {(primaryButton || secondaryButton) && (
         <div className="flex flex-wrap gap-4 md:mt-6 mt-4 md:justify-normal justify-center">
           {primaryButton && (
-            <button
-              onClick={primaryButton.onClick}
-              className={cn(
-                "inline-flex items-center justify-center gap-2",
-                "bg-chh-purple text-chh-purple-foreground hover:bg-chh-purple/90",
-                "font-semibold md:text-xl text-base px-4 h-8 md:px-8 md:h-14 rounded-[4px]",
-                "transition-colors"
-              )}
-            >
-              {primaryButton.text}
-              {primaryButton.icon && <ArrowRight className="size-5" />}
-            </button>
-
+            primaryButton.href ? (
+              <Link
+                href={primaryButton.href}
+                className={cn(
+                  "inline-flex items-center justify-center gap-2",
+                  "bg-chh-purple text-chh-purple-foreground hover:bg-chh-purple/90",
+                  "font-semibold md:text-xl text-base px-4 h-8 md:px-8 md:h-14 rounded-[4px]",
+                  "transition-colors"
+                )}
+              >
+                {primaryButton.text}
+                {primaryButton.icon && <ArrowRight className="size-5" />}
+              </Link>
+            ) : (
+              <button
+                onClick={primaryButton.onClick}
+                className={cn(
+                  "inline-flex items-center justify-center gap-2",
+                  "bg-chh-purple text-chh-purple-foreground hover:bg-chh-purple/90",
+                  "font-semibold md:text-xl text-base px-4 h-8 md:px-8 md:h-14 rounded-[4px]",
+                  "transition-colors"
+                )}
+              >
+                {primaryButton.text}
+                {primaryButton.icon && <ArrowRight className="size-5" />}
+              </button>
+            )
           )}
 
           {secondaryButton && (
-            <button
-              onClick={secondaryButton.onClick}
-              className={cn(
-                "inline-flex items-center justify-center gap-2",
-                "font-semibold md:text-xl text-base px-4 h-10 md:px-8 md:h-14",
-                "transition-colors",
-                secondaryButton.isOutline
-                  ? textColor === "white"
-                    ? "border-[0.5px] border-white text-white hover:bg-white hover:text-chh-purple"
-                    : "border-[0.5px] border-chh-purple text-chh-purple hover:bg-chh-purple hover:text-white"
-                  : "bg-chh-purple text-chh-purple-foreground hover:bg-chh-purple/90"
-              )}
-            >
-              {secondaryButton.text}
-              {secondaryButton.icon && <ArrowRight className="size-5" />}
-            </button>
-
+            secondaryButton.href ? (
+              <Link
+                href={secondaryButton.href}
+                className={cn(
+                  "inline-flex items-center justify-center gap-2",
+                  "font-semibold md:text-xl text-base px-4 h-10 md:px-8 md:h-14",
+                  "transition-colors",
+                  secondaryButton.isOutline
+                    ? textColor === "white"
+                      ? "border-[0.5px] border-white text-white hover:bg-white hover:text-chh-purple"
+                      : "border-[0.5px] border-chh-purple text-chh-purple hover:bg-chh-purple hover:text-white"
+                    : "bg-chh-purple text-chh-purple-foreground hover:bg-chh-purple/90"
+                )}
+              >
+                {secondaryButton.text}
+                {secondaryButton.icon && <ArrowRight className="size-5" />}
+              </Link>
+            ) : (
+              <button
+                onClick={secondaryButton.onClick}
+                className={cn(
+                  "inline-flex items-center justify-center gap-2",
+                  "font-semibold md:text-xl text-base px-4 h-10 md:px-8 md:h-14",
+                  "transition-colors",
+                  secondaryButton.isOutline
+                    ? textColor === "white"
+                      ? "border-[0.5px] border-white text-white hover:bg-white hover:text-chh-purple"
+                      : "border-[0.5px] border-chh-purple text-chh-purple hover:bg-chh-purple hover:text-white"
+                    : "bg-chh-purple text-chh-purple-foreground hover:bg-chh-purple/90"
+                )}
+              >
+                {secondaryButton.text}
+                {secondaryButton.icon && <ArrowRight className="size-5" />}
+              </button>
+            )
           )}
         </div>
       )}

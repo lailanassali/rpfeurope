@@ -85,3 +85,42 @@ export async function getCarouselImageByIndex(
   return fallback;
  }
 }
+
+/**
+ * Fetch images for all connect tabs
+ * @returns Map of tab ID to image URL
+ */
+export async function getConnectTabImages(): Promise<Record<string, string>> {
+ try {
+  const tabIds = ['baptism', 'counselling', 'mentorship', 'serve', 'testimonies', 'prayer'];
+  const imageMap: Record<string, string> = {};
+
+  // We can fetch all these in parallel
+  const promises = tabIds.map(async (tabId) => {
+   const { data, error } = await supabaseAdmin
+    .from(tableName)
+    .select('image_url')
+    .eq('page_identifier', `connect_${tabId}`)
+    .limit(1)
+    .single();
+
+   if (!error && data) {
+    return { id: tabId, url: data.image_url };
+   }
+   return null;
+  });
+
+  const results = await Promise.all(promises);
+
+  results.forEach(result => {
+   if (result) {
+    imageMap[result.id] = result.url;
+   }
+  });
+
+  return imageMap;
+ } catch (error) {
+  console.error('Error fetching connect tab images:', error);
+  return {};
+ }
+}

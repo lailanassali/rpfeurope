@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import { HeroText } from "@/components/common/HeroText";
 import { FinalCTA } from "@/components/common/FinalCTA";
-import { CardComponent } from "@/components/common/CardComponent";
+import { BMSResourcesSection } from "@/components/common/BMSResourcesSection";
 import { Clock, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { getHeroImage, getCarouselImages } from "@/lib/image-utils";
+import { getHeroImage } from "@/lib/image-utils";
 
 export const metadata: Metadata = {
         title: "Men & Women's Fellowship | Christ Healing Home",
@@ -18,7 +18,7 @@ export const revalidate = 60;
 export default async function FellowshipPage() {
         // Fetch images from database
         const fellowshipHero = await getHeroImage('fellowship_hero');
-        const fellowshipActivities = await getCarouselImages('fellowship_activities');
+        const fellowshipWorship = await getHeroImage('fellowship_worship');
         const fellowshipCTA = await getHeroImage('fellowship_cta');
 
         return (
@@ -102,8 +102,8 @@ Each gathering is built on a foundation of love and encouragement where everyone
                                                                         className=" w-full overflow-hidden rounded-lg"
                                                                         style={{
                                                                                 height: "352px",
-                                                                                backgroundImage: fellowshipActivities[0]
-                                                                                        ? `url('${fellowshipActivities[0]}')`
+                                                                                backgroundImage: fellowshipWorship
+                                                                                        ? `url('${fellowshipWorship}')`
                                                                                         : "none",
                                                                                 backgroundSize: "cover",
                                                                                 backgroundPosition: "center",
@@ -212,37 +212,7 @@ We've watched God move powerfully in every session — healing hearts, answering
                                                 </div>
 
                                                 {/* 6. Cards Grid */}
-                                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                                        <CardComponent
-                                                                image={fellowshipActivities[0] || ""}
-                                                                title="Faith in Action"
-                                                                description="Discover how faith transforms everyday life and empowers believers."
-                                                                linkText="Join live stream"
-                                                                linkHref="/resources"
-                                                                textBgColor="#ffffff"
-                                                        />
-                                                        <CardComponent
-                                                                image={fellowshipActivities[1] || ""}
-                                                                title="Power of Prayer"
-                                                                description="Learn about the transformative power of consistent prayer life."
-                                                                linkText="Get Volume 1"
-                                                                linkHref="/resources"
-                                                                textBgColor="#ffffff"
-                                                                badge={{
-                                                                        title: "Upcoming",
-                                                                        bgColor: "#E1A063",
-                                                                        textColor: "#FFFFFF",
-                                                                }}
-                                                        />
-                                                        <CardComponent
-                                                                image={fellowshipActivities[2] || ""}
-                                                                title="Walking in Purpose"
-                                                                description="Understanding and fulfilling your God-given calling and purpose."
-                                                                linkText="Read More"
-                                                                linkHref="/resources"
-                                                                textBgColor="#ffffff"
-                                                        />
-                                                </div>
+                                                <BMSResourcesSection />
                                         </div>
                                 </section>
 

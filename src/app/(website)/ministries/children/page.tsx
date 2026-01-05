@@ -19,6 +19,9 @@ export default async function ChildrenPage() {
      const childrenHero = await getHeroImage('children_hero');
      const childrenActivities = await getCarouselImages('children_activities');
      const childrenCTA = await getHeroImage('children_cta');
+     const childrenFaith = await getHeroImage('children_faith');
+     const childrenFamily = await getHeroImage('children_family');
+     const childrenPlace = await getHeroImage('children_place');
 
      return (
           <div className="w-full flex min-h-screen flex-col font-sans">
@@ -136,7 +139,7 @@ export default async function ChildrenPage() {
                          description={`Sundays and midweek gatherings are filled with worship, laughter, learning and age appropriate activities.
 
 Each moment shared is built on the word of God, providing a strong foundation, preparing young hearts to know the deep love of Christ.`}
-                         image={childrenActivities[0] || ""}
+                         image={childrenFaith || ""}
                          imagePosition="right"
                          backgroundColor="#CEC3DF40"
                     />
@@ -149,7 +152,7 @@ Each moment shared is built on the word of God, providing a strong foundation, p
                                    <div className="flex-2 flex items-center justify-center">
                                         <div className="relative w-full overflow-hidden rounded-lg" style={{ height: "500px" }}>
                                              <Image
-                                                  src={childrenActivities[1] || ""}
+                                                  src={childrenFamily || ""}
                                                   alt="Be Part of the Family"
                                                   fill
                                                   className="object-cover"
@@ -196,7 +199,7 @@ Whether your child is taking their first steps of faith, there is a place for th
                                    style={{
                                         height: "600px",
                                         borderRadius: "24px",
-                                        backgroundImage: childrenActivities[2] ? `url('${childrenActivities[2]}')` : "none",
+                                        backgroundImage: childrenPlace ? `url('${childrenPlace}')` : "none",
                                         backgroundSize: "cover",
                                         backgroundPosition: "center"
                                    }}

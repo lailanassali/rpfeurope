@@ -58,8 +58,17 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
    }
 
    const services = parseServices(location.services);
-   const contacts = parseServices(location.contact); // Using same helper since logic is identical (split by |)
+   const contacts = parseServices(location.contact);
    const isCampus = location.tag === 'CHH on Campus';
+
+   // Parse how_to_find_us to extract content after colon if present
+   const parseHowToFindUs = (text: string | null) => {
+      if (!text) return 'Check with the campus fellowship for specific meeting locations.';
+      if (text.includes(':')) {
+         return text.split(':')[1].trim();
+      }
+      return text;
+   };
 
    // Use dynamic carousel images if available, otherwise fallback
    const carouselImages = (location.carousel_images && location.carousel_images.length > 0)
@@ -160,7 +169,9 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
                         {isCampus ? (
                            <div>
                               <h3 className="md:text-[24px] text-[18px] font-semibold mb-2">How to Find Us</h3>
-                              <p className="md:text-[16px] text-[14px] font-normal mb-4">Check with the campus fellowship for specific meeting locations.</p>
+                              <p className="md:text-[16px] text-[14px] font-normal mb-4">
+                                 {parseHowToFindUs(location.how_to_find_us)}
+                              </p>
                               {location.whatsapp_link && (
                                  <a href={location.whatsapp_link} target="_blank" rel="noopener noreferrer">
                                     <ChhButton className="bg-white text-[#6F5299] hover:bg-gray-100 rounded-lg h-12">

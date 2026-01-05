@@ -73,10 +73,11 @@ function transformLocationsToTabs(locations: any[]) {
               groupedByTag[tag].push({
                      slug: createSlug(loc.name),
                      title: loc.name,
-                     services: services,  // Array of services
+                     services: services,
                      address: loc.address || '',
                      image: loc.image_url || 'https://images.unsplash.com/photo-1507692049790-de58290a4334?w=800&h=600&fit=crop',
-                     mapLink: loc.map_link || `https://maps.google.com/?q=${encodeURIComponent(loc.address || loc.name)}`
+                     mapLink: loc.map_link || `https://maps.google.com/?q=${encodeURIComponent(loc.address || loc.name)}`,
+                     howToFindUs: loc.how_to_find_us || ''
               });
        });
 

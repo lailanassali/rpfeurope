@@ -4,7 +4,8 @@ import { ImageTextSection } from "@/components/common/ImageTextSection";
 import { SectionContent } from "@/components/common/SectionContent";
 import { FinalCTA } from "@/components/common/FinalCTA";
 import { ServiceLocationCard } from "@/components/common/ServiceLocationCard";
-import { getHeroImage, getCarouselImages } from "@/lib/image-utils";
+import { getHeroImage } from "@/lib/image-utils";
+import { getLocationsByTag, slugify, parseServices } from "@/lib/location-utils";
 
 export const metadata: Metadata = {
      title: "University Fellowships | Christ Healing Home",
@@ -14,39 +15,17 @@ export const metadata: Metadata = {
 // Revalidate this page every 60 seconds (ISR)
 export const revalidate = 60;
 
-// Sample campus data (images will be fetched externally)
-const campuses = [
-     {
-          slug: "university-of-london",
-          title: "University of London",
-          services: ["Weekly Fellowship - Every Wednesday | 6:00 PM"],
-          address: "Student Union, Room 204, London",
-          image: "",
-          mapLink: "https://maps.google.com/?q=University+of+London"
-     },
-     {
-          slug: "university-of-manchester",
-          title: "University of Manchester",
-          services: ["Weekly Fellowship - Every Thursday | 7:00 PM"],
-          address: "Student Center, Manchester",
-          image: "",
-          mapLink: "https://maps.google.com/?q=University+of+Manchester"
-     },
-     {
-          slug: "university-of-birmingham",
-          title: "University of Birmingham",
-          services: ["Weekly Fellowship - Every Tuesday | 6:30 PM"],
-          address: "Guild of Students, Birmingham",
-          image: "",
-          mapLink: "https://maps.google.com/?q=University+of+Birmingham"
-     }
-];
+
 
 export default async function UniversityPage() {
      // Fetch images from database
      const universityHero = await getHeroImage('university_hero');
-     const universityActivities = await getCarouselImages('university_activities');
+     const universityHome = await getHeroImage('university_home');
      const universityCTA = await getHeroImage('university_cta');
+
+     // Fetch university locations
+     const universityLocations = await getLocationsByTag('CHH on Campus');
+
      return (
           <div className="w-full flex min-h-screen flex-col font-sans">
                <main className="flex-1">
@@ -76,7 +55,7 @@ export default async function UniversityPage() {
                          description={`Christ Healing Home's University Fellowships are campus-based communities across the UK and Europe. Here, students come together to grow in faith and learning.
 
 Every fellowship hosts weekly bible studies, social events, outreach, and worship evenings. These fellowships offer a safe space for both believers and those who desire to explore more Christian teachings and grow spiritually.`}
-                         image={universityActivities[0] || ""}
+                         image={universityHome || ""}
                          imagePosition="left"
                          backgroundColor="#EAE4DB1A"
                     />
@@ -100,19 +79,19 @@ Every fellowship hosts weekly bible studies, social events, outreach, and worshi
 
                               {/* Campus Cards Grid */}
                               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                   {campuses.map((campus) => (
+                                   {universityLocations.map((campus) => (
                                         <div
-                                             key={campus.slug}
+                                             key={campus.id}
                                              style={{ backgroundColor: "#F7E7D880" }}
                                              className="rounded-lg overflow-hidden"
                                         >
                                              <ServiceLocationCard
-                                                  slug={campus.slug}
-                                                  image={campus.image}
-                                                  title={campus.title}
-                                                  services={campus.services}
+                                                  slug={slugify(campus.name)}
+                                                  image={campus.image_url}
+                                                  title={campus.name}
+                                                  services={parseServices(campus.services)}
                                                   address={campus.address}
-                                                  mapLink={campus.mapLink}
+                                                  mapLink={campus.map_link}
                                              />
                                         </div>
                                    ))}
