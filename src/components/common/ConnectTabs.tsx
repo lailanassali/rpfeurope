@@ -141,7 +141,7 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
 
         {/* Right: Form - 50% */}
         <div className="lg:w-1/2 md:px-[48px] py-8 rounded-[16px] md:border border-[#e5e5e5]/50">
-          <div className="bg-gray-50 ">
+          <div className="">
             <h3 className="text-[24px] font-semibold text-[#211F1F] mb-2">{currentTab.formTitle}</h3>
             <p className="text-[14px] text-[#211F1F] mb-10">{currentTab.formDescription}</p>
 

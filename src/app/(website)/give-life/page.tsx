@@ -26,14 +26,14 @@ export default async function GiveLifePage() {
       <main className="flex-1">
         {/* Header Section (Text Only) */}
         <section className="md:py-24 py-8 bg-white">
-          <div className="container w-11/12 px-4 mx-auto text-left">
-            <h1 className="md:text-[40px] text-[24px] font-bold text-black mb-6 text-left">
+          <div className="container w-11/12 px-4 mx-auto md:text-left text-center">
+            <h1 className="md:text-[40px] text-[24px] font-bold text-black mb-6">
               Give Your Life to Christ
             </h1>
-            <p className="md:text-[20px] text-[16px] text-black/70 text-left w-11/12 mb-6">
+            <p className="md:text-[20px] text-[16px] text-black/70 md:w-11/12 w-full mb-6">
               Whether you are a new believer or rededicating your life, we are so excited that you are ready to take this next step!
             </p>
-            <p className="md:text-[20px] text-[16px] text-black/70 text-left w-11/12 mb-8">
+            <p className="md:text-[20px] text-[16px] text-black/70 md:w-11/12 w-full mb-8">
               Say “yes” to Jesus by filling out the form below and one of our team will connect with you, celebrate with you, and help you navigate your new life in Christ.
             </p>
             <p className="text-[18px] md:text-[24px] text-center text-primary leading-relaxed">
@@ -53,7 +53,7 @@ export default async function GiveLifePage() {
         </section>
 
         {/* Carousel Section */}
-        <section className="py-20 bg-white">
+        <section className="pt-20 bg-white">
           <AboutCardsCarousel images={images} />
         </section>
       </main>

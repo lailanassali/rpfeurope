@@ -141,7 +141,7 @@ export function Footer() {
     <div className="md:my-16 border-t border-white pt-10">
      <div className="flex gap-3 items-center md:flex-row flex-col md:justify-between">
       <p className="text-white text-sm md:text-left text-center">
-       Copyright 2025 Christ Healing Home. All Rights Reserved.
+       &copy; 2025 Christ Healing Home. All Rights Reserved.
       </p>
       <button
        onClick={scrollToTop}
