@@ -90,8 +90,8 @@ export default function ResourcesPage() {
                     description={resource.description}
                     schedule={resource.schedule}
                     image={resource.image_url || "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&h=600&fit=crop"}
-                    linkText={resource.link_text || "Join Live Stream"}
-                    linkHref={resource.link_url || "https://youtube.com/@chheurope"}
+                    linkText={resource.link_text}
+                    linkHref={resource.link_url}
                     badge={resource.badge_text ? {
                       text: resource.badge_text,
                       bgColor: "#10B981",
