@@ -183,19 +183,32 @@ export default async function AboutPage() {
               location="Sunday Service"
               image={aboutSunday}
               href="/events"
-              description="Join us for our Sunday Service"
+              description="Sunday is the Lord’s Day, and at CHH, it’s a joyful celebration of His
+presence. Our services are full of vibrant praise, heartfelt worship, and the uncompromised
+teaching of God’s Word.
+We also share testimonies of what God is doing in our lives, followed by a time of fellowship
+where you can connect with others and feel part of a family.
+Join us, there’s a seat waiting for you."
             />
             <LocationCard
               location="Bible Study"
               image={aboutBible}
               href="/events"
-              description="Join us for our Sunday Service"
+              description="Our Bible Study sessions are a chance to dive deep into the Word in an intimate, welcoming
+setting. We gather in breakout groups where people can ask real questions, have honest
+conversations and grow together in faith.
+Whether you’re just beginning your journey with the Bible or have been studying it for years,
+there’s something for everyone — from foundational teachings to more advanced studies."
             />
             <LocationCard
               location="Fire Night"
               image={aboutFirenight}
               href="/events"
-              description="Join us for our Sunday Service"
+              description="A truly supernatural experience. Fire Night at Christ Healing Home (CHH) is unlike anything else.
+It’s a time to press into prayer, encounter the Holy Spirit and experience God in a powerful, lifechanging way.
+These evenings are filled with heartfelt worship, the teaching of the Word, powerful praise and
+moving testimonies. Every Fire Night is an invitation to go deeper and encounter Jesus like never
+before."
             />
           </div>
         </section>
