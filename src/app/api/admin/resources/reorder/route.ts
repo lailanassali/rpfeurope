@@ -14,16 +14,14 @@ export async function POST(request: NextRequest) {
   }
 
   // Update each item's order_index
-  // We doing this in a loop for now, ideally we'd use a transaction or upsert
-  // Supabase upsert with multiple rows is cleaner
+  // We include ...item to ensure all non-null fields are present for the upsert
   const updates = items.map((item: any, index: number) => ({
-   id: item.id,
+   ...item,
    order_index: index,
-   updated_at: new Date().toISOString() // Good practice to update this
+   updated_at: new Date().toISOString()
   }));
 
   // We only update the order_index (and updated_at) for these IDs
-  // Note: This requires the table to allow updating these fields
   const { error } = await supabaseAdmin
    .from('resources')
    .upsert(updates, { onConflict: 'id', ignoreDuplicates: false });
