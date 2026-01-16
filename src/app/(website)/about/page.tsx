@@ -183,16 +183,19 @@ export default async function AboutPage() {
               location="Sunday Service"
               image={aboutSunday}
               href="/events"
+              description="Join us for our Sunday Service"
             />
             <LocationCard
               location="Bible Study"
               image={aboutBible}
               href="/events"
+              description="Join us for our Sunday Service"
             />
             <LocationCard
               location="Fire Night"
               image={aboutFirenight}
               href="/events"
+              description="Join us for our Sunday Service"
             />
           </div>
         </section>
