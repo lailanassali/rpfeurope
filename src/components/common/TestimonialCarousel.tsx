@@ -11,9 +11,15 @@ interface Testimonial {
 
 interface TestimonialCarouselProps {
  testimonials?: Testimonial[];
+ autoplay?: boolean;
+ interval?: number;
 }
 
-export function TestimonialCarousel({ testimonials: propsTestimonials }: TestimonialCarouselProps) {
+export function TestimonialCarousel({
+ testimonials: propsTestimonials,
+ autoplay = true,
+ interval = 5000
+}: TestimonialCarouselProps) {
  const [currentIndex, setCurrentIndex] = useState(0);
  const [testimonials, setTestimonials] = useState<Testimonial[]>(propsTestimonials || []);
  const [isLoading, setIsLoading] = useState(!propsTestimonials);
@@ -23,6 +29,18 @@ export function TestimonialCarousel({ testimonials: propsTestimonials }: Testimo
    fetchTestimonials();
   }
  }, [propsTestimonials]);
+
+ const [isHovered, setIsHovered] = useState(false);
+
+ useEffect(() => {
+  if (!autoplay || testimonials.length <= 1 || isHovered) return;
+
+  const timer = setInterval(() => {
+   setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  }, interval);
+
+  return () => clearInterval(timer);
+ }, [autoplay, interval, testimonials.length, isHovered]);
 
  async function fetchTestimonials() {
   try {
@@ -73,7 +91,11 @@ export function TestimonialCarousel({ testimonials: propsTestimonials }: Testimo
  const testimonialText = currentTestimonial.testimony || currentTestimonial.text || '';
 
  return (
-  <div className="bg-[#F7E7D826] md:py-24 py-10">
+  <div
+   className="bg-[#F7E7D826] md:py-24 py-10"
+   onMouseEnter={() => setIsHovered(true)}
+   onMouseLeave={() => setIsHovered(false)}
+  >
    <div className="container w-11/12 mx-auto px-4">
     <div className="bg-[#F7E7D8B2] md:p-16 p-10 rounded-3xl">
      {/* Testimonial Text */}

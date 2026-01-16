@@ -67,7 +67,7 @@ const drawerGetInvolvedItems: MenuItemProps[] = [
   {
     title: "Testimonies",
     description: "What Has God Done for You?",
-    href: "/connect?tab=testimony",
+    href: "/connect?tab=testimonies",
     icon: <MessagesSquare className="size-5 text-muted-foreground" />,
   },
   {

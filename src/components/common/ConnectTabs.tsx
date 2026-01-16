@@ -87,6 +87,13 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
+
+    // Update URL query parameter without triggering a router navigation (avoids twitching)
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.set('tab', tabId);
+      window.history.pushState({}, '', url);
+    }
   };
 
   return (

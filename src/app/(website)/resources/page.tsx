@@ -5,6 +5,7 @@ import { SectionContent } from "@/components/common/SectionContent";
 import { BMSCard } from "@/components/common/BMSCard";
 import { DevotionalCard } from "@/components/common/DevotionalCard";
 import { FinalCTA } from "@/components/common/FinalCTA";
+import { getContrastColor } from "@/lib/color-utils";
 
 // Note: This is a client component due to useState/useEffect for resources
 // CTA image will need to be fetched client-side or passed as prop
@@ -94,9 +95,8 @@ export default function ResourcesPage() {
                     linkHref={resource.link_url}
                     badge={resource.badge_text ? {
                       text: resource.badge_text,
-                      bgColor: "#10B981",
-                      textColor: "#FFFFFF",
-                      borderColor: "#10B981"
+                      bgColor: resource.badge_color || "#10B981",
+                      textColor: getContrastColor(resource.badge_color || "#10B981"), borderColor: getContrastColor(resource.badge_color || "#10B981")
                     } : undefined}
                   />
                 ))}
@@ -131,9 +131,15 @@ export default function ResourcesPage() {
                     title={devotional.title}
                     author={devotional.author || "By CHH Teaching Team"}
                     description={devotional.description}
-                    buttonText={devotional.link_text || "Buy on Amazon"}
-                    buttonHref={devotional.link_url || "https://amazon.com"}
-                    image={devotional.image_url || "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=300&h=400&fit=crop"}
+                    buttonText={devotional.link_text}
+                    buttonHref={devotional.link_url}
+                    image={devotional.image_url}
+                    badge={devotional.badge_text ? {
+                      text: devotional.badge_text,
+                      bgColor: devotional.badge_color || "#10B981",
+                      textColor: getContrastColor(devotional.badge_color || "#10B981"),
+                      borderColor: getContrastColor(devotional.badge_color || "#10B981")
+                    } : undefined}
                   />
                 ))}
               </div>

@@ -22,9 +22,10 @@ export function LocationsCarousel({
   items,
   rows = 2,
   showIndicators = true,
-  autoplay = false
+  autoplay = true
 }: LocationsCarouselProps) {
   const [isMobile, setIsMobile] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -61,7 +62,7 @@ export function LocationsCarousel({
 
   // Autoplay functionality for all rows
   useEffect(() => {
-    if (!autoplay) return;
+    if (!autoplay || isHovered) return;
 
     const interval = setInterval(() => {
       setRowIndices(prev => {
@@ -73,10 +74,10 @@ export function LocationsCarousel({
           return currentIndex >= maxIndex ? 0 : currentIndex + 1;
         });
       });
-    }, 3000); // Change slide every 3 seconds
+    }, 5000); // Change slide every 5 seconds (matched testimonial)
 
     return () => clearInterval(interval);
-  }, [autoplay, rowsData, itemsToShow, effectiveRows]);
+  }, [autoplay, rowsData, itemsToShow, effectiveRows, isHovered]);
 
   const goToPrevious = (rowIndex: number) => {
     setRowIndices(prev => {
@@ -113,7 +114,11 @@ export function LocationsCarousel({
   }
 
   return (
-    <div className="w-full">
+    <div
+      className="w-full"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className="space-y-3">
         {rowsData.map((rowItems, rowIndex) => {
           const currentIndex = rowIndices[rowIndex] || 0;

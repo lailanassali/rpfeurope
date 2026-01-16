@@ -10,6 +10,12 @@ interface DevotionalCardProps {
  buttonText: string;
  buttonHref: string;
  image: string;
+ badge?: {
+  text: string;
+  bgColor: string;
+  textColor: string;
+  borderColor: string;
+ };
 }
 
 export function DevotionalCard({
@@ -19,7 +25,8 @@ export function DevotionalCard({
  description,
  buttonText,
  buttonHref,
- image
+ image,
+ badge
 }: DevotionalCardProps) {
  return (
   <div
@@ -27,12 +34,13 @@ export function DevotionalCard({
    style={{ boxShadow: "0px 2px 10px 0px #0000000D" }}
   >
    {/* Image - Left */}
-   <div className="w-[140px] h-full shrink-0">
+   <div className="w-[140px] h-full shrink-0 relative">
     <img
      src={image}
      alt={`${volume} - ${title}`}
      className="w-full h-full object-cover rounded"
     />
+
    </div>
 
    {/* Content - Right */}
@@ -46,15 +54,27 @@ export function DevotionalCard({
     <p className="text-[14px] text-black mt-[10px] mb-8 line-clamp-3 flex-1">
      {description}
     </p>
-
-    <Link href={buttonHref} className="mt-auto">
-     <ChhButton
-      className="bg-[#6F5299] text-white hover:bg-[#6F5299]/90 h-12 rounded-[4px]"
+    {buttonHref &&
+     <Link href={buttonHref} className="mt-auto">
+      <ChhButton
+       className="bg-[#6F5299] text-white hover:bg-[#6F5299]/90 h-12 rounded-[4px]"
+      >
+       <span>{buttonText || "Read Devotional"}</span>
+       <ArrowRight className="size-4" />
+      </ChhButton>
+     </Link>}
+    {badge && (
+     <div
+      className="absolute top-2 left-2 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider shadow-sm z-10"
+      style={{
+       backgroundColor: badge.bgColor,
+       color: badge.textColor,
+       borderColor: badge.borderColor
+      }}
      >
-      <span>{buttonText}</span>
-      <ArrowRight className="size-4" />
-     </ChhButton>
-    </Link>
+      {badge.text}
+     </div>
+    )}
    </div>
   </div>
  );
