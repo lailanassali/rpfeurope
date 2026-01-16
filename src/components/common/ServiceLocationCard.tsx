@@ -42,6 +42,13 @@ export function ServiceLocationCard({
           alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 bg-[#6F5299] opacity-0 group-hover:opacity-95 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+          <h4 className="text-white font-bold text-lg mb-2">{title}</h4>
+          <p className="text-white text-sm">
+            {services && services.length > 0 ? services.join(' • ') : 'Join us for Sunday Service'}
+          </p>
+        </div>
       </div>
 
       {/* Content */}

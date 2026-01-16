@@ -39,13 +39,19 @@ export function parseServices(servicesStr: string | null): string[] {
     .filter(s => s.length > 0);
 }
 
-export async function getLocationsByTag(tag: string): Promise<Location[]> {
+export async function getLocationsByTag(tag: string, limit?: number): Promise<Location[]> {
   try {
-    const { data, error } = await supabaseAdmin
+    let query = supabaseAdmin
       .from('locations')
       .select('*')
       .eq('tag', tag)
       .order('name', { ascending: true });
+
+    if (limit) {
+      query = query.limit(limit);
+    }
+
+    const { data, error } = await query;
 
     if (error) {
       console.error(`Error fetching locations for tag ${tag}:`, error);

@@ -24,7 +24,7 @@ export default async function UniversityPage() {
      const universityCTA = await getHeroImage('university_cta');
 
      // Fetch university locations
-     const universityLocations = await getLocationsByTag('CHH on Campus');
+     const universityLocations = await getLocationsByTag('CHH on Campus', 3);
 
      return (
           <div className="w-full flex min-h-screen flex-col font-sans">

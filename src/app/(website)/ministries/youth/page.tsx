@@ -36,7 +36,7 @@ export default async function YouthPage() {
           <div className="w-full flex min-h-screen flex-col font-sans">
                <main className="flex-1">
                     {/* 1. Hero Section */}
-                    <section className="relative h-[700px] w-full flex items-end overflow-hidden">
+                    <section className="relative h-[700px] w-full flex items-end overflow-hidden mb-8">
                          {/* Background with overlay */}
                          <div
                               className="absolute inset-0 bg-cover bg-center"
