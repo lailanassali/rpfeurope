@@ -8,9 +8,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
- title: "Christ Healing Home - CHH Europe",
- description: "Welcome to Christ Healing Home Europe. A place of worship, community, and spiritual growth.",
- keywords: ["Church", "Ministry", "CHH", "Europe", "Christ Healing Home", "Worship", "Community"],
+ title: "Redeemed Pillar of Fire - RPF Europe",
+ description: "Welcome to Redeemed Pillar of Fire Europe. A place of worship, community, and spiritual growth.",
+ keywords: ["Church", "Ministry", "RPF", "Europe", "Redeemed Pillar of Fire", "Worship", "Community"],
  icons: {
   icon: '/assets/rpflogo.png',
  },

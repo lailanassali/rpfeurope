@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChhButton } from "./ChhButton";
+import { RPFButton } from "./RPFButton";
 import { ArrowRight } from "lucide-react";
 
 interface DevotionalCardProps {
@@ -56,12 +56,12 @@ export function DevotionalCard({
     </p>
     {buttonHref &&
      <Link href={buttonHref} className="mt-auto">
-      <ChhButton
+      <RPFButton
        className="bg-[#6F5299] text-white hover:bg-[#6F5299]/90 h-12 rounded-[4px]"
       >
        <span>{buttonText || "Read Devotional"}</span>
        <ArrowRight className="size-4" />
-      </ChhButton>
+      </RPFButton>
      </Link>}
     {badge && (
      <div

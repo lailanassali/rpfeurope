@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
 
   // Upload to Supabase Storage
   const { data, error } = await supabaseAdmin.storage
-   .from('chh-images')
+   .from('RPF-images')
    .upload(filePath, buffer, {
     contentType: file.type,
     upsert: false,
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
   // Get public URL
   const { data: { publicUrl } } = supabaseAdmin.storage
-   .from('chh-images')
+   .from('RPF-images')
    .getPublicUrl(filePath);
 
   return NextResponse.json({ url: publicUrl });

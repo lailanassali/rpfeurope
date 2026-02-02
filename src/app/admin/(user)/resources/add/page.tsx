@@ -7,7 +7,7 @@ import { FormInput } from '@/components/common/FormInput';
 import { FormTextarea } from '@/components/common/FormTextarea';
 import { FormSelect } from '@/components/common/FormSelect';
 import { ImageUpload } from '@/components/admin/ImageUpload';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 
 export default function AddResourcePage() {
  const router = useRouter();
@@ -90,7 +90,7 @@ export default function AddResourcePage() {
        label="Author"
        value={formData.author}
        onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-       placeholder="e.g., By CHH Teaching Team"
+       placeholder="e.g., By RPF Teaching Team"
       />
       <FormInput
        label="Volume"
@@ -107,8 +107,8 @@ export default function AddResourcePage() {
     </div>
 
     <div className="flex gap-4 justify-end pt-4">
-     <ChhButton type="button" onClick={() => router.back()} className="bg-gray-100 text-gray-700 px-6 py-2 h-auto">Cancel</ChhButton>
-     <ChhButton type="submit" disabled={isLoading} className="bg-primary text-white px-6 py-2 h-auto">{isLoading ? 'Saving...' : 'Create'}</ChhButton>
+     <RPFButton type="button" onClick={() => router.back()} className="bg-gray-100 text-gray-700 px-6 py-2 h-auto">Cancel</RPFButton>
+     <RPFButton type="submit" disabled={isLoading} className="bg-primary text-white px-6 py-2 h-auto">{isLoading ? 'Saving...' : 'Create'}</RPFButton>
     </div>
    </form>
   </div>

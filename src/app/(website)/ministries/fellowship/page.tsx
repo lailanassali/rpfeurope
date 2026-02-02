@@ -7,7 +7,7 @@ import Link from "next/link";
 import { getHeroImage } from "@/lib/image-utils";
 
 export const metadata: Metadata = {
-        title: "Men & Women's Fellowship | Christ Healing Home",
+        title: "Men & Women's Fellowship | Redeemed Pillar of Fire",
         description:
                 "A home for everyone seeking God's presence, growing in faith, and walking in purpose.",
 };
@@ -37,7 +37,7 @@ export default async function FellowshipPage() {
                                                 }}
                                         />
                                         <HeroText
-                                                heading="CHH Men & Women's Fellowship"
+                                                heading="RPF Men & Women's Fellowship"
                                                 subtitle="A home for everyone seeking God's presence, growing in faith, and walking in purpose."
                                                 primaryButton={{
                                                         text: "Join Our Ministry",
@@ -59,7 +59,7 @@ export default async function FellowshipPage() {
                                                         Strength in Fellowship
                                                 </h2>
                                                 <p className="text-[20px] text-left" style={{ color: "#373737" }}>
-                                                        At Christ Healing Home, our Men's and Women's Fellowships (ages 35
+                                                        At Redeemed Pillar of Fire, our Men's and Women's Fellowships (ages 35
                                                         and above) are refreshing gatherings where believers come together
                                                         to deepen in their walk with Christ and strengthen one another in
                                                         faith.
@@ -140,7 +140,7 @@ Each gathering is built on a foundation of love and encouragement where everyone
                                                                                         <div className="flex items-start gap-3 mb-8">
                                                                                                 <MapPin className="size-5 text-white mt-1 shrink-0" />
                                                                                                 <span className="text-white text-lg">
-                                                                                                        Various CHH Locations
+                                                                                                        Various RPF Locations
                                                                                                 </span>
                                                                                         </div>
 

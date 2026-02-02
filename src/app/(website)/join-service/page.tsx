@@ -8,8 +8,8 @@ import { supabaseAdmin } from "@/lib/supabase";
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-       title: "Join a Service | CHH Europe",
-       description: "Find a Christ Healing Home location near you and join us for worship.",
+       title: "Join a Service | RPF Europe",
+       description: "Find a Redeemed Pillar of Fire location near you and join us for worship.",
 };
 
 // Helper function to create slug from name
@@ -35,6 +35,7 @@ async function getLocations() {
               const { data, error } = await supabaseAdmin
                      .from('locations')
                      .select('*')
+                     .neq('tag', '_CONFIG_')
                      .order('tag', { ascending: true })
                      .order('name', { ascending: true });
 
@@ -51,19 +52,19 @@ async function getLocations() {
 }
 
 // Transform database locations into the format expected by LocationTabs
-function transformLocationsToTabs(locations: any[]) {
+function transformLocationsToTabs(locations: any[], customOrder?: string[]) {
        const tagMap: Record<string, string> = {
-              'CHH UK': 'chh-uk',
-              'CHH Europe': 'chh-europe',
-              'CHH Africa': 'chh-africa',
-              'CHH on Campus': 'chh-campus',
+              'RPF UK': 'rpf-uk',
+              'RPF Europe': 'rpf-europe',
+              'RPF Africa': 'rpf-africa',
+              'RPF on Campus': 'rpf-campus',
        };
 
        // Group locations by tag
        const groupedByTag: Record<string, any[]> = {};
 
        locations.forEach((loc) => {
-              const tag = loc.tag || 'CHH UK';  // Default to CHH UK if no tag
+              const tag = loc.tag || 'RPF UK';  // Default to RPF UK if no tag
               if (!groupedByTag[tag]) {
                      groupedByTag[tag] = [];
               }
@@ -88,12 +89,24 @@ function transformLocationsToTabs(locations: any[]) {
               locations: locations
        }));
 
-       return tabs;
+       // Sort tabs to ensure consistent order
+       const order = customOrder || ['RPF UK', 'RPF Europe', 'RPF Africa', 'RPF on Campus'];
+       return tabs.sort((a, b) => {
+              const indexA = order.indexOf(a.name);
+              const indexB = order.indexOf(b.name);
+              if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+              if (indexA !== -1) return -1;
+              if (indexB !== -1) return 1;
+              return a.name.localeCompare(b.name);
+       });
 }
+
+import { getLocationOrder } from "@/lib/location-utils";
 
 export default async function JoinServicePage() {
        const locations = await getLocations();
-       const locationTabs = transformLocationsToTabs(locations);
+       const order = await getLocationOrder();
+       const locationTabs = transformLocationsToTabs(locations, order);
 
        return (
               <div className="flex min-h-screen flex-col">
@@ -112,7 +125,7 @@ export default async function JoinServicePage() {
                                    />
                                    <HeroText
                                           heading="Join Us for Worship"
-                                          subtitle="Find a Christ Healing Home location near you and experience the power of God's presence."
+                                          subtitle="Find a Redeemed Pillar of Fire location near you and experience the power of God's presence."
                                    />
                             </section>
 
@@ -126,7 +139,7 @@ heartfelt worship, practical biblical teaching, and a strong sense of community.
 are built on love, support, and genuine connection.
 "
                                                  quote='Whether you are new to faith, returning after time away, or seeking a spiritual home, there is a
-place for you here at CHH.'
+place for you here at RPF.'
                                                  alignment="left"
                                                  headingSize="small"
                                           />

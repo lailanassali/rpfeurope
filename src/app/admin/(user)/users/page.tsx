@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { Plus, Trash2, UserCheck, UserX } from 'lucide-react';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 import { AddUserModal } from '@/components/admin/AddUserModal';
 
@@ -69,13 +69,13 @@ export default function UsersPage() {
      <h1 className="text-2xl font-bold">Users</h1>
      <p className="text-gray-600 mt-1">Manage admin users</p>
     </div>
-    <ChhButton
+    <RPFButton
      onClick={() => setShowAddModal(true)}
      className="flex items-center gap-2 bg-primary text-white px-4 py-2 h-auto"
     >
      <Plus className="size-4" />
      Add User
-    </ChhButton>
+    </RPFButton>
    </div>
 
    <div className="bg-white rounded-lg shadow-sm border overflow-x-auto">

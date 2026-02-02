@@ -46,7 +46,7 @@ export function UpcomingEventCard() {
       backgroundImage: "url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop')"
      }}
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
     <div className="absolute bottom-0 left-0 right-0 p-8">
      <div className="flex items-center justify-between">
       <div>

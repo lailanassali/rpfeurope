@@ -16,7 +16,7 @@ interface Event {
   venue: string;
 }
 
-const categories = ["All", "CHH Europe", "Youth", "Children", "Men", "Women", "Campus"];
+const categories = ["All", "RPF Europe", "Youth", "Children", "Men", "Women", "Campus"];
 
 export default function EventsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -67,7 +67,7 @@ export default function EventsPage() {
             }}
           />
           <HeroText
-            heading="Upcoming Events at CHH"
+            heading="Upcoming Events at RPF"
             subtitle="Discover events that bring faith, purpose & community together"
           />
         </section>
@@ -75,7 +75,7 @@ export default function EventsPage() {
         {/* Events Section */}
         <section className="py-12 md:py-24 bg-white">
           <div className="container w-11/12 px-4 mx-auto">
-            <h2 className="text-[24px] md:text-[40px] font-bold text-black mb-12">Upcoming events at CHH</h2>
+            <h2 className="text-[24px] md:text-[40px] font-bold text-black mb-12">Upcoming events at RPF</h2>
 
             {/* Filters */}
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-12">

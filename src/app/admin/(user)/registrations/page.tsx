@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { Download, Filter } from 'lucide-react';
 import { FormSelect } from '@/components/common/FormSelect';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 
 export default function RegistrationsPage() {
  const [registrations, setRegistrations] = useState<any[]>([]);
@@ -68,14 +68,14 @@ export default function RegistrationsPage() {
      <h1 className="text-2xl font-bold">Event Registrations</h1>
      <p className="text-gray-600 mt-1">View all event registrations</p>
     </div>
-    <ChhButton
+    <RPFButton
      onClick={downloadCSV}
      disabled={registrations.length === 0}
      className="flex items-center gap-2 bg-primary text-white px-4 py-2 h-auto"
     >
      <Download className="size-4" />
      Export CSV
-    </ChhButton>
+    </RPFButton>
    </div>
 
    <div className="mb-6">

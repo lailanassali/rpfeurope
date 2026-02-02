@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Modal } from '@/components/admin/Modal';
 import { FormInput } from '@/components/common/FormInput';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 
 interface EventRegistrationModalProps {
  isOpen: boolean;
@@ -78,21 +78,21 @@ export function EventRegistrationModal({ isOpen, onClose, eventSlug, eventTitle 
     />
 
     <div className="flex gap-3 justify-end pt-4">
-     <ChhButton
+     <RPFButton
       type="button"
       onClick={onClose}
       disabled={isLoading}
       className="bg-gray-100 text-gray-700 hover:bg-gray-200 px-6 py-2 h-auto"
      >
       Cancel
-     </ChhButton>
-     <ChhButton
+     </RPFButton>
+     <RPFButton
       type="submit"
       disabled={isLoading}
       className="bg-primary text-white hover:bg-primary/90 px-6 py-2 h-auto"
      >
       {isLoading ? 'Registering...' : 'Register'}
-     </ChhButton>
+     </RPFButton>
     </div>
    </form>
   </Modal>

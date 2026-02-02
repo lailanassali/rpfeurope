@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowLeft } from "lucide-react";
-import { ChhButton } from "./ChhButton";
+import { RPFButton } from "./RPFButton";
 
 interface MinistriesCarouselProps {
  items: Array<{
@@ -69,7 +69,7 @@ export function MinistriesCarousel({ items, autoplay = false }: MinistriesCarous
       <h3 className="text-[24px] font-semibold text-white mb-[16px]">
        {items[activeIndex].title}
       </h3>
-      <ChhButton
+      <RPFButton
        className='bg-transparent text-white hover:bg-primary/90 font-semibold h-[54px] px-[24px] py-[12px] text-[18px] min-w-[240px] rounded-[4px]'
        isOutline
       >
@@ -77,7 +77,7 @@ export function MinistriesCarousel({ items, autoplay = false }: MinistriesCarous
         <span>Explore Fellowship</span>
         <ArrowRight className="size-5" />
        </Link>
-      </ChhButton>
+      </RPFButton>
      </div>
     </div>
 

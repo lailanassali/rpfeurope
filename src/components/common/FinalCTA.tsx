@@ -13,7 +13,7 @@ interface FinalCTAProps {
 
 export function FinalCTA({
  heading = "Ready to take the Next Step?",
- subtitle = "Christ Healing Home (CHH) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Whether you're new to faith or looking for a church home, we'd love to connect with you.",
+ subtitle = "Redeemed Pillar of Fire (RPF) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Whether you're new to faith or looking for a church home, we'd love to connect with you.",
  primaryButtonText = "Connect With Us",
  primaryButtonHref = "/connect",
  primaryButtonComponent,

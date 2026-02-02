@@ -8,24 +8,24 @@ import { LoveCarousel } from "@/components/common/LoveCarousel";
 import { getHeroImage, getCarouselImages } from "@/lib/image-utils";
 
 export const metadata: Metadata = {
-  title: "About Us | Christ Healing Home Europe",
-  description: "Learn about CHH Europe's mission to spark revival and restore the early church. Discover our story, values, leadership, and commitment to raising purposeful followers of Christ since 2014.",
-  keywords: ["CHH Europe", "about CHH", "Pentecostal church mission", "church history", "Pastor Augustine E-Ben", "revival movement"],
+  title: "About Us | Redeemed Pillar of Fire Europe",
+  description: "Learn about RPF Europe's mission to spark revival and restore the early church. Discover our story, values, leadership, and commitment to raising purposeful followers of Christ since 2014.",
+  keywords: ["RPF Europe", "about RPF", "Pentecostal church mission", "church history", "Pastor Augustine E-Ben", "revival movement"],
   openGraph: {
-    title: "About CHH Europe | Our Mission & Leadership",
-    description: "Founded in 2014, CHH is a family consecrated to Christ, sparking revival across UK and beyond.",
-    url: "https://chheurope.org/about",
-    siteName: "Christ Healing Home Europe",
+    title: "About RPF Europe | Our Mission & Leadership",
+    description: "Founded in 2014, RPF is a family consecrated to Christ, sparking revival across UK and beyond.",
+    url: "https://RPFeurope.org/about",
+    siteName: "Redeemed Pillar of Fire Europe",
     locale: "en_GB",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About CHH Europe",
+    title: "About RPF Europe",
     description: "Learn about our mission to spark revival and raise purposeful followers for Christ.",
   },
   alternates: {
-    canonical: "https://chheurope.org/about",
+    canonical: "https://RPFeurope.org/about",
   },
 };
 
@@ -57,7 +57,7 @@ export default async function AboutPage() {
         {/* Top Introductory Text - Centered with Quotes */}
         <section className="container w-full px-4 sm:w-11/12 mx-auto pt-8 md:pt-12 lg:pt-16">
           <h1 className="text-2xl md:text-3xl lg:text-[36px] text-primary font-normal mb-12 md:mb-16 lg:mb-[72px] text-center px-4">
-            &quot;Founded in 2014, Christ Healing Home (CHH) is a family fully consecrated to Jesus Christ and led by the Holy Spirit.&quot;
+            &quot;Founded in 2014, Redeemed Pillar of Fire (RPF) is a family fully consecrated to Jesus Christ and led by the Holy Spirit.&quot;
           </h1>
         </section>
 
@@ -70,7 +70,7 @@ export default async function AboutPage() {
         <section className="container w-full px-4 sm:w-11/12 mx-auto mt-12 md:mt-16 lg:mt-20 mb-12 md:mb-16 lg:mb-20">
           <SectionContent
             heading="Our Story"
-            description={`Founded in 2014, Christ Healing Home (CHH) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Appointed and ordained to serve, our heart is to glorify God and make His love known to all. We are a globally expanding Pentecostal movement with many branches across the UK and beyond. As a Bible-believing church, our mission is to spread the matchless love of Christ and to see lives transformed by the power of The Gospel.\n\nOur story began with our Senior Pastor Austin who faithfully served in church, until, in prayer, he received a word from God to start a new ministry. That very week, God prompted him again and reconfirmed the vision. With that confirmation, plans quickly began—searching for a place to gather, preparing for the work ahead, and by God's direction, launching with a Bible study in that very first week.\n\nSince then, God has been faithful. Today, Christ Healing Home (CHH) has grown to over 21 branches and 14 university fellowships across the UK, Europe and America. Called to revival, we continue to expand, with many more branches to be established worldwide.`}
+            description={`Founded in 2014, Redeemed Pillar of Fire (RPF) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Appointed and ordained to serve, our heart is to glorify God and make His love known to all. We are a globally expanding Pentecostal movement with many branches across the UK and beyond. As a Bible-believing church, our mission is to spread the matchless love of Christ and to see lives transformed by the power of The Gospel.\n\nOur story began with our Senior Pastor Austin who faithfully served in church, until, in prayer, he received a word from God to start a new ministry. That very week, God prompted him again and reconfirmed the vision. With that confirmation, plans quickly began—searching for a place to gather, preparing for the work ahead, and by God's direction, launching with a Bible study in that very first week.\n\nSince then, God has been faithful. Today, Redeemed Pillar of Fire (RPF) has grown to over 21 branches and 14 university fellowships across the UK, Europe and America. Called to revival, we continue to expand, with many more branches to be established worldwide.`}
             alignment="left"
             headingSize="large"
           />
@@ -107,7 +107,7 @@ export default async function AboutPage() {
               {/* Text and Quote - 60%, aligned left */}
               <div className="w-full md:w-[60%] text-left">
                 <p className="text-[16px] md:text-[20px] font-normal text-black leading-relaxed mb-8">
-                  Christ Healing Home (CHH) is a Christ-centered church that believes the Bible is God’s Word—the only
+                  Redeemed Pillar of Fire (RPF) is a Christ-centered church that believes the Bible is God’s Word—the only
                   true and right way to follow Him. Everything we teach is rooted in Scripture, and we are grateful for the
                   new covenant that Christ has made available to all believers. <br /><br />We believe that Jesus Christ is the way, the truth, and the life (John 14:6), and that through Him alone we
                   find salvation, purpose and hope.
@@ -136,7 +136,7 @@ export default async function AboutPage() {
               },
               {
                 heading: "Prayer: Our Foundation",
-                text: "Prayer is the foundation of everything we do at Christ Healing Home. We believe in the power of continual prayer and intercession, knowing that it is through prayer that we draw closer to God and see His mighty works manifested in our lives and ministry.",
+                text: "Prayer is the foundation of everything we do at Redeemed Pillar of Fire. We believe in the power of continual prayer and intercession, knowing that it is through prayer that we draw closer to God and see His mighty works manifested in our lives and ministry.",
                 image: aboutPrayer
               },
               {
@@ -155,7 +155,7 @@ export default async function AboutPage() {
               items={[
                 {
                   heading: "Our Leadership",
-                  text: `Meet Pastor Augustine E-Ben, a dedicated servant of Christ who leads Christ Healing Home (CHH) with love, unwavering faith and humility. A man who seeks the face of God and carries His presence everywhere he goes.\n\nPastor Austin E-Ben is committed to raising up spiritual soldiers for the End Times - training and equipping everyone in the Christ Healing Home (CHH) to walk in their God-given purpose and serve as vessels for His Kingdom. Since founding the church in October 2014, the ministry has grown significantly, expanding to multiple branches and university fellowships around the world. His love for God is evident in his passionate teaching of the Word, his compassion for souls, and his tireless devotion to the work of the ministry.\n\nHis mission is clear: to bring souls out of darkness into the light of Christ — that they may receive the forgiveness of sins and the eternal inheritance promised to all who are sanctified by faith in Jesus Christ.`,
+                  text: `Meet Pastor Augustine E-Ben, a dedicated servant of Christ who leads Redeemed Pillar of Fire (RPF) with love, unwavering faith and humility. A man who seeks the face of God and carries His presence everywhere he goes.\n\nPastor Austin E-Ben is committed to raising up spiritual soldiers for the End Times - training and equipping everyone in the Redeemed Pillar of Fire (RPF) to walk in their God-given purpose and serve as vessels for His Kingdom. Since founding the church in October 2014, the ministry has grown significantly, expanding to multiple branches and university fellowships around the world. His love for God is evident in his passionate teaching of the Word, his compassion for souls, and his tireless devotion to the work of the ministry.\n\nHis mission is clear: to bring souls out of darkness into the light of Christ — that they may receive the forgiveness of sins and the eternal inheritance promised to all who are sanctified by faith in Jesus Christ.`,
                   image: aboutLeadership,
                   imageTitle: "Senior Pastor E-Ben"
                 }
@@ -172,7 +172,7 @@ export default async function AboutPage() {
         <section className="container w-11/12 mx-auto px-4 mb-24">
           <SectionContent
             heading="Worship with us"
-            description="Always wondered what a Christ Healing Home (CHH) service is like? Come and find out. Whether you're just curious, seeking answers or hungry for more of God, you're welcome here — a place where lives are transformed by the power and presence of Jesus Christ."
+            description="Always wondered what a Redeemed Pillar of Fire (RPF) service is like? Come and find out. Whether you're just curious, seeking answers or hungry for more of God, you're welcome here — a place where lives are transformed by the power and presence of Jesus Christ."
             alignment="left"
             headingSize="large"
             className="mb-12"
@@ -183,7 +183,7 @@ export default async function AboutPage() {
               location="Sunday Service"
               image={aboutSunday}
               href="/events"
-              description="Sunday is the Lord’s Day, and at CHH, it’s a joyful celebration of His
+              description="Sunday is the Lord’s Day, and at RPF, it’s a joyful celebration of His
 presence. Our services are full of vibrant praise, heartfelt worship, and the uncompromised
 teaching of God’s Word.
 We also share testimonies of what God is doing in our lives, followed by a time of fellowship
@@ -204,7 +204,7 @@ there’s something for everyone — from foundational teachings to more advance
               location="Fire Night"
               image={aboutFirenight}
               href="/events"
-              description="A truly supernatural experience. Fire Night at Christ Healing Home (CHH) is unlike anything else.
+              description="A truly supernatural experience. Fire Night at Redeemed Pillar of Fire (RPF) is unlike anything else.
 It’s a time to press into prayer, encounter the Holy Spirit and experience God in a powerful, lifechanging way.
 These evenings are filled with heartfelt worship, the teaching of the Word, powerful praise and
 moving testimonies. Every Fire Night is an invitation to go deeper and encounter Jesus like never

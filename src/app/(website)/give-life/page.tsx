@@ -5,7 +5,7 @@ import { AboutCardsCarousel } from "@/components/common/AboutCardsCarousel";
 import { getCarouselImages } from "@/lib/image-utils";
 
 export const metadata: Metadata = {
-  title: "Give Your Life to Christ | Christ Healing Home",
+  title: "Give Your Life to Christ | Redeemed Pillar of Fire",
   description: "Start your journey in faith. Whether you are a new believer or rededicating your life, we are so excited that you are ready to take this next step!",
 };
 

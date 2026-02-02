@@ -5,7 +5,7 @@ import { Button, ButtonProps } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export interface ChhButtonProps extends ButtonProps {
+export interface RPFButtonProps extends ButtonProps {
  backgroundColor?: string;
  textColor?: string;
  fontSize?: string | number;
@@ -17,7 +17,7 @@ export interface ChhButtonProps extends ButtonProps {
  isLoading?: boolean;
 }
 
-const ChhButton = React.forwardRef<HTMLButtonElement, ChhButtonProps>(
+const RPFButton = React.forwardRef<HTMLButtonElement, RPFButtonProps>(
  (
   {
    className,
@@ -75,6 +75,6 @@ const ChhButton = React.forwardRef<HTMLButtonElement, ChhButtonProps>(
   );
  }
 );
-ChhButton.displayName = "ChhButton";
+RPFButton.displayName = "RPFButton";
 
-export { ChhButton };
+export { RPFButton };

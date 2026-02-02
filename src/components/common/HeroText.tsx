@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { ChhButton } from "./ChhButton";
+import { RPFButton } from "./RPFButton";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -54,21 +54,21 @@ export function HeroText({
       primaryButtonComponent
      ) : primaryButton ? (
       <Link href={primaryButton.href}>
-       <ChhButton className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold h-10 md:h-[54px] md:px-6 px-3 py-0 md:py-3 md:text-xl text-md md:min-w-[240px] rounded-[4px]">
+       <RPFButton className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold h-10 md:h-[54px] md:px-6 px-3 py-0 md:py-3 md:text-xl text-md md:min-w-[240px] rounded-[4px]">
         <span>{primaryButton.text}</span>
         <ArrowRight className="size-5" />
-       </ChhButton>
+       </RPFButton>
       </Link>
      ) : null}
      {secondaryButton && (
       <Link href={secondaryButton.href}>
-       <ChhButton
+       <RPFButton
         className="bg-transparent text-white hover:bg-primary/90 font-semibold h-10 md:h-[54px] md:px-6 px-3 py-0 md:py-3 md:text-xl text-md md:min-w-[240px] rounded-[4px]"
         isOutline
        >
         <span>{secondaryButton.text}</span>
         <ArrowRight className="size-5" />
-       </ChhButton>
+       </RPFButton>
       </Link>
      )}
     </div>

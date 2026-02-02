@@ -45,6 +45,7 @@ export async function getLocationsByTag(tag: string, limit?: number): Promise<Lo
       .from('locations')
       .select('*')
       .eq('tag', tag)
+      .neq('tag', '_CONFIG_')
       .order('name', { ascending: true });
 
     if (limit) {
@@ -70,6 +71,7 @@ export async function getLocationsByTags(tags: string[]): Promise<Location[]> {
       .from('locations')
       .select('*')
       .in('tag', tags)
+      .neq('tag', '_CONFIG_')
       .order('name', { ascending: true });
 
     if (error) {
@@ -88,6 +90,7 @@ export async function getAllLocations(): Promise<Location[]> {
     const { data, error } = await supabaseAdmin
       .from('locations')
       .select('*')
+      .neq('tag', '_CONFIG_')
       .order('tag', { ascending: true })
       .order('name', { ascending: true });
 
@@ -102,19 +105,41 @@ export async function getAllLocations(): Promise<Location[]> {
   }
 }
 
-export function transformLocationsToTabs(locations: Location[]) {
+export async function getLocationOrder(): Promise<string[]> {
+  try {
+    const { data } = await supabaseAdmin
+      .from('locations')
+      .select('welcome_description')
+      .eq('tag', '_CONFIG_')
+      .eq('name', 'TAG_ORDER')
+      .single();
+
+    if (data?.welcome_description) {
+      return JSON.parse(data.welcome_description);
+    }
+    return ['RPF UK', 'RPF Europe', 'RPF Africa', 'RPF on Campus'];
+  } catch (error) {
+    console.error('Error fetching location order:', error);
+    return ['RPF UK', 'RPF Europe', 'RPF Africa', 'RPF on Campus'];
+  }
+}
+
+export function transformLocationsToTabs(locations: Location[], customOrder?: string[]) {
   const tagMap: Record<string, string> = {
-    'CHH UK': 'chh-uk',
-    'CHH Europe': 'chh-europe',
-    'CHH Africa': 'chh-africa',
-    'CHH on Campus': 'chh-campus',
+    'RPF UK': 'rpf-uk',
+    'RPF Europe': 'rpf-europe',
+    'RPF Africa': 'rpf-africa',
+    'RPF on Campus': 'rpf-campus',
   };
 
   // Group locations by tag
   const groupedByTag: Record<string, any[]> = {};
 
   locations.forEach((loc) => {
-    const tag = loc.tag || 'CHH UK';
+    let tag = loc.tag || 'CHH UK';
+    // Rebranding text replacement
+    tag = tag.replace(/CHH/g, 'RPF').replace(/Christ Healing Home/g, 'Redeemed Pillar of Fire');
+
     if (!groupedByTag[tag]) {
       groupedByTag[tag] = [];
     }
@@ -140,7 +165,7 @@ export function transformLocationsToTabs(locations: Location[]) {
   }));
 
   // Sort tabs to ensure consistent order: UK, Europe, Africa, Campus
-  const order = ['CHH UK', 'CHH Europe', 'CHH Africa', 'CHH on Campus'];
+  const order = customOrder || ['RPF UK', 'RPF Europe', 'RPF Africa', 'RPF on Campus'];
   return tabs.sort((a, b) => {
     const indexA = order.indexOf(a.name);
     const indexB = order.indexOf(b.name);

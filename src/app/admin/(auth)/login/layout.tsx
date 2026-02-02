@@ -2,8 +2,8 @@ import { Toaster } from 'react-hot-toast';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Admin Login - CHH',
-  description: 'Christ Healing Home Admin Portal',
+  title: 'Admin Login - RPF',
+  description: 'Redeemed Pillar of Fire Admin Portal',
 };
 
 export default function LoginLayout({

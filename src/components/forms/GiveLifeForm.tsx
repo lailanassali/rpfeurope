@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { ChhButton } from "../common/ChhButton";
+import { RPFButton } from "../common/RPFButton";
 import { FormInput } from "../common/FormInput";
 import { FormSelect } from "../common/FormSelect";
 import { FormTextarea } from "../common/FormTextarea";
@@ -91,13 +91,13 @@ export function GiveLifeForm() {
       label="Anything you would like to share (optional)"
      />
 
-     <ChhButton
+     <RPFButton
       type="submit"
       disabled={isLoading}
       className="w-full bg-primary text-white hover:bg-primary/90 h-[57px] rounded-[12px] mt-5"
      >
       {isLoading ? "Submitting..." : "Start my journey"}
-     </ChhButton>
+     </RPFButton>
     </form>
    </div>
   </div>

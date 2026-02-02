@@ -5,7 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { FormInput } from '@/components/common/FormInput';
 import { FormTextarea } from '@/components/common/FormTextarea';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 
 export default function EditTestimonialPage() {
  const router = useRouter();
@@ -104,12 +104,12 @@ export default function EditTestimonialPage() {
     </div>
 
     <div className="flex gap-4 justify-end pt-4">
-     <ChhButton type="button" onClick={() => router.back()} className="bg-gray-100 text-gray-700 px-6 py-2 h-auto">
+     <RPFButton type="button" onClick={() => router.back()} className="bg-gray-100 text-gray-700 px-6 py-2 h-auto">
       Cancel
-     </ChhButton>
-     <ChhButton type="submit" disabled={isLoading} className="bg-primary text-white px-6 py-2 h-auto">
+     </RPFButton>
+     <RPFButton type="submit" disabled={isLoading} className="bg-primary text-white px-6 py-2 h-auto">
       {isLoading ? 'Updating...' : 'Update'}
-     </ChhButton>
+     </RPFButton>
     </div>
    </form>
   </div>

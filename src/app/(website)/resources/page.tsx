@@ -57,7 +57,7 @@ export default function ResourcesPage() {
         <section className="py-[65px]">
           <div className="container w-11/12 mx-auto px-4 text-center">
             <SectionContent
-              heading="CHH Resources"
+              heading="RPF Resources"
               description="Explore teachings and study materials designed to help you grow strong in faith and live by God's Word."
               alignment="center"
               headingSize="medium"
@@ -129,7 +129,7 @@ export default function ResourcesPage() {
                     key={devotional.id}
                     volume={devotional.volume || "Volume"}
                     title={devotional.title}
-                    author={devotional.author || "By CHH Teaching Team"}
+                    author={devotional.author || "By RPF Teaching Team"}
                     description={devotional.description}
                     buttonText={devotional.link_text}
                     buttonHref={devotional.link_url}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
-import { Filter, Eye } from 'lucide-react';
+import { Filter, Eye, Download } from 'lucide-react';
 import { FormSelect } from '@/components/common/FormSelect';
 import { Modal } from '@/components/admin/Modal';
 
@@ -29,6 +29,50 @@ export default function SubmissionsPage() {
     }
   }
 
+  const handleExport = () => {
+    if (submissions.length === 0) {
+      toast.error("No data to export");
+      return;
+    }
+
+    // Flatten data for CSV
+    const csvData = submissions.map(sub => {
+      // Flatten the 'data' JSON object
+      const flatData: any = {
+        FormType: formatFormType(sub.form_type),
+        Status: sub.status,
+        Date: new Date(sub.created_at).toLocaleString(),
+        ...sub.data
+      };
+      return flatData;
+    });
+
+    // Get all unique headers
+    const headers = Array.from(new Set(csvData.flatMap(Object.keys)));
+
+    // Create CSV content
+    const csvContent = [
+      headers.join(','), // Header row
+      ...csvData.map(row => headers.map(header => {
+        const val = row[header] || '';
+        // Escape quotes and wrap in quotes if contains comma
+        const stringVal = String(val).replace(/"/g, '""');
+        return `"${stringVal}"`;
+      }).join(','))
+    ].join('\n');
+
+    // Trigger download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', `submissions_export_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const formatFormType = (type: string) => {
     return type.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   };
@@ -37,7 +81,16 @@ export default function SubmissionsPage() {
     <div>
       <div className="mb-6">
         <h1 className="text-2xl font-bold">Form Submissions</h1>
-        <p className="text-gray-600 mt-1">View all form submissions from your website</p>
+        <div className="flex justify-between items-end">
+          <p className="text-gray-600 mt-1">View all form submissions from your website</p>
+          <button
+            onClick={handleExport}
+            className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+          >
+            <Download className="size-4" />
+            Export CSV
+          </button>
+        </div>
       </div>
 
       <div className="mb-6">

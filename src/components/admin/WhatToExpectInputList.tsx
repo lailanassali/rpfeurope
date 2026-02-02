@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Plus, X, ChevronDown, ChevronUp } from 'lucide-react';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { FormInput } from '@/components/common/FormInput';
 import { FormTextarea } from '@/components/common/FormTextarea';
 import { ImageUpload } from '@/components/admin/ImageUpload';
@@ -134,7 +134,7 @@ export function WhatToExpectInputList({ label, items, onChange }: WhatToExpectIn
       onChange={(url) => setNewImage(url)}
      />
      <div className="flex justify-end">
-      <ChhButton
+      <RPFButton
        type="button"
        onClick={handleAdd}
        className="bg-primary text-white hover:bg-primary/90 px-4 h-9 text-sm"
@@ -142,7 +142,7 @@ export function WhatToExpectInputList({ label, items, onChange }: WhatToExpectIn
       >
        <Plus className="size-4 mr-2" />
        Add Entry
-      </ChhButton>
+      </RPFButton>
      </div>
     </div>
    </div>

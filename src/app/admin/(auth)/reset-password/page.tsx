@@ -126,7 +126,7 @@ export default function ResetPasswordPage() {
      <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-4">
       <NextImage
        src="/assets/rpflogo.png"
-       alt="CHH Logo"
+       alt="RPF Logo"
        width={74}
        height={70}
        className="object-contain"
@@ -145,7 +145,7 @@ export default function ResetPasswordPage() {
     </Suspense>
 
     <p className="text-center text-gray-500 text-sm mt-6">
-     © {new Date().getFullYear()} Christ Healing Home. All rights reserved.
+     © {new Date().getFullYear()} Redeemed Pillar of Fire. All rights reserved.
     </p>
    </div>
   </div>

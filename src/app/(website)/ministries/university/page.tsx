@@ -8,7 +8,7 @@ import { getHeroImage } from "@/lib/image-utils";
 import { getLocationsByTag, slugify, parseServices } from "@/lib/location-utils";
 
 export const metadata: Metadata = {
-     title: "University Fellowships | Christ Healing Home",
+     title: "University Fellowships | Redeemed Pillar of Fire",
      description: "A place where students grow in faith, build lasting friendships, and live boldly for Christ.",
 };
 
@@ -24,7 +24,7 @@ export default async function UniversityPage() {
      const universityCTA = await getHeroImage('university_cta');
 
      // Fetch university locations
-     const universityLocations = await getLocationsByTag('CHH on Campus', 3);
+     const universityLocations = await getLocationsByTag('RPF on Campus', 3);
 
      return (
           <div className="w-full flex min-h-screen flex-col font-sans">
@@ -40,7 +40,7 @@ export default async function UniversityPage() {
                               }}
                          />
                          <HeroText
-                              heading="CHH University Fellowships"
+                              heading="RPF University Fellowships"
                               subtitle="A place where students grow in faith, build lasting friendships, and live boldly for Christ"
                               primaryButton={{
                                    text: "Join Our Ministry",
@@ -52,7 +52,7 @@ export default async function UniversityPage() {
                     {/* 2. A Home on Campus Section */}
                     <ImageTextSection
                          heading="A Home on Campus"
-                         description={`Christ Healing Home's University Fellowships are campus-based communities across the UK and Europe. Here, students come together to grow in faith and learning.
+                         description={`Redeemed Pillar of Fire's University Fellowships are campus-based communities across the UK and Europe. Here, students come together to grow in faith and learning.
 
 Every fellowship hosts weekly bible studies, social events, outreach, and worship evenings. These fellowships offer a safe space for both believers and those who desire to explore more Christian teachings and grow spiritually.`}
                          image={universityHome || ""}
@@ -65,7 +65,7 @@ Every fellowship hosts weekly bible studies, social events, outreach, and worshi
                          <div className="container w-11/12 mx-auto px-4">
                               <SectionContent
                                    heading="Our Campuses"
-                                   description="CHH University Fellowships meet weekly across various universities."
+                                   description="RPF University Fellowships meet weekly across various universities."
                                    secondaryButton={{
                                         text: "View all campuses",
                                         href: "/branches",
@@ -102,7 +102,7 @@ Every fellowship hosts weekly bible studies, social events, outreach, and worshi
                     {/* 4. Final CTA Section */}
                     <FinalCTA
                          heading="Join the movement"
-                         subtitle="Whether you're starting university or preparing to graduate, CHH University Fellowships give you a place to grow, serve, and shine for Jesus."
+                         subtitle="Whether you're starting university or preparing to graduate, RPF University Fellowships give you a place to grow, serve, and shine for Jesus."
                          primaryButtonText="Join Our Ministry"
                          primaryButtonHref="/connect"
                          backgroundColor="#FFFFFF"

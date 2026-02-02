@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { SubmissionSuccessModal } from "./SubmissionSuccessModal";
 import { Info } from "lucide-react";
 import { FormInput } from "./FormInput";
 import { FormSelect } from "./FormSelect";
 import { FormTextarea } from "./FormTextarea";
-import { ChhButton } from "./ChhButton";
+import { RPFButton } from "./RPFButton";
 import { toast } from 'react-hot-toast';
 
 interface ConnectTab {
@@ -29,6 +30,7 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
   const [attendsBranch, setAttendsBranch] = useState("");
   const [attendsGroup, setAttendsGroup] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const currentTab = tabs.find(tab => tab.id === activeTab);
 
@@ -73,7 +75,8 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
         }
       }
 
-      toast.success('Form submitted successfully!');
+      // toast.success('Form submitted successfully!');
+      setIsSuccessModalOpen(true);
       (e.target as HTMLFormElement).reset();
       setAttendsBranch('');
       setAttendsGroup('');
@@ -464,13 +467,18 @@ export function ConnectTabs({ tabs, setActiveTab, activeTab }: ConnectTabsProps)
                 </>
               )}
 
-              <ChhButton type="submit" disabled={isSubmitting} className="w-full bg-primary text-white hover:bg-primary/90 h-[57px] rounded-[12px] mt-5">
+              <RPFButton type="submit" disabled={isSubmitting} className="w-full bg-primary text-white hover:bg-primary/90 h-[57px] rounded-[12px] mt-5">
                 {isSubmitting ? 'Submitting...' : currentTab.submitText}
-              </ChhButton>
+              </RPFButton>
             </form>
           </div>
         </div>
       </div>
-    </div>
+
+      <SubmissionSuccessModal
+        isOpen={isSuccessModalOpen}
+        onClose={() => setIsSuccessModalOpen(false)}
+      />
+    </div >
   );
 }

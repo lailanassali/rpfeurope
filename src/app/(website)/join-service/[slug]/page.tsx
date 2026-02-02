@@ -3,10 +3,10 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { SectionContent } from "@/components/common/SectionContent";
 import { ImageCarousel } from "@/components/common/ImageCarousel";
-import { ChhButton } from "@/components/common/ChhButton";
 import { HeroText } from "@/components/common/HeroText";
 import { supabaseAdmin } from "@/lib/supabase";
 import { notFound } from "next/navigation";
+import { RPFButton } from "@/components/common/RPFButton";
 
 // Helper function to parse services
 function parseServices(servicesStr: string | null): string[] {
@@ -174,10 +174,10 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
                               </p>
                               {location.whatsapp_link && (
                                  <a href={location.whatsapp_link} target="_blank" rel="noopener noreferrer">
-                                    <ChhButton className="bg-white text-[#6F5299] hover:bg-gray-100 rounded-lg h-12">
+                                    <RPFButton className="bg-white text-[#6F5299] hover:bg-gray-100 rounded-lg h-12">
                                        <span>Join Our WhatsApp Group</span>
                                        <ArrowRight className="size-5" />
-                                    </ChhButton>
+                                    </RPFButton>
                                  </a>
                               )}
                            </div>
@@ -194,10 +194,10 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
 
                               {location.map_link && (
                                  <a href={location.map_link} target="_blank" rel="noopener noreferrer">
-                                    <ChhButton className="bg-white text-[#6F5299] hover:bg-gray-100 rounded-lg h-12">
+                                    <RPFButton className="bg-white text-[#6F5299] hover:bg-gray-100 rounded-lg h-12">
                                        <span>Get Directions</span>
                                        <ArrowRight className="size-5" />
-                                    </ChhButton>
+                                    </RPFButton>
                                  </a>
                               )}
                            </div>

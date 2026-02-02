@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChhButton } from "@/components/common/ChhButton";
+import { RPFButton } from "@/components/common/RPFButton";
 import { EventRegistrationModal } from "@/components/EventRegistrationModal";
 
 interface EventRegistrationButtonProps {
@@ -14,12 +14,12 @@ export function EventRegistrationButton({ eventSlug, eventTitle }: EventRegistra
 
  return (
   <>
-   <ChhButton
+   <RPFButton
     onClick={() => setIsModalOpen(true)}
     className="w-full md:mt-12 mt-6 bg-primary text-white hover:bg-primary/90 h-[54px] rounded-[4px]"
    >
     Register for event
-   </ChhButton>
+   </RPFButton>
 
    <EventRegistrationModal
     isOpen={isModalOpen}

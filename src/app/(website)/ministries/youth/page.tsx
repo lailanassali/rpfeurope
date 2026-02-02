@@ -12,7 +12,7 @@ import { getAllLocations, transformLocationsToTabs } from "@/lib/location-utils"
 
 
 export const metadata: Metadata = {
-     title: "CHH Youth | Christ Healing Home",
+     title: "RPF Youth | Redeemed Pillar of Fire",
      description: "A Generation Rising in Christ. A space where young people encounter God, build real friendships, and discover who they are in Him.",
 };
 
@@ -46,7 +46,7 @@ export default async function YouthPage() {
                               }}
                          />
                          <HeroText
-                              heading="CHH Youth"
+                              heading="RPF Youth"
                               subtitle="A Generation Rising in Christ. A space where young people encounter God, build real friendships, and discover who they are in Him."
                               primaryButton={{
                                    text: "Join Our Ministry",
@@ -58,7 +58,7 @@ export default async function YouthPage() {
                     {/* 2. A Place to Belong Section */}
                     <ImageTextSection
                          heading="A Place to Belong"
-                         description="Welcome to CHH Youth led by Pastor Reece. In this house, no one is left behind. Every young person has a voice and a place to belong. Here, the youth are encouraged, equipped, and empowered to grow strong in God's word and in who He has called them to be."
+                         description="Welcome to RPF Youth led by Pastor Reece. In this house, no one is left behind. Every young person has a voice and a place to belong. Here, the youth are encouraged, equipped, and empowered to grow strong in God's word and in who He has called them to be."
                          quote="Don't let anyone look down on you because you are young, but set an example for the believers in speech, in conduct, in love, in faith and in purity. — 1 Timothy 4:12"
                          image={youthPlaceBelong || ""}
                          imagePosition="left"
@@ -72,7 +72,7 @@ export default async function YouthPage() {
 
 Our youth community stands with you, reminding you that you are never too young to serve God and make a difference for Christ.
 
-Whether you're new to faith, returning after time away, or searching for a spiritual home to call your own, Christ Healing Home has a room for you.
+Whether you're new to faith, returning after time away, or searching for a spiritual home to call your own, Redeemed Pillar of Fire has a room for you.
 
 Come and be part of what God is building in this generation, your story matters here.`}
                          image={youthRootedFaith || ""}
@@ -130,7 +130,7 @@ Come and be part of what God is building in this generation, your story matters 
                                              <div className="flex items-start gap-3 mb-10">
                                                   <MapPin className="size-5 text-white mt-1 shrink-0" />
                                                   <span className="text-white text-lg">
-                                                       Christ Healing Home (CHH), 1st Floor, Youth Hall, 1A Elthorne Road, N19 4AL
+                                                       Redeemed Pillar of Fire (RPF), 1st Floor, Youth Hall, 1A Elthorne Road, N19 4AL
                                                   </span>
                                              </div>
 
@@ -157,7 +157,7 @@ Come and be part of what God is building in this generation, your story matters 
                          </div>
                     </section>
 
-                    {/* 5. CHH Youth Branches Section */}
+                    {/* 5. RPF Youth Branches Section */}
                     <section id="locations" className="py-24 bg-gray-50">
                          <div className="container w-11/12 px-4 mx-auto">
                               <LocationTabs tabs={locationTabs} />
@@ -203,7 +203,7 @@ More than a pastor, he's a mentor and a friend, someone who listens, challenges,
                     <FinalCTA
                          heading="Be a Part of the Story"
                          subtitle="Step in, bring your story, and be part of what God is building in our generation. You don't have to wait to belong here. There's space for you to grow, serve, and make a difference with others who are doing the same."
-                         primaryButtonText="Volunteer with CHH Youth"
+                         primaryButtonText="Volunteer with RPF Youth"
                          primaryButtonHref="/connect"
                          backgroundColor="#CEC3DF"
                          backgroundImage={youthCTA}

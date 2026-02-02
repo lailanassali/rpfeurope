@@ -77,7 +77,7 @@ function getDefaultContent() {
       <div class="container w-11/12 mx-auto px-4">
         <div class="max-w-4xl">
           <p class="text-[18px] text-[#373737] leading-relaxed mb-6">
-            At Christ Healing Home Europe ("CHH," "we," "us," or "our"), we are committed to protecting your privacy and handling your personal information with care and respect. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, attend our services, or engage with our ministries.
+            At Redeemed Pillar of Fire Europe ("RPF," "we," "us," or "our"), we are committed to protecting your privacy and handling your personal information with care and respect. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, attend our services, or engage with our ministries.
           </p>
           <p class="text-[18px] text-[#373737] leading-relaxed">
             By using our website or services, you agree to the collection and use of information in accordance with this policy.

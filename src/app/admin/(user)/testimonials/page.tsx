@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { Trash2, Edit, CheckCircle2, XCircle, Plus } from 'lucide-react';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 
 interface Testimonial {
   id: string;
@@ -77,10 +77,10 @@ export default function TestimonialsPage() {
             {pendingCount} pending • {approvedCount} approved • {testimonials.length} total
           </p>
         </div>
-        <ChhButton onClick={() => router.push('/admin/testimonials/add')} className="bg-primary text-white h-auto px-4 py-2">
+        <RPFButton onClick={() => router.push('/admin/testimonials/add')} className="bg-primary text-white h-auto px-4 py-2">
           <Plus className="size-5 mr-2" />
           Add Testimonial
-        </ChhButton>
+        </RPFButton>
       </div>
 
       {/* Filter Tabs */}

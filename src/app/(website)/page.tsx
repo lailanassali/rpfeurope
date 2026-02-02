@@ -15,24 +15,23 @@ import { FindNearestButton } from "@/components/common/FindNearestButton";
 
 
 export const metadata: Metadata = {
-  title: "Christ Healing Home Europe | Where Worship Meets Community",
-  description: "Join CHH Europe - a globally expanding Pentecostal movement raising purposeful followers for Christ. Experience transformative worship, fellowship, and spiritual growth across our UK branches.",
-  keywords: ["Christ Healing Home", "CHH Europe", "Pentecostal church UK", "Christian worship", "church community", "spiritual growth", "fellowship"],
+  title: "Redeemed Pillar of Fire Europe | Where Worship Meets Community",
+  description: "Join RPF Europe - a globally expanding Pentecostal movement raising purposeful followers for Christ. Experience transformative worship, fellowship, and spiritual growth across our UK branches.",
+  keywords: ["Redeemed Pillar of Fire", "RPF Europe", "Pentecostal church UK", "Christian worship", "church community", "spiritual growth", "fellowship"],
   openGraph: {
-    title: "Christ Healing Home Europe | Where Worship Meets Community",
-    description: "Join CHH Europe - a globally expanding Pentecostal movement raising purposeful followers for Christ.",
-    url: "https://chheurope.org",
-    siteName: "Christ Healing Home Europe",
+    title: "Redeemed Pillar of Fire Europe | Where Worship Meets Community",
+    description: "Join RPF Europe - a globally expanding Pentecostal movement raising purposeful followers for Christ.",
+    url: "https://RPFeurope.org",
+    siteName: "Redeemed Pillar of Fire Europe",
     locale: "en_GB",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Christ Healing Home Europe",
     description: "Where Worship Meets Community - Join us for transformative worship and fellowship.",
   },
   alternates: {
-    canonical: "https://chheurope.org",
+    canonical: "https://RPFeurope.org",
   },
 };
 
@@ -92,7 +91,7 @@ export default async function Home() {
           />
 
           <HeroText
-            heading="Welcome to CHH Europe"
+            heading="Welcome to RPF Europe"
             subtitle="Raising Purposeful Followers for Christ"
             primaryButton={{
               text: "Join our Family",
@@ -110,7 +109,7 @@ export default async function Home() {
           <div className="container w-full px-4 sm:w-11/12 sm:px-8 md:px-12 lg:px-[75px] mx-auto">
             <SectionContent
               heading="Who We Are"
-              description="Christ Healing Home (CHH) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Appointed and ordained to serve, our heart is to glorify God and make His love known to all. We are a globally expanding Pentecostal movement with many branches across the UK and beyond."
+              description="Redeemed Pillar of Fire (RPF) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Appointed and ordained to serve, our heart is to glorify God and make His love known to all. We are a globally expanding Pentecostal movement with many branches across the UK and beyond."
               quote="Our mission is to spark and sustain revival, restoring the early church as revealed in the book of Acts - until the return of Christ."
               alignment="left"
               headingSize="medium"
@@ -124,7 +123,7 @@ export default async function Home() {
             <div className="container w-full px-4 sm:w-11/12 sm:px-8 md:px-12 lg:px-[75px] mx-auto pb-12 md:pb-16 lg:pb-[96px]">
               <SectionContent
                 heading="Ministries"
-                description="Christ Healing Home (CHH) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Appointed and ordained to serve, our heart is to glorify God and make His love known to all."
+                description="Redeemed Pillar of Fire (RPF) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Appointed and ordained to serve, our heart is to glorify God and make His love known to all."
                 alignment="left"
                 headingSize="medium"
               />
@@ -139,12 +138,12 @@ export default async function Home() {
                   image: ministriesImages[0] || ""
                 },
                 {
-                  title: "CHH Children's Ministry",
+                  title: "RPF Children's Ministry",
                   href: "/ministries/children",
                   image: ministriesImages[1] || ""
                 },
                 {
-                  title: "CHH Youth",
+                  title: "RPF Youth",
                   href: "/ministries/youth",
                   image: ministriesImages[2] || ""
                 },
@@ -176,7 +175,7 @@ export default async function Home() {
             <div className="container w-full px-4 sm:w-11/12 mx-auto">
               <SectionContent
                 heading="Join us for Service"
-                description="Always wondered what a Christ Healing Home (CHH) service is like? Come and find out. Whether you’re just curious, seeking answers or hungry for more of God, you’re welcome here — a place where lives are transformed by the power and presence of Jesus Christ."
+                description="Always wondered what a Redeemed Pillar of Fire (RPF) service is like? Come and find out. Whether you’re just curious, seeking answers or hungry for more of God, you’re welcome here — a place where lives are transformed by the power and presence of Jesus Christ."
                 secondaryButton={{
                   text: "View all locations",
                   href: "/join-service",
@@ -203,13 +202,13 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* 6. Upcoming at Christ Healing Home */}
+        {/* 6. Upcoming at Redeemed Pillar of Fire */}
         <section className="bg-primary text-white py-12 md:py-20 lg:py-24">
           <div className="container w-full px-4 sm:w-11/12 mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
               <div className="w-full md:w-[90%]">
                 <SectionContent
-                  heading="Upcoming at Christ Healing Home"
+                  heading="Upcoming at Redeemed Pillar of Fire"
                   secondaryButton={{ text: "Find out more", href: "/events", icon: true, isOutline: true }}
                   alignment="left"
                   textColor="white"
@@ -228,7 +227,7 @@ export default async function Home() {
           <div className="container w-full px-4 sm:w-11/12 mx-auto">
             <SectionContent
               heading="Connect"
-              description="Christ Healing Home (CHH) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Appointed and ordained to serve, our heart is to glorify God and make His love known to all."
+              description="Redeemed Pillar of Fire (RPF) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Appointed and ordained to serve, our heart is to glorify God and make His love known to all."
               alignment="left"
               headingSize="medium"
             />

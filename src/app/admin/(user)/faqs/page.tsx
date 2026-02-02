@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
 import { Plus, Edit, Trash2, Filter } from 'lucide-react';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { FormSelect } from '@/components/common/FormSelect';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 
@@ -58,10 +58,10 @@ export default function FAQsListPage() {
      <p className="text-gray-600 mt-1">Manage frequently asked questions</p>
     </div>
     <Link href="/admin/faqs/add">
-     <ChhButton className="flex items-center gap-2 bg-primary text-white px-4 py-2 h-auto">
+     <RPFButton className="flex items-center gap-2 bg-primary text-white px-4 py-2 h-auto">
       <Plus className="size-4" />
       Add FAQ
-     </ChhButton>
+     </RPFButton>
     </Link>
    </div>
 

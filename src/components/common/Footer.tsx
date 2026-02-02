@@ -45,7 +45,7 @@ export function Footer() {
       <div className="mb-4">
        <Image
         src="/assets/rpflogo.png"
-        alt="CHH Europe Logo"
+        alt="RPF Europe Logo"
         width={150}
         height={50}
         className="h-auto w-auto"
@@ -141,7 +141,7 @@ export function Footer() {
     <div className="md:my-16 border-t border-white pt-10">
      <div className="flex gap-3 items-center md:flex-row flex-col md:justify-between">
       <p className="text-white text-sm md:text-left text-center">
-       &copy; 2025 Christ Healing Home. All Rights Reserved.
+       &copy; 2025 Redeemed Pillar of Fire. All Rights Reserved.
       </p>
       <button
        onClick={scrollToTop}

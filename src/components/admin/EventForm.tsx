@@ -7,7 +7,7 @@ import { FormInput } from '@/components/common/FormInput';
 import { FormSelect } from '@/components/common/FormSelect';
 import { FormTextarea } from '@/components/common/FormTextarea';
 import { ImageUpload } from '@/components/admin/ImageUpload';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { DynamicStringList } from '@/components/admin/DynamicStringList';
 import { FAQInputList } from '@/components/admin/FAQInputList';
 import { WhatToExpectInputList } from '@/components/admin/WhatToExpectInputList';
@@ -137,7 +137,7 @@ export function EventForm({ initialData, eventId }: EventFormProps) {
               onChange={(e) => handleChange('category', e.target.value)}
               options={[
                 { value: '', label: 'Select Category' },
-                { value: 'CHH Europe', label: 'CHH Europe' },
+                { value: 'RPF Europe', label: 'RPF Europe' },
                 { value: 'Youth', label: 'Youth' },
                 { value: 'Children', label: 'Children' },
                 { value: 'Men', label: 'Men' },
@@ -235,21 +235,21 @@ export function EventForm({ initialData, eventId }: EventFormProps) {
       </div>
 
       <div className="flex items-center gap-4 justify-end">
-        <ChhButton
+        <RPFButton
           type="button"
           onClick={() => router.back()}
           className="bg-gray-100 text-gray-700 hover:bg-gray-200 px-6 py-2 h-auto"
           disabled={isLoading}
         >
           Cancel
-        </ChhButton>
-        <ChhButton
+        </RPFButton>
+        <RPFButton
           type="submit"
           className="bg-primary text-white hover:bg-primary/90 px-6 py-2 h-auto"
           disabled={isLoading}
         >
           {isLoading ? 'Saving...' : eventId ? 'Update Event' : 'Create Event'}
-        </ChhButton>
+        </RPFButton>
       </div>
     </form>
   );

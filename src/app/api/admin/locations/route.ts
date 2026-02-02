@@ -12,6 +12,7 @@ export async function GET(request: NextRequest) {
   const { data, error } = await supabaseAdmin
    .from('locations')
    .select('*')
+   .neq('tag', '_CONFIG_')
    .order('name', { ascending: true });
 
   if (error) throw error;

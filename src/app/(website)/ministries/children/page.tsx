@@ -7,7 +7,7 @@ import Image from "next/image";
 import { getHeroImage, getCarouselImages } from "@/lib/image-utils";
 
 export const metadata: Metadata = {
-     title: "Children's Department | Christ Healing Home",
+     title: "Children's Department | Redeemed Pillar of Fire",
      description: "Every child is loved, welcomed, and encouraged to grow in faith and character.",
 };
 
@@ -42,7 +42,7 @@ export default async function ChildrenPage() {
                                         className="text-white mb-[12px]"
                                         style={{ fontSize: "36px", fontWeight: 700 }}
                                    >
-                                        CHH Children's Department
+                                        RPF Children's Department
                                    </h2>
                                    <p
                                         className="text-white/90"
@@ -168,7 +168,7 @@ Each moment shared is built on the word of God, providing a strong foundation, p
                                         <div className="text-[20px] whitespace-pre-line mb-8" style={{ color: "#373737" }}>
                                              {`Here, parents can be confident that their children are safe, valued and surrounded by dedicated leaders.
 
-Whether your child is taking their first steps of faith, there is a place for them here in the CHH Children's family.`}
+Whether your child is taking their first steps of faith, there is a place for them here in the RPF Children's family.`}
                                         </div>
 
                                         {/* Outline Button */}
@@ -233,7 +233,7 @@ Whether your child is taking their first steps of faith, there is a place for th
                                              <div className="flex items-start gap-3 mb-10">
                                                   <MapPin className="size-5 text-white mt-1 shrink-0" />
                                                   <span className="text-white text-lg">
-                                                       Christ Healing Home (CHH), Children's Hall
+                                                       Redeemed Pillar of Fire (RPF), Children's Hall
                                                   </span>
                                              </div>
 
@@ -262,7 +262,7 @@ Whether your child is taking their first steps of faith, there is a place for th
 
                     {/* 7. Final CTA Section */}
                     <FinalCTA
-                         heading="There's a place for every child at CHH."
+                         heading="There's a place for every child at RPF."
                          subtitle="Join us this Sunday and let your child be part of what God is building in this generation."
                          primaryButtonText="Pre-register your child"
                          primaryButtonHref="/ministries/children/register"

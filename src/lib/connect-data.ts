@@ -18,7 +18,7 @@ export const CONNECT_TABS_DATA: ConnectTab[] = [
   title: "Baptism",
   description: [
    "Baptism is a beautiful declaration of your faith in Jesus Christ. It's a public testimony that you have accepted Christ as your Lord and Savior and are committed to following Him.",
-   "At CHH, we believe baptism is an important step in your spiritual journey. Our baptism classes will help you understand the significance of this sacred act and prepare you for this special moment.",
+   "At RPF, we believe baptism is an important step in your spiritual journey. Our baptism classes will help you understand the significance of this sacred act and prepare you for this special moment.",
    "Whether you're new to faith or have been walking with Christ for years, we welcome you to take this step and celebrate with our church family."
   ],
   quote: ["Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit. - Matthew 28:19"],
@@ -91,7 +91,7 @@ export const CONNECT_TABS_DATA: ConnectTab[] = [
   title: "Prayer Requests",
   description: [
    "This is a House of Prayer",
-   "At Christ Healing Home (CHH), we believe in the power of intercession. Time and time again, we've witnessed divine miracl —healing, deliverance, provision and restoration. We believe the power of God is available to turn around any situation.",
+   "At Redeemed Pillar of Fire (RPF), we believe in the power of intercession. Time and time again, we've witnessed divine miracl —healing, deliverance, provision and restoration. We believe the power of God is available to turn around any situation.",
    "Whether you're seeking healing, breakthrough, or peace in a difficult season, know this: God is near, and He listens. Our prayer team is ready to stand in faith with you and intercede on your behalf."
   ],
   quote: ["The prayer of a righteous person is powerful and effective. - James 5:16"],

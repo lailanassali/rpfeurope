@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { FormInput } from '@/components/common/FormInput';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { X } from 'lucide-react';
 
 interface AddUserModalProps {
@@ -92,20 +92,20 @@ export function AddUserModal({ isOpen, onClose, onSuccess }: AddUserModalProps) 
      </p>
 
      <div className="flex gap-4 justify-end pt-4">
-      <ChhButton
+      <RPFButton
        type="button"
        onClick={onClose}
        className="bg-gray-100 text-gray-700 px-6 py-2 h-auto"
       >
        Cancel
-      </ChhButton>
-      <ChhButton
+      </RPFButton>
+      <RPFButton
        type="submit"
        disabled={isLoading}
        className="bg-primary text-white px-6 py-2 h-auto"
       >
        {isLoading ? 'Creating...' : 'Create User'}
-      </ChhButton>
+      </RPFButton>
      </div>
     </form>
    </div>

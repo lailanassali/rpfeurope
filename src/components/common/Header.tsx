@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Church, Users, Heart, HandshakeIcon, MessagesSquare, UserPlus, FileText, Sparkles } from "lucide-react";
-import { ChhButton } from "./ChhButton";
+import { RPFButton } from "./RPFButton";
 import { MenuItem, MenuItemProps } from "./MenuItem";
 
 const ministriesDropdown: MenuItemProps[] = [
@@ -14,12 +14,12 @@ const ministriesDropdown: MenuItemProps[] = [
     href: "/ministries/fellowship",
   },
   {
-    title: "CHH Children's Ministry",
+    title: "RPF Children's Ministry",
     description: "Every child is loved, welcomed, and encouraged to grow.",
     href: "/ministries/children",
   },
   {
-    title: "CHH Youth",
+    title: "RPF Youth",
     description: "Every young person has a voice and a place to belong.",
     href: "/ministries/youth",
   },
@@ -101,24 +101,26 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-background border-b border-border/40">
+      <div className="w-full bg-background">
         {/* Layered Tabs */}
         <div className="flex w-full">
-          <ChhButton className="font-bold text-[20px] bg-primary text-primary-foreground w-1/2 md:w-[220px] p-[10px] h-[60px] md:h-[70px]">
-            CHH Europe
-          </ChhButton>
-          <ChhButton className="font-medium text-[20px] bg-chh-gold text-white w-1/2 md:w-[220px] p-[10px] h-[60px] md:h-[70px]">
+          <RPFButton className="font-bold text-[20px] bg-primary text-primary-foreground w-1/2 md:w-[220px] p-[10px] h-[60px] md:h-[70px]">
+            RPF Europe
+          </RPFButton>
+          <RPFButton className="font-medium text-[20px] bg-chh-gold text-white w-1/2 md:w-[220px] p-[10px] h-[60px] md:h-[70px]">
             Crusades
-          </ChhButton>
+          </RPFButton>
         </div>
+      </div>
 
-        {/* Main Header */}
+      {/* Main Header */}
+      <header className="sticky top-0 z-50 w-full bg-background border-b border-border/40">
         <div className="flex h-[100px] md:h-[150px] items-center justify-between px-[20px] py-0 md:px-[80px] md:py-[40px] bg-[#EAE4DB1A]">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Image
               src="/assets/rpflogo.png"
-              alt="CHH Logo"
+              alt="RPF Logo"
               width={74}
               height={70}
               className="object-contain"

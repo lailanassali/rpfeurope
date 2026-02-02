@@ -86,7 +86,7 @@ export function SectionContent({
                 href={primaryButton.href}
                 className={cn(
                   "inline-flex items-center justify-center gap-2",
-                  "bg-chh-purple text-chh-purple-foreground hover:bg-chh-purple/90",
+                  "bg-RPF-purple text-RPF-purple-foreground hover:bg-RPF-purple/90",
                   "font-semibold md:text-xl text-base px-4 h-8 md:px-8 md:h-14 rounded-[4px]",
                   "transition-colors"
                 )}
@@ -99,7 +99,7 @@ export function SectionContent({
                 onClick={primaryButton.onClick}
                 className={cn(
                   "inline-flex items-center justify-center gap-2",
-                  "bg-chh-purple text-chh-purple-foreground hover:bg-chh-purple/90",
+                  "bg-RPF-purple text-RPF-purple-foreground hover:bg-RPF-purple/90",
                   "font-semibold md:text-xl text-base px-4 h-8 md:px-8 md:h-14 rounded-[4px]",
                   "transition-colors"
                 )}
@@ -120,9 +120,9 @@ export function SectionContent({
                   "transition-colors",
                   secondaryButton.isOutline
                     ? textColor === "white"
-                      ? "border-[0.5px] border-white text-white hover:bg-white hover:text-chh-purple"
-                      : "border-[0.5px] border-chh-purple text-chh-purple hover:bg-chh-purple hover:text-white"
-                    : "bg-chh-purple text-chh-purple-foreground hover:bg-chh-purple/90"
+                      ? "border-[0.5px] border-white text-white hover:bg-white hover:text-RPF-purple"
+                      : "border-[0.5px] border-RPF-purple text-RPF-purple hover:bg-RPF-purple hover:text-white"
+                    : "bg-RPF-purple text-RPF-purple-foreground hover:bg-RPF-purple/90"
                 )}
               >
                 {secondaryButton.text}
@@ -137,9 +137,9 @@ export function SectionContent({
                   "transition-colors",
                   secondaryButton.isOutline
                     ? textColor === "white"
-                      ? "border-[0.5px] border-white text-white hover:bg-white hover:text-chh-purple"
-                      : "border-[0.5px] border-chh-purple text-chh-purple hover:bg-chh-purple hover:text-white"
-                    : "bg-chh-purple text-chh-purple-foreground hover:bg-chh-purple/90"
+                      ? "border-[0.5px] border-white text-white hover:bg-white hover:text-RPF-purple"
+                      : "border-[0.5px] border-RPF-purple text-RPF-purple hover:bg-RPF-purple hover:text-white"
+                    : "bg-RPF-purple text-RPF-purple-foreground hover:bg-RPF-purple/90"
                 )}
               >
                 {secondaryButton.text}

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { FormInput } from '@/components/common/FormInput';
 import { FormTextarea } from '@/components/common/FormTextarea';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { Mail } from 'lucide-react';
 
 export default function EmailConfigPage() {
@@ -85,7 +85,7 @@ export default function EmailConfigPage() {
      value={formData.primary_email}
      onChange={(e) => setFormData({ ...formData, primary_email: e.target.value })}
      required
-     placeholder="admin@chheurope.com"
+     placeholder="admin@RPFeurope.com"
     />
 
     <div>
@@ -94,7 +94,7 @@ export default function EmailConfigPage() {
       value={formData.cc_emails}
       onChange={(e) => setFormData({ ...formData, cc_emails: e.target.value })}
       rows={3}
-      placeholder="team@chheurope.com|support@chheurope.com"
+      placeholder="team@RPFeurope.com|support@RPFeurope.com"
      />
      <p className="text-sm text-gray-600 mt-2">
       Separate multiple emails with a pipe character (|). These addresses will be CC'd on all form notifications.
@@ -113,13 +113,13 @@ export default function EmailConfigPage() {
     </div>
 
     <div className="flex gap-4 justify-end pt-4">
-     <ChhButton
+     <RPFButton
       type="submit"
       disabled={isLoading}
       className="bg-primary text-white px-6 py-2 h-auto"
      >
       {isLoading ? 'Saving...' : 'Save Configuration'}
-     </ChhButton>
+     </RPFButton>
     </div>
    </form>
   </div>

@@ -7,14 +7,15 @@ import { FormInput } from '@/components/common/FormInput';
 import { FormTextarea } from '@/components/common/FormTextarea';
 import { FormSelect } from '@/components/common/FormSelect';
 import { ImageUpload } from '@/components/admin/ImageUpload';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { MultiImageUpload } from '@/components/admin/MultiImageUpload';
 
 const TAG_OPTIONS = [
- { value: 'CHH UK', label: 'CHH UK' },
- { value: 'CHH Europe', label: 'CHH Europe' },
- { value: 'CHH Africa', label: 'CHH Africa' },
- { value: 'CHH on Campus', label: 'CHH on Campus' },
+ { value: 'RPF UK', label: 'RPF UK' },
+ { value: 'RPF Europe', label: 'RPF Europe' },
+ { value: 'RPF Africa', label: 'RPF Africa' },
+ { value: 'RPF on Campus', label: 'RPF on Campus' },
+ { value: 'other', label: 'Other (Create New)' },
 ];
 
 export default function EditLocationPage() {
@@ -41,6 +42,7 @@ export default function EditLocationPage() {
   longitude: null as number | null,
   how_to_find_us: '',
  });
+ const [customTag, setCustomTag] = useState('');
  const [isGeocoding, setIsGeocoding] = useState(false);
 
  useEffect(() => {
@@ -56,7 +58,7 @@ export default function EditLocationPage() {
    const data = await res.json();
    setFormData({
     name: data.name || '',
-    tag: data.tag || '',
+    tag: TAG_OPTIONS.some(o => o.value === data.tag) ? data.tag : 'other',
     image_url: data.image_url || '',
     address: data.address || '',
     services: data.services || '',
@@ -72,6 +74,11 @@ export default function EditLocationPage() {
     longitude: data.longitude || null,
     how_to_find_us: data.how_to_find_us || '',
    });
+
+   // Set custom tag if it wasn't in the standard list
+   if (data.tag && !TAG_OPTIONS.some(o => o.value === data.tag)) {
+    setCustomTag(data.tag);
+   }
   } catch (error) {
    toast.error('Failed to load location');
    router.push('/admin/locations');
@@ -113,10 +120,20 @@ export default function EditLocationPage() {
   e.preventDefault();
   setIsLoading(true);
   try {
+   const submissionData = { ...formData };
+   if (submissionData.tag === 'other') {
+    if (!customTag.trim()) {
+     toast.error('Please enter a name for the new tag');
+     setIsLoading(false);
+     return;
+    }
+    submissionData.tag = customTag.trim();
+   }
+
    const res = await fetch(`/api/admin/locations/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData),
+    body: JSON.stringify(submissionData),
    });
    if (!res.ok) throw new Error();
    toast.success('Location updated');
@@ -155,6 +172,17 @@ export default function EditLocationPage() {
       required
      />
     </div>
+    {formData.tag === 'other' && (
+     <div className="mt-4">
+      <FormInput
+       label="New Tag Name"
+       value={customTag}
+       onChange={(e) => setCustomTag(e.target.value)}
+       placeholder="Enter new category name"
+       required
+      />
+     </div>
+    )}
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
      <ImageUpload label="Hero Image" value={formData.image_url} onChange={(url) => setFormData({ ...formData, image_url: url })} />
@@ -244,7 +272,7 @@ export default function EditLocationPage() {
       </div>
      </div>
 
-     {formData.tag === 'CHH on Campus' ? (
+     {formData.tag === 'RPF on Campus' || (formData.tag === 'other' && customTag.toLowerCase().includes('campus')) ? (
       <div>
        <FormTextarea
         label="How to Find Us"
@@ -282,8 +310,8 @@ export default function EditLocationPage() {
     </div>
 
     <div className="flex gap-4 justify-end pt-4">
-     <ChhButton type="button" onClick={() => router.back()} className="bg-gray-100 text-gray-700 px-6 py-2 h-auto">Cancel</ChhButton>
-     <ChhButton type="submit" disabled={isLoading} className="bg-primary text-white px-6 py-2 h-auto">{isLoading ? 'Updating...' : 'Update'}</ChhButton>
+     <RPFButton type="button" onClick={() => router.back()} className="bg-gray-100 text-gray-700 px-6 py-2 h-auto">Cancel</RPFButton>
+     <RPFButton type="submit" disabled={isLoading} className="bg-primary text-white px-6 py-2 h-auto">{isLoading ? 'Updating...' : 'Update'}</RPFButton>
     </div>
    </form>
   </div>

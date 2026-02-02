@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
 import { Plus, Edit, Trash2, Search } from 'lucide-react';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 
 interface Event {
@@ -80,10 +80,10 @@ export default function EventsListPage() {
      <p className="text-gray-600 mt-1">Manage all events</p>
     </div>
     <Link href="/admin/events/add">
-     <ChhButton className="flex items-center gap-2 bg-primary text-white hover:bg-primary/90 px-4 py-2 h-auto">
+     <RPFButton className="flex items-center gap-2 bg-primary text-white hover:bg-primary/90 px-4 py-2 h-auto">
       <Plus className="size-4" />
       Add Event
-     </ChhButton>
+     </RPFButton>
     </Link>
    </div>
 

@@ -1,24 +1,24 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
- title: "Connect With Us | Christ Healing Home Europe",
- description: "Take your next step of faith. Get baptized, share your testimony, request prayer, join a mentorship group, or serve at CHH Europe. Start your journey today.",
- keywords: ["baptism CHH", "church mentorship", "prayer request", "church testimony", "serve at church", "counselling services"],
+ title: "Connect With Us | Redeemed Pillar of Fire Europe",
+ description: "Take your next step of faith. Get baptized, share your testimony, request prayer, join a mentorship group, or serve at RPF Europe. Start your journey today.",
+ keywords: ["baptism RPF", "church mentorship", "prayer request", "church testimony", "serve at church", "counselling services"],
  openGraph: {
-  title: "Connect With CHH Europe",
+  title: "Connect With RPF Europe",
   description: "Take your next step - baptism, mentorship, prayer, testimony, or service opportunities.",
-  url: "https://chheurope.org/connect",
-  siteName: "Christ Healing Home Europe",
+  url: "https://RPFeurope.org/connect",
+  siteName: "Redeemed Pillar of Fire Europe",
   locale: "en_GB",
   type: "website",
  },
  twitter: {
   card: "summary_large_image",
-  title: "Connect With CHH Europe",
-  description: "Take your next step of faith at CHH Europe.",
+  title: "Connect With RPF Europe",
+  description: "Take your next step of faith at RPF Europe.",
  },
  alternates: {
-  canonical: "https://chheurope.org/connect",
+  canonical: "https://RPFeurope.org/connect",
  },
 };
 

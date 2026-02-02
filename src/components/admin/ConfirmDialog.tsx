@@ -1,7 +1,7 @@
 "use client";
 
 import { Modal } from './Modal';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { AlertTriangle } from 'lucide-react';
 
 interface ConfirmDialogProps {
@@ -52,20 +52,20 @@ export function ConfirmDialog({
 
     {/* Actions */}
     <div className="flex items-center gap-3 justify-end pt-4">
-     <ChhButton
+     <RPFButton
       onClick={onClose}
       disabled={isLoading}
       className="bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-2 h-auto"
      >
       {cancelText}
-     </ChhButton>
-     <ChhButton
+     </RPFButton>
+     <RPFButton
       onClick={onConfirm}
       disabled={isLoading}
       className={`${buttonColors[variant]} text-white px-4 py-2 h-auto`}
      >
       {isLoading ? 'Processing...' : confirmText}
-     </ChhButton>
+     </RPFButton>
     </div>
    </div>
   </Modal>

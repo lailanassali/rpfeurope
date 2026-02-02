@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
-import { Plus, Edit, Trash2, Search } from 'lucide-react';
-import { ChhButton } from '@/components/common/ChhButton';
+import { Plus, Edit, Trash2, Search, Settings } from 'lucide-react';
+import { RPFButton } from '@/components/common/RPFButton';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 
 export default function LocationsListPage() {
@@ -61,14 +61,22 @@ export default function LocationsListPage() {
    <div className="flex items-center justify-between mb-6">
     <div>
      <h1 className="text-2xl font-bold">Locations</h1>
-     <p className="text-gray-600 mt-1">Manage CHH locations</p>
+     <p className="text-gray-600 mt-1">Manage RPF locations</p>
     </div>
-    <Link href="/admin/locations/add">
-     <ChhButton className="flex items-center gap-2 bg-primary text-white px-4 py-2 h-auto">
-      <Plus className="size-4" />
-      Add Location
-     </ChhButton>
-    </Link>
+    <div className="flex gap-3">
+     <Link href="/admin/settings/locations">
+      <RPFButton variant="outline" className="flex items-center gap-2 px-4 py-2 h-auto text-foreground">
+       <Settings className="size-4" />
+       Reorder Tabs
+      </RPFButton>
+     </Link>
+     <Link href="/admin/locations/add">
+      <RPFButton className="flex items-center gap-2 bg-primary text-white px-4 py-2 h-auto">
+       <Plus className="size-4" />
+       Add Location
+      </RPFButton>
+     </Link>
+    </div>
    </div>
 
    <div className="mb-6 flex gap-4">
@@ -88,10 +96,10 @@ export default function LocationsListPage() {
      className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary bg-white min-w-[200px]"
     >
      <option value="all">All Tags</option>
-     <option value="CHH UK">CHH UK</option>
-     <option value="CHH Europe">CHH Europe</option>
-     <option value="CHH Africa">CHH Africa</option>
-     <option value="CHH on Campus">CHH on Campus</option>
+     <option value="RPF UK">RPF UK</option>
+     <option value="RPF Europe">RPF Europe</option>
+     <option value="RPF Africa">RPF Africa</option>
+     <option value="RPF on Campus">RPF on Campus</option>
     </select>
    </div>
 

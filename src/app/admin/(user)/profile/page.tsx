@@ -5,7 +5,7 @@ import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { FormInput } from '@/components/common/FormInput';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { Eye, EyeOff } from 'lucide-react';
 
 export default function ProfilePage() {
@@ -170,13 +170,13 @@ export default function ProfilePage() {
     </div>
 
     <div className="flex gap-4 justify-end pt-4">
-     <ChhButton
+     <RPFButton
       type="submit"
       disabled={isLoading}
       className="bg-primary text-white px-6 py-2 h-auto"
      >
       {isLoading ? 'Saving...' : 'Save Changes'}
-     </ChhButton>
+     </RPFButton>
     </div>
    </form>
   </div>

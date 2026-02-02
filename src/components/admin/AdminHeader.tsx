@@ -2,7 +2,7 @@
 
 import { signOut, useSession } from 'next-auth/react';
 import { LogOut, Bell, Menu } from 'lucide-react';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { useSidebar } from '@/context/SidebarContext';
 
 export function AdminHeader() {
@@ -39,13 +39,13 @@ export function AdminHeader() {
      </button>
 
      {/* Logout */}
-     <ChhButton
+     <RPFButton
       onClick={handleLogout}
       className="flex items-center gap-2 bg-gray-100 text-gray-700 hover:bg-gray-200 px-3 md:px-4 py-2 h-auto"
      >
       <LogOut className="size-4" />
       <span className="hidden md:inline text-sm">Logout</span>
-     </ChhButton>
+     </RPFButton>
     </div>
    </div>
   </header>

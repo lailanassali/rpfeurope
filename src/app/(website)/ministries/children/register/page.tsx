@@ -1,15 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { ArrowLeft, Check } from "lucide-react";
 import { PermissionCheckbox } from "@/components/common/PermissionCheckbox";
+import { SubmissionSuccessModal } from "@/components/common/SubmissionSuccessModal";
 
 export default function ChildrenRegisterPage() {
  const router = useRouter();
  const [currentStep, setCurrentStep] = useState(1);
  const [isSubmitting, setIsSubmitting] = useState(false);
+ const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
  // Step 1: Child's Details
  const [childFullName, setChildFullName] = useState("");
@@ -39,6 +41,21 @@ export default function ChildrenRegisterPage() {
  const [permissionMedical, setPermissionMedical] = useState(false);
  const [signature, setSignature] = useState("");
  const [signatureDate, setSignatureDate] = useState("");
+
+ useEffect(() => {
+  if (childDOB) {
+   const today = new Date();
+   const birthDate = new Date(childDOB);
+   let age = today.getFullYear() - birthDate.getFullYear();
+   const m = today.getMonth() - birthDate.getMonth();
+   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+   }
+   setChildAge(Math.max(0, age).toString());
+  } else {
+   setChildAge("");
+  }
+ }, [childDOB]);
 
  const steps = [
   { number: 1, title: "Child's Details" },
@@ -108,8 +125,9 @@ export default function ChildrenRegisterPage() {
     throw new Error(error.message || 'Submission failed');
    }
 
-   toast.success('Registration submitted successfully! We will contact you soon.');
-   router.push('/ministries/children');
+   // toast.success('Registration submitted successfully! We will contact you soon.');
+   // router.push('/ministries/children');
+   setIsSuccessModalOpen(true);
   } catch (error: any) {
    console.error('Error:', error);
    toast.error(error.message || 'Failed to submit registration. Please try again.');
@@ -134,7 +152,7 @@ export default function ChildrenRegisterPage() {
       <span>Back</span>
      </button>
      <h1 className="text-[32px] font-bold text-center" style={{ color: "#111111" }}>
-      CHH Children's Ministry Preregistration Form
+      RPF Children's Ministry Preregistration Form
      </h1>
     </div>
 
@@ -270,8 +288,10 @@ export default function ChildrenRegisterPage() {
           type="number"
           value={childAge}
           onChange={(e) => setChildAge(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary"
-          placeholder="Enter age"
+          disabled
+          readOnly
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary bg-gray-100 cursor-not-allowed"
+          placeholder="Age will be calculated automatically"
          />
         </div>
 
@@ -525,7 +545,7 @@ export default function ChildrenRegisterPage() {
 
         <PermissionCheckbox
          title="Permission for Emergency Medical Treatment"
-         label="I authorize CHH staff to seek medical treatment for my child in case of an emergency if I cannot be reached"
+         label="I authorize RPF staff to seek medical treatment for my child in case of an emergency if I cannot be reached"
          checked={permissionMedical}
          onChange={setPermissionMedical}
         />
@@ -588,6 +608,15 @@ export default function ChildrenRegisterPage() {
       )}
      </div>
     </div>
+    <SubmissionSuccessModal
+     isOpen={isSuccessModalOpen}
+     onClose={() => {
+      setIsSuccessModalOpen(false);
+      router.push('/ministries/children');
+     }}
+     title="Registration Received"
+     message="Thank you for registering your child with RPF Children's Ministry. We have received your details and look forward to welcoming you."
+    />
    </div>
   </div>
  );

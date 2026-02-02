@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
 import { Plus, Edit, Trash2, Search, GripVertical } from 'lucide-react';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 import {
  DndContext,
@@ -172,10 +172,10 @@ export default function ResourcesListPage() {
      <p className="text-gray-600 mt-1">Manage Bright & Morning Star resources</p>
     </div>
     <Link href="/admin/resources/add">
-     <ChhButton className="flex items-center gap-2 bg-primary text-white px-4 py-2 h-auto">
+     <RPFButton className="flex items-center gap-2 bg-primary text-white px-4 py-2 h-auto">
       <Plus className="size-4" />
       Add Resource
-     </ChhButton>
+     </RPFButton>
     </Link>
    </div>
 

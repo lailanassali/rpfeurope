@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Plus, X } from 'lucide-react';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { FormInput } from '@/components/common/FormInput';
 
 interface DynamicStringListProps {
@@ -74,7 +74,7 @@ export function DynamicStringList({
       onKeyDown={handleKeyDown}
      />
     </div>
-    <ChhButton
+    <RPFButton
      type="button"
      onClick={handleAdd}
      className="bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 h-[42px] mt-0"
@@ -82,7 +82,7 @@ export function DynamicStringList({
     >
      <Plus className="size-4 mr-2" />
      {addButtonText}
-    </ChhButton>
+    </RPFButton>
    </div>
   </div>
  );

@@ -50,7 +50,7 @@ export function Sidebar() {
         <Link href="/admin/dashboard" className="flex items-center gap-2" onClick={close}>
           <NextImage
             src="/assets/rpflogo.png"
-            alt="CHH Logo"
+            alt="RPF Logo"
             width={74}
             height={70}
             className="object-contain"

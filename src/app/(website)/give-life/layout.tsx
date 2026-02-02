@@ -1,24 +1,24 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
- title: "Give Your Life to Christ | CHH Europe",
+ title: "Give Your Life to Christ | RPF Europe",
  description: "Ready to take the first step? Give your life to Christ or rededicate your heart. Fill out our form and connect with our team who will celebrate with you and guide your new journey in faith.",
- keywords: ["give life to Christ", "accept Jesus", "rededication", "salvation", "new believer CHH"],
+ keywords: ["give life to Christ", "accept Jesus", "rededication", "salvation", "new believer RPF"],
  openGraph: {
-  title: "Give Your Life to Christ | CHH Europe",
+  title: "Give Your Life to Christ | RPF Europe",
   description: "Take the first step in your faith journey. Connect with our team today.",
-  url: "https://chheurope.org/give-life",
-  siteName: "Christ Healing Home Europe",
+  url: "https://RPFeurope.org/give-life",
+  siteName: "Redeemed Pillar of Fire Europe",
   locale: "en_GB",
   type: "website",
  },
  twitter: {
   card: "summary_large_image",
   title: "Give Your Life to Christ",
-  description: "Start your faith journey with CHH Europe today.",
+  description: "Start your faith journey with RPF Europe today.",
  },
  alternates: {
-  canonical: "https://chheurope.org/give-life",
+  canonical: "https://RPFeurope.org/give-life",
  },
 };
 

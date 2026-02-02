@@ -59,7 +59,7 @@ function LoginForm() {
             required
             disabled={isLoading}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent disabled:bg-gray-100"
-            placeholder="admin@chh.com"
+            placeholder="admin@RPF.com"
           />
         </div>
 
@@ -117,7 +117,7 @@ export default function AdminLoginPage() {
           <div className="inline-flex items-center justify-center mb-4">
             <NextImage
               src="/assets/rpflogo.png"
-              alt="CHH Logo"
+              alt="RPF Logo"
               width={74}
               height={70}
               className="object-contain"
@@ -134,7 +134,7 @@ export default function AdminLoginPage() {
 
         {/* Footer */}
         <p className="text-center text-gray-500 text-sm mt-6">
-          © {new Date().getFullYear()} Christ Healing Home. All rights reserved.
+          © {new Date().getFullYear()} Redeemed Pillar of Fire. All rights reserved.
         </p>
       </div >
     </div >

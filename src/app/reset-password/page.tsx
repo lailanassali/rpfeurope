@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { FormInput } from '@/components/common/FormInput';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { Eye, EyeOff } from 'lucide-react';
 
 function ResetPasswordForm() {
@@ -115,13 +115,13 @@ function ResetPasswordForm() {
       <p>Password must be at least 8 characters long</p>
      </div>
 
-     <ChhButton
+     <RPFButton
       type="submit"
       disabled={isLoading}
       className="w-full bg-primary text-white hover:bg-primary/90 h-12"
      >
       {isLoading ? 'Resetting...' : 'Reset Password'}
-     </ChhButton>
+     </RPFButton>
     </form>
    </div>
   </div>

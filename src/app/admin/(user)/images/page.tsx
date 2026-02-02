@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import { Trash2, Image as ImageIcon } from 'lucide-react';
 import { FormSelect } from '@/components/common/FormSelect';
 import { ImageUpload } from '@/components/admin/ImageUpload';
-import { ChhButton } from '@/components/common/ChhButton';
+import { RPFButton } from '@/components/common/RPFButton';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 
 const PAGE_OPTIONS = [
@@ -178,13 +178,13 @@ export default function ImagesPage() {
      label={isCarousel ? 'Add Image to Carousel' : 'Replace Page Image'}
     />
     <div className="mt-4">
-     <ChhButton
+     <RPFButton
       onClick={() => handleUpload()}
       disabled={isLoading || !newImageUrl}
       className="bg-primary text-white px-6 py-2 h-auto"
      >
       {isLoading ? 'Uploading...' : isCarousel ? 'Add to Carousel' : 'Update Image'}
-     </ChhButton>
+     </RPFButton>
     </div>
    </div>
 

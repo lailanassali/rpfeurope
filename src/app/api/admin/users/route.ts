@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
   const resetLink = `${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${resetToken}`;
   await sendEmail({
    to: email,
-   subject: 'Welcome to CHH Europe Admin',
+   subject: 'Welcome to RPF Europe Admin',
    html: welcomeUserEmail(name, resetLink),
   });
 

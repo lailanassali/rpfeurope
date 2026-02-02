@@ -108,7 +108,7 @@ function NearestLocationsContent() {
        Top {limit} Nearest Branches
       </h1>
       <p className="text-gray-600">
-       The {limit} closest CHH locations to you
+       The {limit} closest RPF locations to you
       </p>
      </div>
 
