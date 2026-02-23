@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 		title: "Redeemed Pillar of Fire Europe | Where Worship Meets Community",
 		description:
 			"Join RPF Europe - a globally expanding Pentecostal movement raising purposeful followers for Christ.",
-		url: process.env.NEXT_PUBLIC_BASE_URL || "https://chh-app.vercel.app",
+		url: process.env.NEXT_PUBLIC_APP_URL || "https://chh-app.vercel.app",
 		siteName: "Redeemed Pillar of Fire Europe",
 		locale: "en_GB",
 		type: "website",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 		images: ["/assets/rpflogo.png"],
 	},
 	alternates: {
-		canonical: process.env.NEXT_PUBLIC_BASE_URL || "https://chh-app.vercel.app",
+		canonical: process.env.NEXT_PUBLIC_APP_URL || "https://chh-app.vercel.app",
 	},
 };
 

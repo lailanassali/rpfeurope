@@ -9,7 +9,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
 	metadataBase: new URL(
-		process.env.NEXT_PUBLIC_BASE_URL || "https://chh-app.vercel.app",
+		process.env.NEXT_PUBLIC_APP_URL || "https://chh-app.vercel.app",
 	),
 	title: "Redeemed Pillar of Fire - RPF Europe",
 	description:
