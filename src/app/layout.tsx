@@ -8,7 +8,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-	// metadataBase: new URL("https://rpfeurope.org"),
+	metadataBase: new URL(
+		process.env.NEXT_PUBLIC_BASE_URL || "https://chh-app.vercel.app",
+	),
 	title: "Redeemed Pillar of Fire - RPF Europe",
 	description:
 		"Welcome to Redeemed Pillar of Fire Europe. A place of worship, community, and spiritual growth.",
