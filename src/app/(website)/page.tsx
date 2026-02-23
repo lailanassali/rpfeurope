@@ -25,10 +25,12 @@ export const metadata: Metadata = {
     siteName: "Redeemed Pillar of Fire Europe",
     locale: "en_GB",
     type: "website",
+    images: ["/assets/rpflogo.png"],
   },
   twitter: {
     card: "summary_large_image",
     description: "Where Worship Meets Community - Join us for transformative worship and fellowship.",
+    images: ["/assets/rpflogo.png"],
   },
   alternates: {
     canonical: "https://RPFeurope.org",
