@@ -127,7 +127,7 @@ export function Header() {
 
 			{/* Main Header */}
 			<header className="sticky top-0 z-50 w-full bg-background border-b border-border/40">
-				<div className="flex h-[100px] md:h-[150px] items-center justify-between px-[20px] py-0 md:px-[80px] md:py-[40px] bg-[#EAE4DB1A]">
+				<div className="flex h-[70px] md:h-[150px] items-center justify-between px-5 py-0 md:px-20 md:py-10 bg-[#EAE4DB1A]">
 					{/* Logo */}
 					<Link href="/" className="flex items-center space-x-2">
 						<Image
@@ -140,7 +140,7 @@ export function Header() {
 					</Link>
 
 					{/* Desktop Navigation */}
-					<nav className="hidden md:flex gap-[16px] items-center">
+					<nav className="hidden md:flex gap-4 items-center">
 						<MenuItem title="Home" href="/" />
 						<MenuItem title="About" href="/about" />
 						<MenuItem
