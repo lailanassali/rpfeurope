@@ -18,7 +18,7 @@ import { Location, slugify } from "@/lib/location-utils";
 import { FindNearestButton } from "@/components/common/FindNearestButton";
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://chh-app.vercel.app";
-const ogImageUrl = new URL("/assets/rpflogo.png", siteUrl).toString();
+const ogImageUrl = new URL("/assets/og-image.png", siteUrl).toString();
 
 export const metadata: Metadata = {
 	title: "Redeemed Pillar of Fire Europe | Where Worship Meets Community",

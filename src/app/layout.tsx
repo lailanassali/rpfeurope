@@ -8,7 +8,7 @@ const montserrat = Montserrat({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://chh-app.vercel.app";
-const ogImageUrl = new URL("/assets/rpflogo.png", siteUrl).toString();
+const ogImageUrl = new URL("/assets/og-image.png", siteUrl).toString();
 
 export const metadata: Metadata = {
 	metadataBase: new URL(siteUrl),
