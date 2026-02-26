@@ -6,6 +6,8 @@ import Image from "next/image";
 import {
 	Menu,
 	X,
+	Home,
+	Info,
 	Church,
 	Users,
 	Heart,
@@ -13,6 +15,7 @@ import {
 	MessagesSquare,
 	UserPlus,
 	FileText,
+	CalendarDays,
 	Sparkles,
 } from "lucide-react";
 import { RPFButton } from "./RPFButton";
@@ -105,6 +108,30 @@ const drawerDiscoverItems: MenuItemProps[] = [
 	},
 ];
 
+const drawerPrimaryNavItems: MenuItemProps[] = [
+	{
+		title: "Home",
+		href: "/",
+		icon: <Home className="size-5 text-muted-foreground" />,
+	},
+	{
+		title: "About",
+		href: "/about",
+		icon: <Info className="size-5 text-muted-foreground" />,
+	},
+	{
+		title: "Ministries",
+		isDropdown: true,
+		children: ministriesDropdown,
+		icon: <Church className="size-5 text-muted-foreground" />,
+	},
+	{
+		title: "Events",
+		href: "/events",
+		icon: <CalendarDays className="size-5 text-muted-foreground" />,
+	},
+];
+
 export function Header() {
 	const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
@@ -141,14 +168,9 @@ export function Header() {
 
 					{/* Desktop Navigation */}
 					<nav className="hidden md:flex gap-4 items-center">
-						<MenuItem title="Home" href="/" />
-						<MenuItem title="About" href="/about" />
-						<MenuItem
-							title="Ministries"
-							isDropdown={true}
-							children={ministriesDropdown}
-						/>
-						<MenuItem title="Events" href="/events" />
+						{drawerPrimaryNavItems.map((item, index) => (
+							<MenuItem key={index} {...item} />
+						))}
 					</nav>
 
 					{/* Hamburger Menu - All Screens */}
@@ -186,6 +208,26 @@ export function Header() {
 
 						{/* Drawer Content */}
 						<div className="p-6 space-y-[24px]">
+							{/* Primary Navigation */}
+							<div className="md:hidden">
+								<h3
+									className="text-[14px] font-medium py-[12px] text-black mb-[12px]"
+									style={{ borderBottom: "0.5px solid #0000001A" }}
+								>
+									Main Menu
+								</h3>
+								<div className="">
+									{drawerPrimaryNavItems.map((item, index) => (
+										<MenuItem
+											key={index}
+											{...item}
+											isDrawer={true}
+											onClick={closeDrawer}
+										/>
+									))}
+								</div>
+							</div>
+
 							{/* Get Involved Section */}
 							<div>
 								<h3
@@ -196,7 +238,12 @@ export function Header() {
 								</h3>
 								<div className="">
 									{drawerGetInvolvedItems.map((item, index) => (
-										<MenuItem key={index} {...item} onClick={closeDrawer} />
+										<MenuItem
+											key={index}
+											{...item}
+											isDrawer={true}
+											onClick={closeDrawer}
+										/>
 									))}
 								</div>
 							</div>
@@ -211,7 +258,12 @@ export function Header() {
 								</h3>
 								<div className="">
 									{drawerDiscoverItems.map((item, index) => (
-										<MenuItem key={index} {...item} onClick={closeDrawer} />
+										<MenuItem
+											key={index}
+											{...item}
+											isDrawer={true}
+											onClick={closeDrawer}
+										/>
 									))}
 								</div>
 							</div>
@@ -226,7 +278,12 @@ export function Header() {
 								</h3>
 								<div className="">
 									{drawerGiveLifeItems.map((item, index) => (
-										<MenuItem key={index} {...item} onClick={closeDrawer} />
+										<MenuItem
+											key={index}
+											{...item}
+											isDrawer={true}
+											onClick={closeDrawer}
+										/>
 									))}
 								</div>
 							</div>
