@@ -7,10 +7,11 @@ const montserrat = Montserrat({
 	variable: "--font-montserrat",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://chh-app.vercel.app";
+const ogImageUrl = new URL("/assets/rpflogo.png", siteUrl).toString();
+
 export const metadata: Metadata = {
-	metadataBase: new URL(
-		process.env.NEXT_PUBLIC_APP_URL || "https://chh-app.vercel.app",
-	),
+	metadataBase: new URL(siteUrl),
 	title: "Redeemed Pillar of Fire - RPF Europe",
 	description:
 		"Welcome to Redeemed Pillar of Fire Europe. A place of worship, community, and spiritual growth.",
@@ -27,14 +28,19 @@ export const metadata: Metadata = {
 		title: "Redeemed Pillar of Fire - RPF Europe",
 		description:
 			"Welcome to Redeemed Pillar of Fire Europe. A place of worship, community, and spiritual growth.",
-		images: ["/assets/rpflogo.png"],
+		images: [
+			{
+				url: ogImageUrl,
+				alt: "Redeemed Pillar of Fire Europe logo",
+			},
+		],
 	},
 	twitter: {
-		card: "summary",
+		card: "summary_large_image",
 		title: "Redeemed Pillar of Fire - RPF Europe",
 		description:
 			"Welcome to Redeemed Pillar of Fire Europe. A place of worship, community, and spiritual growth.",
-		images: ["/assets/rpflogo.png"],
+		images: [ogImageUrl],
 	},
 	icons: {
 		icon: "/assets/rpflogo.png",

@@ -17,6 +17,9 @@ import { CONNECT_TABS_DATA } from "@/lib/connect-data";
 import { Location, slugify } from "@/lib/location-utils";
 import { FindNearestButton } from "@/components/common/FindNearestButton";
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://chh-app.vercel.app";
+const ogImageUrl = new URL("/assets/rpflogo.png", siteUrl).toString();
+
 export const metadata: Metadata = {
 	title: "Redeemed Pillar of Fire Europe | Where Worship Meets Community",
 	description:
@@ -34,20 +37,25 @@ export const metadata: Metadata = {
 		title: "Redeemed Pillar of Fire Europe | Where Worship Meets Community",
 		description:
 			"Join RPF Europe - a globally expanding Pentecostal movement raising purposeful followers for Christ.",
-		url: process.env.NEXT_PUBLIC_APP_URL || "https://chh-app.vercel.app",
+		url: siteUrl,
 		siteName: "Redeemed Pillar of Fire Europe",
 		locale: "en_GB",
 		type: "website",
-		images: ["/assets/rpflogo.png"],
+		images: [
+			{
+				url: ogImageUrl,
+				alt: "Redeemed Pillar of Fire Europe logo",
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		description:
 			"Where Worship Meets Community - Join us for transformative worship and fellowship.",
-		images: ["/assets/rpflogo.png"],
+		images: [ogImageUrl],
 	},
 	alternates: {
-		canonical: process.env.NEXT_PUBLIC_APP_URL || "https://chh-app.vercel.app",
+		canonical: siteUrl,
 	},
 };
 
