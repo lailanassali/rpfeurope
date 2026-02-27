@@ -5,6 +5,7 @@ import { Clock, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { getHeroImage, getCarouselImages } from "@/lib/image-utils";
+import { HeroText } from "@/components/common/HeroText";
 
 export const metadata: Metadata = {
      title: "Children's Department | Redeemed Pillar of Fire",
@@ -36,28 +37,15 @@ export default async function ChildrenPage() {
                                    backgroundImage: childrenHero ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${childrenHero}')` : "#382a4dff"
                               }}
                          />
-                         <div className="py-8 px-4 md:py-[43px] md:px-[80px] relative w-full">
-                              <div>
-                                   <h2
-                                        className="text-white mb-[12px] text-3xl md:text-[36px] font-bold"
-                                   >
-                                        RPF Children's Department
-                                   </h2>
-                                   <p
-                                        className="text-white/90 text-lg md:text-[20px] font-medium"
-                                   >
-                                        Every child is loved, welcomed, and encouraged to grow in faith and character.
-                                   </p>
-                              </div>
-                              <div className="flex gap-[24px] mt-[32px]">
-                                   <Link href="/ministries/children/register" className="w-full sm:w-auto">
-                                        <button className="bg-primary text-primary-foreground w-full sm:w-auto hover:bg-primary/90 font-semibold h-12 md:h-[54px] px-6 py-3 text-base md:text-[20px] md:min-w-[240px] rounded-[4px] flex items-center justify-center gap-2">
-                                             <span>Join Our Children's Service</span>
-                                             <ArrowRight className="size-5" />
-                                        </button>
-                                   </Link>
-                              </div>
-                         </div>
+
+                         <HeroText
+                              heading="RPF Children's Department"
+                              subtitle="Every child is loved, welcomed, and encouraged to grow in faith and character."
+                              primaryButton={{
+                                   text: "Join Our Children's Service",
+                                   href: "/ministries/children/register",
+                              }}
+                         />
                     </section>
 
                     {/* 2. Quote and Description Section */}
