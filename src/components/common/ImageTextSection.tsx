@@ -33,8 +33,8 @@ export function ImageTextSection({
   >
    <div className="container w-11/12 mx-auto px-4">
     <div
-     className={`flex items-center md:flex-row flex-col ${imagePosition === "left" ? "md:flex-row-reverse" : ""}`}
-     style={{ gap }}
+     className={`flex items-center md:flex-row flex-col gap-8 md:gap-(--md-gap) ${imagePosition === "left" ? "md:flex-row-reverse" : ""}`}
+     style={{ "--md-gap": gap } as React.CSSProperties}
     >
      {/* Text - aligned left */}
      <div className="md:flex-3 flex-1 text-left">

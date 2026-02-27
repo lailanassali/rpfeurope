@@ -43,7 +43,7 @@ export function HeroText({
      {heading}
     </h2>
     {subtitle && <p
-     className={`text-white/90 w-full text-[16px] md:text-[${subtitleSize}px] font-medium md:font-[${subtitleWeight}]`}
+     className={`text-white/90 w-full text-[14px] md:text-[${subtitleSize}px] font-medium md:font-[${subtitleWeight}]`}
     >
      {subtitle}
     </p>}

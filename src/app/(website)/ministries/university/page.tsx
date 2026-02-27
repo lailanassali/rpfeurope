@@ -30,7 +30,7 @@ export default async function UniversityPage() {
           <div className="w-full flex min-h-screen flex-col font-sans">
                <main className="flex-1">
                     {/* 1. Hero Section */}
-                    <section className="relative h-[700px] w-full flex items-end overflow-hidden">
+                    <section className="relative h-[400px] md:h-[600px] lg:h-[700px] w-full flex items-end overflow-hidden">
                          {/* Background with overlay */}
                          <div
                               className="absolute inset-0 bg-cover bg-center"
@@ -61,7 +61,7 @@ Every fellowship hosts weekly bible studies, social events, outreach, and worshi
                     />
 
                     {/* 3. Our Campuses Section */}
-                    <section className="py-24 bg-white">
+                    <section className="py-16 md:py-24 bg-white">
                          <div className="container w-11/12 mx-auto px-4">
                               <SectionContent
                                    heading="Our Campuses"

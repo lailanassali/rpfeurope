@@ -36,7 +36,7 @@ export default async function YouthPage() {
           <div className="w-full flex min-h-screen flex-col font-sans">
                <main className="flex-1">
                     {/* 1. Hero Section */}
-                    <section className="relative h-[700px] w-full flex items-end overflow-hidden mb-8">
+                    <section className="relative h-[400px] md:h-[600px] lg:h-[700px] w-full flex items-end overflow-hidden mb-8">
                          {/* Background with overlay */}
                          <div
                               className="absolute inset-0 bg-cover bg-center"
@@ -81,55 +81,48 @@ Come and be part of what God is building in this generation, your story matters 
                     />
 
                     {/* 4. Where We Meet and Grow Section */}
-                    <section style={{ backgroundColor: "#CEC3DF40", paddingTop: "96px", paddingBottom: "96px" }}>
-                         <div className="container w-11/12 mx-auto px-4">
-                              <h2 className="text-[40px] font-bold" style={{ color: "#111111" }}>
+                    <section className="py-16 md:py-[96px]" style={{ backgroundColor: "#CEC3DF40" }}>
+                         <div className="container w-11/12 mx-auto px-4 lg:px-0">
+                              <h2 className="text-3xl md:text-[40px] font-bold" style={{ color: "#111111" }}>
                                    Where We Meet and Grow
                               </h2>
-                              <p className="text-[20px] mt-5 mb-[72px]">
+                              <p className="text-lg md:text-[20px] mt-4 md:mt-5 mb-10 md:mb-[72px]">
                                    Join us in a space where faith, friendship, and purpose come alive every week.
                               </p>
 
                               {/* Image with Glass Overlay */}
                               <div
-                                   className="relative w-full overflow-hidden"
+                                   className="relative w-full overflow-hidden rounded-2xl h-[500px] md:h-[600px]"
                                    style={{
-                                        height: "600px",
-                                        borderRadius: "24px",
                                         backgroundImage: youthMeetGrow ? `url('${youthMeetGrow}')` : "none",
                                         backgroundSize: "cover",
                                         backgroundPosition: "center"
                                    }}
                               >
                                    {/* Glass Effect Overlay Card */}
-                                   <div
-                                        className="absolute inset-0 flex items-end justify-end"
-                                        style={{ padding: "38px" }}
-                                   >
+                                   <div className="absolute inset-0 flex items-end justify-end p-4 md:p-[38px]">
                                         <div
+                                             className="p-6 md:p-8 rounded-2xl w-full max-w-[582px]"
                                              style={{
                                                   backgroundColor: "#866AAF40",
                                                   backdropFilter: "blur(10px)",
                                                   WebkitBackdropFilter: "blur(10px)",
-                                                  padding: "32px",
-                                                  borderRadius: "16px",
-                                                  maxWidth: "582px"
                                              }}
                                         >
-                                             <h3 className="text-[40px] font-bold text-white mb-7">
+                                             <h3 className="text-2xl md:text-[40px] font-bold text-white mb-6 md:mb-7">
                                                   Sunday Service
                                              </h3>
 
                                              {/* Time */}
                                              <div className="flex items-center gap-3 mb-4">
                                                   <Clock className="size-5 text-white" />
-                                                  <span className="text-white text-lg">12:00 - 14:00</span>
+                                                  <span className="text-white text-base md:text-lg">12:00 - 14:00</span>
                                              </div>
 
                                              {/* Location */}
-                                             <div className="flex items-start gap-3 mb-10">
+                                             <div className="flex items-start gap-3 mb-8 md:mb-10">
                                                   <MapPin className="size-5 text-white mt-1 shrink-0" />
-                                                  <span className="text-white text-lg">
+                                                  <span className="text-white text-base md:text-lg">
                                                        Redeemed Pillar of Fire (RPF), 1st Floor, Youth Hall, 1A Elthorne Road, N19 4AL
                                                   </span>
                                              </div>
@@ -138,14 +131,11 @@ Come and be part of what God is building in this generation, your story matters 
                                              <Link
                                                   href="https://maps.google.com/?q=1A+Elthorne+Road+N19+4AL"
                                                   target="_blank"
+                                                  className="w-full"
                                              >
                                                   <button
-                                                       className="flex items-center justify-center gap-2 text-white font-semibold transition-all hover:opacity-90 px-6"
-                                                       style={{
-                                                            backgroundColor: "#59427B",
-                                                            height: "54px",
-                                                            borderRadius: "4px"
-                                                       }}
+                                                       className="flex items-center justify-center gap-2 text-white font-semibold transition-all hover:opacity-90 px-6 w-full h-12 md:h-[54px] rounded-[4px]"
+                                                       style={{ backgroundColor: "#59427B" }}
                                                   >
                                                        <span>Get Directions</span>
                                                        <ArrowRight className="size-5" />
@@ -165,16 +155,16 @@ Come and be part of what God is building in this generation, your story matters 
                     </section>
 
                     {/* 6. Our Leadership Section */}
-                    <section style={{ backgroundColor: "#FAEEE266", paddingTop: "96px", paddingBottom: "96px" }}>
+                    <section className="py-16 md:py-[96px]" style={{ backgroundColor: "#FAEEE266" }}>
                          <div className="container w-11/12 mx-auto px-4">
-                              <h2 className="text-[40px] font-bold mb-12" style={{ color: "#111111" }}>
+                              <h2 className="text-3xl md:text-[40px] font-bold mb-8 md:mb-12" style={{ color: "#111111" }}>
                                    Our Leadership
                               </h2>
 
-                              <div className="flex items-center" style={{ gap: "88px" }}>
+                              <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-[88px]">
                                    {/* Image */}
-                                   <div className="flex-1">
-                                        <div className="relative w-full overflow-hidden rounded-lg" style={{ height: "520px" }}>
+                                   <div className="flex-1 w-full">
+                                        <div className="relative w-full overflow-hidden rounded-lg h-[350px] md:h-[520px]">
                                              <Image
                                                   src={youthLeadership || ""}
                                                   alt="Pastor Reece"
@@ -185,11 +175,11 @@ Come and be part of what God is building in this generation, your story matters 
                                    </div>
 
                                    {/* Text */}
-                                   <div className="flex-1">
-                                        <h3 className="text-[32px] font-bold mb-6" style={{ color: "#111111" }}>
+                                   <div className="flex-1 w-full text-left">
+                                        <h3 className="text-2xl md:text-[32px] font-bold mb-4 md:mb-6" style={{ color: "#111111" }}>
                                              Pastor Reece
                                         </h3>
-                                        <div className="text-[20px] font-normal leading-relaxed whitespace-pre-line">
+                                        <div className="text-lg md:text-[20px] font-normal leading-relaxed whitespace-pre-line text-[#373737]">
                                              {`Pastor Reece leads RPF Youth with heart, faith, and vision for this generation. He's passionate about seeing young people discover who they are in God and step boldly into the lives they were created for.
 
 More than a pastor, he's a mentor and a friend, someone who listens, challenges, and walks with the youth as they grow in both faith and purpose. His desire is simple: to build a space where every young person feels seen, valued, and equipped to live out their calling.`}

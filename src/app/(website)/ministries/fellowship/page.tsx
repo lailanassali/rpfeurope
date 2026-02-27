@@ -25,7 +25,7 @@ export default async function FellowshipPage() {
                 <div className="w-full flex min-h-screen flex-col font-sans">
                         <main className="flex-1">
                                 {/* 1. Hero Section */}
-                                <section className="relative h-[700px] w-full flex items-end overflow-hidden">
+                                <section className="relative h-[400px] md:h-[600px] lg:h-[700px] w-full flex items-end overflow-hidden">
                                         {/* Background with overlay */}
                                         <div
                                                 className="absolute inset-0 bg-cover bg-center"
@@ -47,18 +47,15 @@ export default async function FellowshipPage() {
                                 </section>
 
                                 {/* 2. Strength in Fellowship Section */}
-                                <section
-                                        style={{ paddingTop: "120px", paddingBottom: "120px" }}
-                                        className="bg-white"
-                                >
+                                <section className="bg-white py-16 md:py-[120px]">
                                         <div className="container w-11/12 mx-auto px-4">
                                                 <h2
-                                                        className="text-[48px] font-bold mb-6 text-left"
+                                                        className="text-2xl md:text-[48px] font-bold mb-6 text-left"
                                                         style={{ color: "#111111" }}
                                                 >
                                                         Strength in Fellowship
                                                 </h2>
-                                                <p className="text-[20px] text-left" style={{ color: "#373737" }}>
+                                                <p className="md:text-[20px] text-left" style={{ color: "#373737" }}>
                                                         At Redeemed Pillar of Fire, our Men's and Women's Fellowships (ages 35
                                                         and above) are refreshing gatherings where believers come together
                                                         to deepen in their walk with Christ and strengthen one another in
@@ -68,25 +65,19 @@ export default async function FellowshipPage() {
                                 </section>
 
                                 {/* 3. Worship With Us Section */}
-                                <section
-                                        style={{
-                                                backgroundColor: "#FFFFFF",
-                                                paddingTop: "104px",
-                                                paddingBottom: "104px",
-                                        }}
-                                >
+                                <section className="bg-white pb-16 md:py-[104px]">
                                         <div className="container w-11/12 mx-auto px-4">
-                                                <div className="flex items-center" style={{ gap: "82px" }}>
+                                                <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-[82px]">
                                                         {/* Text - left */}
-                                                        <div className="flex-3 text-left">
+                                                        <div className="flex-1 text-left w-full">
                                                                 <h2
-                                                                        className="text-[48px] font-bold mb-6"
+                                                                        className="text-2xl md:text-[48px] font-bold mb-6"
                                                                         style={{ color: "#111111" }}
                                                                 >
                                                                         Worship with us
                                                                 </h2>
                                                                 <div
-                                                                        className="text-[20px] whitespace-pre-line"
+                                                                        className="md:text-[20px] whitespace-pre-line"
                                                                         style={{ color: "#373737" }}
                                                                 >
                                                                         {`Our gatherings take place every fortnight for bible study, fellowship, prayer and building godly friendships. Here, believers feel renewed, encouraged and empowered through the word.
@@ -96,7 +87,7 @@ Each gathering is built on a foundation of love and encouragement where everyone
                                                         </div>
 
                                                         {/* Image with Glass Overlay - right */}
-                                                        <div className="flex-2 flex items-center justify-center relative">
+                                                        <div className="flex-1 w-full flex items-center justify-center relative mt-8 lg:mt-0">
                                                                 {/* Main Image */}
                                                                 <div
                                                                         className=" w-full overflow-hidden rounded-lg"
@@ -110,28 +101,23 @@ Each gathering is built on a foundation of love and encouragement where everyone
                                                                         }}
                                                                 >
                                                                         {/* Glass Overlay Card */}
-                                                                        <div
-                                                                                className="absolute w-full"
-                                                                                style={{ top: "32px", right: "32px", zIndex: 10 }}
-                                                                        >
+                                                                        <div className="relative lg:absolute w-[95%] lg:w-[110%] mx-auto md:-mt-16 lg:mt-0 lg:-left-12 lg:top-8 z-10 px-4 lg:px-0 top-8">
                                                                                 <div
+                                                                                        className="p-6 md:p-8 rounded-2xl w-full"
                                                                                         style={{
                                                                                                 backgroundColor: "#866AAF40",
                                                                                                 backdropFilter: "blur(10px)",
                                                                                                 WebkitBackdropFilter: "blur(10px)",
-                                                                                                padding: "32px",
-                                                                                                borderRadius: "16px",
-                                                                                                width: "100%", height: '352px'
                                                                                         }}
                                                                                 >
-                                                                                        <h3 className="text-[32px] font-bold text-white mb-6">
+                                                                                        <h3 className="text-xl md:text-[32px] font-bold text-white mb-6">
                                                                                                 Bi-Weekly Gatherings
                                                                                         </h3>
 
                                                                                         {/* Time */}
                                                                                         <div className="flex items-center gap-3 mb-4">
                                                                                                 <Clock className="size-5 text-white" />
-                                                                                                <span className="text-white text-lg">
+                                                                                                <span className="text-white text-base md:text-lg">
                                                                                                         Every 2 Weeks
                                                                                                 </span>
                                                                                         </div>
@@ -139,7 +125,7 @@ Each gathering is built on a foundation of love and encouragement where everyone
                                                                                         {/* Location */}
                                                                                         <div className="flex items-start gap-3 mb-8">
                                                                                                 <MapPin className="size-5 text-white mt-1 shrink-0" />
-                                                                                                <span className="text-white text-lg">
+                                                                                                <span className="text-white text-base md:text-lg">
                                                                                                         Various RPF Locations
                                                                                                 </span>
                                                                                         </div>
@@ -147,13 +133,8 @@ Each gathering is built on a foundation of love and encouragement where everyone
                                                                                         {/* Button */}
                                                                                         <Link href="/branches">
                                                                                                 <button
-                                                                                                        className="flex items-center justify-center gap-2 text-white font-semibold transition-all hover:opacity-90 px-6"
-                                                                                                        style={{
-                                                                                                                backgroundColor: "#59427B",
-                                                                                                                height: "54px",
-                                                                                                                borderRadius: "4px",
-                                                                                                                width: "100%",
-                                                                                                        }}
+                                                                                                        className="flex items-center justify-center gap-2 text-white font-semibold transition-all hover:opacity-90 px-6 h-[48px] md:h-[54px] w-full rounded-md"
+                                                                                                        style={{ backgroundColor: "#59427B" }}
                                                                                                 >
                                                                                                         <span>Find a Location</span>
                                                                                                         <ArrowRight className="size-5" />
@@ -169,14 +150,10 @@ Each gathering is built on a foundation of love and encouragement where everyone
 
                                 {/* 4. Quote Section */}
                                 <section style={{ backgroundColor: "#F7E7D840" }} className="w-full">
-                                        <div
-                                                className="container w-11/12 mx-auto px-4"
-                                                style={{ paddingTop: "80px", paddingBottom: "80px" }}
-                                        >
+                                        <div className="container w-11/12 mx-auto px-4 py-12 md:py-[80px]">
                                                 <p
-                                                        className="text-center"
+                                                        className="text-center text-xl md:text-[36px]"
                                                         style={{
-                                                                fontSize: "36px",
                                                                 color: "#A25F20",
                                                                 lineHeight: "1.5",
                                                         }}
@@ -188,20 +165,20 @@ Each gathering is built on a foundation of love and encouragement where everyone
                                 </section>
 
                                 {/* 5. Bright & Morning Star Live Sessions Section */}
-                                <section className="py-24 bg-white">
+                                <section className="py-16 md:py-24 bg-white">
                                         <div className="container w-11/12 mx-auto px-4">
-                                                <div className="flex items-start gap-8 mb-20">
-                                                        <div className="flex-1">
+                                                <div className="flex flex-col lg:flex-row items-start gap-8 mb-12 lg:mb-20">
+                                                        <div className="flex-1 w-full">
                                                                 <h2
-                                                                        className="text-[48px] font-bold"
+                                                                        className="text-2xl md:text-[48px] font-bold"
                                                                         style={{ color: "#111111" }}
                                                                 >
                                                                         The Bright & Morning Star Live Sessions
                                                                 </h2>
                                                         </div>
-                                                        <div className="flex-1">
+                                                        <div className="flex-1 w-full">
                                                                 <div
-                                                                        className="text-[20px] whitespace-pre-line"
+                                                                        className="md:text-[20px] whitespace-pre-line"
                                                                         style={{ color: "#373737" }}
                                                                 >
                                                                         {`Join us live as we pray, read and dive into God's Word together — with moments of prophetic insight, dream interpretation and divine revelation that will set your spirit on fire.
