@@ -6,11 +6,13 @@ import { cn } from "@/lib/utils";
 
 interface AboutCardsCarouselProps {
   images: string[];
+  autoplay?: boolean;
 }
 
-export function AboutCardsCarousel({ images }: AboutCardsCarouselProps) {
+export function AboutCardsCarousel({ images, autoplay = true }: AboutCardsCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -33,8 +35,22 @@ export function AboutCardsCarousel({ images }: AboutCardsCarouselProps) {
     setCurrentIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
   };
 
+  useEffect(() => {
+    if (!autoplay || images.length <= 1 || isHovered) return;
+
+    const interval = setInterval(() => {
+      goToNext();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [autoplay, images.length, isHovered]);
+
   return (
-    <div className="mx-auto w-full mb-20 overflow-hidden">
+    <div
+      className="mx-auto w-full mb-20 overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Carousel Container */}
       <div className="relative">
         <div className="overflow-hidden">

@@ -49,7 +49,7 @@ export default async function YouthPage() {
                               heading="RPF Youth"
                               subtitle="A Generation Rising in Christ. A space where young people encounter God, build real friendships, and discover who they are in Him."
                               primaryButton={{
-                                   text: "Join Our Ministry",
+                                   text: "Get Involved",
                                    href: "/connect"
                               }}
                          />
@@ -193,8 +193,8 @@ More than a pastor, he's a mentor and a friend, someone who listens, challenges,
                     <FinalCTA
                          heading="Be a Part of the Story"
                          subtitle="Step in, bring your story, and be part of what God is building in our generation. You don't have to wait to belong here. There's space for you to grow, serve, and make a difference with others who are doing the same."
-                         primaryButtonText="Volunteer with RPF Youth"
-                         primaryButtonHref="/connect"
+                         primaryButtonText="Upcoming at RPF Youth"
+                         primaryButtonHref="/events?tab=youth"
                          backgroundColor="#CEC3DF"
                          backgroundImage={youthCTA}
                     />

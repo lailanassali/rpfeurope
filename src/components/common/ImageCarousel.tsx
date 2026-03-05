@@ -18,10 +18,11 @@ export function ImageCarousel({
   showControls = true,
   showIndicators = true,
   layout = "single",
-  autoplay = false
+  autoplay = true
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -46,14 +47,14 @@ export function ImageCarousel({
 
   // Autoplay functionality
   useEffect(() => {
-    if (!autoplay) return;
+    if (!autoplay || isHovered) return;
 
     const interval = setInterval(() => {
-      goToNext();
-    }, 3000);
+      setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [autoplay, currentIndex]);
+  }, [autoplay, images.length, isHovered]);
 
   if (layout === "multi" && !isMobile) {
     // Get images to display based on current index
@@ -71,7 +72,12 @@ export function ImageCarousel({
     const visibleImages = getVisibleImages();
 
     return (
-      <div className="relative w-full overflow-hidden" style={{ height: `${height}px` }}>
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ height: `${height}px` }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <div className="flex gap-2 h-full">
           {visibleImages.map((item, i) => {
             // Calculate width based on total number of images
@@ -140,7 +146,12 @@ export function ImageCarousel({
 
   // Single image layout (original)
   return (
-    <div className="relative w-full overflow-hidden rounded-lg" style={{ height: `${height}px` }}>
+    <div
+      className="relative w-full overflow-hidden rounded-lg"
+      style={{ height: `${height}px` }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Image */}
       <img
         src={images[currentIndex]}

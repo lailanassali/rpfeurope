@@ -182,7 +182,7 @@ export default async function AboutPage() {
             <LocationCard
               location="Sunday Service"
               image={aboutSunday}
-              href="/events"
+              href="#"
               description="Sunday is the Lord’s Day, and at RPF, it’s a joyful celebration of His
 presence. Our services are full of vibrant praise, heartfelt worship, and the uncompromised
 teaching of God’s Word.
@@ -193,7 +193,7 @@ Join us, there’s a seat waiting for you."
             <LocationCard
               location="Bible Study"
               image={aboutBible}
-              href="/events"
+              href="#"
               description="Our Bible Study sessions are a chance to dive deep into the Word in an intimate, welcoming
 setting. We gather in breakout groups where people can ask real questions, have honest
 conversations and grow together in faith.
@@ -203,7 +203,7 @@ there’s something for everyone — from foundational teachings to more advance
             <LocationCard
               location="Fire Night"
               image={aboutFirenight}
-              href="/events"
+              href="#"
               description="A truly supernatural experience. Fire Night at Redeemed Pillar of Fire (RPF) is unlike anything else.
 It’s a time to press into prayer, encounter the Holy Spirit and experience God in a powerful, lifechanging way.
 These evenings are filled with heartfelt worship, the teaching of the Word, powerful praise and

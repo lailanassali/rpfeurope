@@ -152,7 +152,7 @@ export default function ResourcesPage() {
           heading="Stay Connected and Grow With Us"
           subtitle="Faith grows best in community. Whether you're near one of our branches or joining online, there are many ways to stay connected and be part of what God is doing through RPF Europe."
           primaryButtonText="Join Our Ministry"
-          primaryButtonHref="/connect"
+          primaryButtonHref="/join-service"
           backgroundImage={ctaImage}
         />
       </main>

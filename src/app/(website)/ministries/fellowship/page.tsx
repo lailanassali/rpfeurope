@@ -40,7 +40,7 @@ export default async function FellowshipPage() {
                                                 heading="RPF Men & Women's Fellowship"
                                                 subtitle="A home for everyone seeking God's presence, growing in faith, and walking in purpose."
                                                 primaryButton={{
-                                                        text: "Join Our Ministry",
+                                                        text: "Get Involved",
                                                         href: "/connect",
                                                 }}
                                         />
@@ -101,9 +101,9 @@ Each gathering is built on a foundation of love and encouragement where everyone
                                                                         }}
                                                                 >
                                                                         {/* Glass Overlay Card */}
-                                                                        <div className="relative lg:absolute w-[95%] lg:w-[110%] mx-auto md:-mt-16 lg:mt-0 lg:-left-12 lg:top-8 z-10 px-4 lg:px-0 top-8">
+                                                                        <div className="relative md:absolute w-[95%] md:w-[98%] mx-auto md:-mt-16 md:-left-12 md:top-8 z-10 px-4 md:px-0 top-8">
                                                                                 <div
-                                                                                        className="p-6 md:p-8 rounded-2xl w-full"
+                                                                                        className="p-6 md:p-8 rounded-2xl w-full h-[352px]"
                                                                                         style={{
                                                                                                 backgroundColor: "#866AAF40",
                                                                                                 backdropFilter: "blur(10px)",
@@ -131,7 +131,7 @@ Each gathering is built on a foundation of love and encouragement where everyone
                                                                                         </div>
 
                                                                                         {/* Button */}
-                                                                                        <Link href="/branches">
+                                                                                        <Link href="/join-service">
                                                                                                 <button
                                                                                                         className="flex items-center justify-center gap-2 text-white font-semibold transition-all hover:opacity-90 px-6 h-[48px] md:h-[54px] w-full rounded-md"
                                                                                                         style={{ backgroundColor: "#59427B" }}
@@ -197,8 +197,8 @@ We've watched God move powerfully in every session — healing hearts, answering
                                 <FinalCTA
                                         heading="Stay Connected and Grow With Us"
                                         subtitle="Faith grows best in community. Whether you're near one of our branches or joining online, there are many ways to stay connected and be part of what God is doing through RPF Europe."
-                                        primaryButtonText="Join Our Ministry"
-                                        primaryButtonHref="/connect"
+                                        primaryButtonText="Upcoming at RPF Fellowship"
+                                        primaryButtonHref="/events?tab=women"
                                         backgroundColor="#FFFFFF"
                                         backgroundImage={fellowshipCTA}
                                 />

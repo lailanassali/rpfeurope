@@ -43,7 +43,7 @@ export default async function UniversityPage() {
                               heading="RPF University Fellowships"
                               subtitle="A place where students grow in faith, build lasting friendships, and live boldly for Christ"
                               primaryButton={{
-                                   text: "Join Our Ministry",
+                                   text: "Get Involved",
                                    href: "/connect"
                               }}
                          />
@@ -103,8 +103,8 @@ Every fellowship hosts weekly bible studies, social events, outreach, and worshi
                     <FinalCTA
                          heading="Join the movement"
                          subtitle="Whether you're starting university or preparing to graduate, RPF University Fellowships give you a place to grow, serve, and shine for Jesus."
-                         primaryButtonText="Join Our Ministry"
-                         primaryButtonHref="/connect"
+                         primaryButtonText="Upcoming at RPF on Campus"
+                         primaryButtonHref="/events?tab=campus"
                          backgroundColor="#FFFFFF"
                          backgroundImage={universityCTA}
                     />

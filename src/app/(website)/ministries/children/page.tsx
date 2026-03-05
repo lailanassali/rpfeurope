@@ -43,7 +43,7 @@ export default async function ChildrenPage() {
                               subtitle="Every child is loved, welcomed, and encouraged to grow in faith and character."
                               primaryButton={{
                                    text: "Join Our Children's Service",
-                                   href: "/ministries/children/register",
+                                   href: "/join-service",
                               }}
                          />
                     </section>
@@ -236,8 +236,8 @@ Whether your child is taking their first steps of faith, there is a place for th
                     <FinalCTA
                          heading="There's a place for every child at RPF."
                          subtitle="Join us this Sunday and let your child be part of what God is building in this generation."
-                         primaryButtonText="Pre-register your child"
-                         primaryButtonHref="/ministries/children/register"
+                         primaryButtonText="Upcoming event at RPF Children"
+                         primaryButtonHref="/events?tab=children"
                          backgroundColor="#CEC3DF"
                          backgroundImage={childrenCTA}
                     />

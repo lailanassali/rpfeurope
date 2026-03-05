@@ -18,8 +18,9 @@ interface ConnectCarouselProps {
   autoplay?: boolean;
 }
 
-export function ConnectCarousel({ items, autoplay = false }: ConnectCarouselProps) {
+export function ConnectCarousel({ items, autoplay = true }: ConnectCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const itemsToShow = 3; // Show 3 items at a time
 
   const totalPages = Math.max(1, items.length - itemsToShow + 1);
@@ -29,17 +30,17 @@ export function ConnectCarousel({ items, autoplay = false }: ConnectCarouselProp
 
   // Autoplay functionality
   useEffect(() => {
-    if (!autoplay) return;
+    if (!autoplay || isHovered) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => {
         const maxIndex = totalPages - 1;
         return prev >= maxIndex ? 0 : prev + 1;
       });
-    }, 3000); // Change slide every 3 seconds
+    }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, [autoplay, totalPages]);
+  }, [autoplay, totalPages, isHovered]);
 
   const goToPrevious = () => {
     if (canGoPrevious) {
@@ -54,7 +55,11 @@ export function ConnectCarousel({ items, autoplay = false }: ConnectCarouselProp
   };
 
   return (
-    <div className="w-full md:mt-14 mt-4">
+    <div
+      className="w-full md:mt-14 mt-4"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Navigation Arrows - Aligned to extreme left */}
       <div className="flex justify-end gap-3 md:mb-12 mb-6">
         <button

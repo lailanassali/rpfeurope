@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -18,6 +18,7 @@ interface LoveCarouselProps {
   bgColor?: string;
   textColor?: "white" | "black";
   borderColor?: string;
+  autoplay?: boolean;
 }
 
 export function LoveCarousel({
@@ -25,9 +26,21 @@ export function LoveCarousel({
   showCarousel = true,
   bgColor = "#F7E7D84D",
   textColor = "black",
-  borderColor = "white"
+  borderColor = "white",
+  autoplay = true
 }: LoveCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (!autoplay || !showCarousel || items.length <= 1 || isHovered) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev < items.length - 1 ? prev + 1 : 0));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [autoplay, showCarousel, items.length, isHovered]);
 
   const canGoPrevious = currentIndex > 0;
   const canGoNext = currentIndex < items.length - 1;
@@ -48,7 +61,12 @@ export function LoveCarousel({
   const textColorClass = textColor === "white" ? "text-white" : "text-black";
 
   return (
-    <div className="relative rounded-2xl border" style={{ backgroundColor: bgColor, borderColor }}>
+    <div
+      className="relative rounded-2xl border"
+      style={{ backgroundColor: bgColor, borderColor }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Heading positioned half outside the box */}
       <div className="container mx-auto px-4 relative">
         <h2 className={`text-[24px] md:text-[48px] font-bold ${textColorClass} mb-0 relative z-10 inline-block pr-8 transform -translate-y-6 md:-translate-y-8`}>

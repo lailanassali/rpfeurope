@@ -75,7 +75,8 @@ async function getLocations(): Promise<Partial<Location>[]> {
 			return [];
 		}
 
-		return (data || []) as Partial<Location>[];
+		const validLocations = (data || []).filter(loc => loc.name && loc.name.toLowerCase() !== "tag_order");
+		return validLocations as Partial<Location>[];
 	} catch (error) {
 		console.error("Error fetching locations:", error);
 		return [];

@@ -66,6 +66,10 @@ const PAGE_OPTIONS = [
 
  // Give Life Page
  { value: 'give_life_carousel', label: 'Give Life - Bottom Carousel', isCarousel: true },
+
+ // Events Page
+ { value: 'events_hero', label: 'Events - Hero Section', isCarousel: false },
+ { value: 'events_cta', label: 'Events - Final CTA', isCarousel: false },
 ];
 
 export default function ImagesPage() {

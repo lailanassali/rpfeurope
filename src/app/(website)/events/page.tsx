@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { HeroText } from "@/components/common/HeroText";
 import { EventCard } from "@/components/common/EventCard";
 import { FinalCTA } from "@/components/common/FinalCTA";
@@ -19,15 +20,73 @@ interface Event {
 const categories = ["All", "RPF Europe", "Youth", "Children", "Men", "Women", "Campus"];
 
 export default function EventsPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  return (
+    <Suspense fallback={
+      <div className="flex h-screen items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      </div>
+    }>
+      <EventsPageContent />
+    </Suspense>
+  );
+}
+
+function EventsPageContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get('tab');
+
+  // Find matching category from URL param (case-insensitive) or default to "All"
+  const defaultCategory = useMemo(() => {
+    if (!tabParam) return "All";
+    const match = categories.find(c => c.toLowerCase() === tabParam.toLowerCase());
+    return match || "All";
+  }, [tabParam]);
+
+  const [activeCategory, setActiveCategory] = useState(defaultCategory);
   const [selectedLocation, setSelectedLocation] = useState("All Locations");
   const [events, setEvents] = useState<Event[]>([]);
   const [locations, setLocations] = useState<string[]>(["All Locations"]);
   const [isLoading, setIsLoading] = useState(true);
+  const [heroImage, setHeroImage] = useState<string | null>(null);
+  const [ctaImage, setCtaImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Sync state if URL changes externally
+    if (tabParam) {
+      const match = categories.find(c => c.toLowerCase() === tabParam.toLowerCase());
+      if (match && match !== activeCategory) {
+        setActiveCategory(match);
+      }
+    }
+  }, [tabParam, activeCategory]);
 
   useEffect(() => {
     fetchEvents();
+    fetchHeroImage();
   }, []);
+
+  async function fetchHeroImage() {
+    try {
+      // Fetch both hero and CTA images in parallel
+      const [heroRes, ctaRes] = await Promise.all([
+        fetch('/api/images?page=events_hero'),
+        fetch('/api/images?page=events_cta')
+      ]);
+
+      if (heroRes.ok) {
+        const heroData = await heroRes.json();
+        if (heroData?.image_url) setHeroImage(heroData.image_url);
+      }
+
+      if (ctaRes.ok) {
+        const ctaData = await ctaRes.json();
+        if (ctaData?.image_url) setCtaImage(ctaData.image_url);
+      }
+    } catch (error) {
+      console.error('Failed to fetch images:', error);
+    }
+  }
 
   async function fetchEvents() {
     try {
@@ -63,7 +122,9 @@ export default function EventsPage() {
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundColor: "#382a4dff",
-              backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=1080&fit=crop')"
+              backgroundImage: heroImage
+                ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${heroImage}')`
+                : "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=1080&fit=crop')"
             }}
           />
           <HeroText
@@ -84,7 +145,16 @@ export default function EventsPage() {
                 {categories.map((category) => (
                   <button
                     key={category}
-                    onClick={() => setActiveCategory(category)}
+                    onClick={() => {
+                      setActiveCategory(category);
+                      const params = new URLSearchParams(searchParams.toString());
+                      if (category === "All") {
+                        params.delete('tab');
+                      } else {
+                        params.set('tab', category.toLowerCase());
+                      }
+                      router.push(`?${params.toString()}`, { scroll: false });
+                    }}
                     className={`px-6 py-3 rounded-lg font-medium transition-colors ${activeCategory === category
                       ? "bg-primary text-white"
                       : "bg-transparent text-black hover:bg-gray-100 border border-[#f2f4f6b9]"
@@ -147,6 +217,7 @@ export default function EventsPage() {
           subtitle="Subscribe to our calendar to receive updates about upcoming events and never miss an opportunity to connect."
           primaryButtonText="Subscribe to Calendar"
           primaryButtonHref="#"
+          backgroundImage={ctaImage || undefined}
         />
       </main>
     </div>

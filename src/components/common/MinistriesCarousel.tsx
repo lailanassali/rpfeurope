@@ -14,19 +14,20 @@ interface MinistriesCarouselProps {
  autoplay?: boolean;
 }
 
-export function MinistriesCarousel({ items, autoplay = false }: MinistriesCarouselProps) {
+export function MinistriesCarousel({ items, autoplay = true }: MinistriesCarouselProps) {
  const [activeIndex, setActiveIndex] = useState(0);
+ const [isHovered, setIsHovered] = useState(false);
 
  // Autoplay functionality
  useEffect(() => {
-  if (!autoplay) return;
+  if (!autoplay || isHovered) return;
 
   const interval = setInterval(() => {
    setActiveIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
-  }, 3000); // Change slide every 3 seconds
+  }, 5000); // Change slide every 5 seconds
 
   return () => clearInterval(interval);
- }, [autoplay, items.length]);
+ }, [autoplay, items.length, isHovered]);
 
  const goToPrevious = () => {
   setActiveIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
@@ -41,7 +42,11 @@ export function MinistriesCarousel({ items, autoplay = false }: MinistriesCarous
  };
 
  return (
-  <div className="flex gap-[32px] items-center justify-center md:w-full w-[90%] mx-auto">
+  <div
+   className="flex gap-[32px] items-center justify-center md:w-full w-[90%] mx-auto"
+   onMouseEnter={() => setIsHovered(true)}
+   onMouseLeave={() => setIsHovered(false)}
+  >
    <button
     onClick={goToPrevious}
     className="p-3 rounded-[12px] border-[0.5px] border-[#a2a2a2] text-[#a2a2a2] hover:bg-[#a2a2a2] hover:text-white transition-colors md:static absolute left-7 top-1/2 z-40"
