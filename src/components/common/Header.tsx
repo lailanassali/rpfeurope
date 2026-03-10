@@ -68,7 +68,7 @@ const drawerGetInvolvedItems: MenuItemProps[] = [
 		icon: <Users className="size-5 text-muted-foreground" />,
 	},
 	{
-		title: "Join a Department to serve",
+		title: "Serve",
 		description: "Discover the Joy of Serving",
 		href: "/connect?tab=serve",
 		icon: <HandshakeIcon className="size-5 text-muted-foreground" />,
@@ -102,7 +102,7 @@ const drawerGetInvolvedItems: MenuItemProps[] = [
 const drawerDiscoverItems: MenuItemProps[] = [
 	{
 		title: "Resources",
-		description: "Join a department to serve",
+		description: "Explore our resources",
 		href: "/resources",
 		icon: <FileText className="size-5 text-muted-foreground" />,
 	},
