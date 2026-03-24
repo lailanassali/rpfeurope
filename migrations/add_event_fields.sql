@@ -1,6 +1,0 @@
--- Add new fields to events table
-ALTER TABLE events 
-ADD COLUMN IF NOT EXISTS key_highlights JSONB DEFAULT '[]'::JSONB,
-ADD COLUMN IF NOT EXISTS what_to_expect JSONB DEFAULT '[]'::JSONB,
-ADD COLUMN IF NOT EXISTS faqs JSONB DEFAULT '[]'::JSONB,
-ADD COLUMN IF NOT EXISTS quote TEXT;
