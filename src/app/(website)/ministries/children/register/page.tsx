@@ -479,32 +479,6 @@ export default function ChildrenRegisterPage() {
           rows={3}
          />
         </div>
-
-        <div>
-         <label className="block text-[16px] font-medium mb-2" style={{ color: "#373737" }}>
-          Doctor's Name *
-         </label>
-         <input
-          type="text"
-          value={doctorName}
-          onChange={(e) => setDoctorName(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary"
-          placeholder="Enter doctor's name"
-         />
-        </div>
-
-        <div>
-         <label className="block text-[16px] font-medium mb-2" style={{ color: "#373737" }}>
-          Doctor's Contact *
-         </label>
-         <input
-          type="tel"
-          value={doctorContact}
-          onChange={(e) => setDoctorContact(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary"
-          placeholder="Enter doctor's contact number"
-         />
-        </div>
        </div>
       </div>
      )}

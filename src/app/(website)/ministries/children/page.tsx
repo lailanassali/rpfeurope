@@ -39,7 +39,7 @@ export default async function ChildrenPage() {
                          />
 
                          <HeroText
-                              heading="RPF Children's Department"
+                              heading="RPF Children's Church"
                               subtitle="Every child is loved, welcomed, and encouraged to grow in faith and character."
                               primaryButton={{
                                    text: "Join Our Children's Service",
