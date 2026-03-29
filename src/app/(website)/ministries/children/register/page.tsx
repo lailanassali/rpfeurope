@@ -31,9 +31,7 @@ export default function ChildrenRegisterPage() {
  const [allergies, setAllergies] = useState("");
  const [medicalConditions, setMedicalConditions] = useState("");
  const [medications, setMedications] = useState("");
- const [doctorName, setDoctorName] = useState("");
- const [doctorContact, setDoctorContact] = useState("");
-
+ 
  // Step 4: Permissions & Consent
  const [permissionActivities, setPermissionActivities] = useState(false);
  const [permissionPhotos, setPermissionPhotos] = useState(false);
@@ -66,7 +64,7 @@ export default function ChildrenRegisterPage() {
 
  const isStep1Valid = childFullName && childDOB && childAge && childGender;
  const isStep2Valid = parentFullName && relationship && phoneNumber && email && emergencyContactName && emergencyContactNumber;
- const isStep3Valid = allergies && medicalConditions && medications && doctorName && doctorContact;
+ const isStep3Valid = allergies && medicalConditions && medications;
  const isStep4Valid = permissionActivities && permissionPhotos && permissionSnacks && permissionMedical && signature && signatureDate;
 
  const canContinue = () => {
@@ -100,8 +98,6 @@ export default function ChildrenRegisterPage() {
    allergies,
    medicalConditions,
    medications,
-   doctorName,
-   doctorContact,
    permissionActivities,
    permissionPhotos,
    permissionSnacks,
