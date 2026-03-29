@@ -56,6 +56,9 @@ export default async function AboutPage() {
       <main className="flex-1">
         {/* Top Introductory Text - Centered with Quotes */}
         <section className="container w-full px-4 sm:w-11/12 mx-auto pt-8 md:pt-12 lg:pt-16">
+         <h2 className="text-[24px] md:text-[48px] font-bold text-black mb-8 text-left">
+              About Us
+          </h2>
           <h1 className="text-2xl md:text-3xl lg:text-[36px] text-primary font-normal mb-12 md:mb-16 lg:mb-[72px] text-center px-4">
             Founded in 2014, Redeemed Pillar of Fire (RPF) is a family fully consecrated to Jesus Christ and led by the Holy Spirit
           </h1>
@@ -184,12 +187,12 @@ With the help of God, RPF Ministry will bring revival that will sweep the nation
               location="Sunday Service"
               image={aboutSunday}
               href="#"
-              description="Sunday is the Lord’s Day, and at RPF, it’s a joyful celebration of His
-presence. Our services are full of vibrant praise, heartfelt worship, and the uncompromised
-teaching of God’s Word.
-We also share testimonies of what God is doing in our lives, followed by a time of fellowship
-where you can connect with others and feel part of a family.
-Join us, there’s a seat waiting for you."
+              description="Welcome to RPF HQ led by Senior Pastor Austin, we are a vibrant and welcoming church community where lives are transformed through the power of faith, fellowship, and God’s Word. 
+
+We invite you to join us for our enriching Sunday and midweek services, where you'll experience heartfelt worship, practical biblical teaching, and a deep sense of belonging. Our church is built on a foundation of love, support, and genuine connection—where everyone is valued and encouraged to grow in their walk with God. 
+
+Whether you're new to faith, returning after time away, or looking for a place to call home, there's a place for you here at RPF Europe.
+"
             />
             <LocationCard
               location="Bible Study"
