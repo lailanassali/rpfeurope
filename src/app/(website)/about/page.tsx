@@ -59,7 +59,7 @@ export default async function AboutPage() {
          <h2 className="text-[24px] md:text-[48px] font-bold text-black mb-8 text-left">
               About Us
           </h2>
-          <h1 className="text-2xl md:text-3xl lg:text-[36px] text-primary font-normal mb-12 md:mb-16 lg:mb-[72px] text-center px-4">
+          <h1 className="text-2xl md:text-3xl lg:text-[36px] text-primary font-normal mb-12 md:mb-16 lg:mb-[72px] text-left px-4">
             Founded in 2014, Redeemed Pillar of Fire (RPF) is a family fully consecrated to Jesus Christ and led by the Holy Spirit
           </h1>
         </section>
