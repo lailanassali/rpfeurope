@@ -73,8 +73,11 @@ export default async function AboutPage() {
         <section className="container w-full px-4 sm:w-11/12 mx-auto mt-12 md:mt-16 lg:mt-20 mb-12 md:mb-16 lg:mb-20">
           <SectionContent
             heading="Our Story"
-            description={`Meet Pastor Augustine E-Ben. The Head Pastor of Redeemed Pillar of Fire Europe. Pastor Austin E-Ben first founded the church in October 2014, since then the ministry has expanded greatly with several branches and university fellowships worldwide. His love for God is reflected in his teaching of the word, love for souls and his dedication to the work of God. His goal is to bring souls from darkness to light, that they may receive forgiveness of sins the inheritance promised to those who are sanctified by faith in Jesus Christ.
-With the help of God, RPF Ministry will bring revival that will sweep the nations and restore the fear of the Lord. The ministry was built on love and prayer and as a church, we steadfastly dedicate ourselves to prayer and pour out love into one another, as we all aim to look a little bit more like Christ daily.`}
+            description={`Founded in 2014, Redeemed Pillar of Fire (RPF) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Appointed and ordained to serve, our heart is to glorify God and make His love known to all. We are a globally expanding Pentecostal movement with many branches across the UK and beyond. As a Bible-believing church, our mission is to spread the matchless love of Christ and to see lives transformed by the power of The Gospel.
+
+Our story began with our Senior Pastor Austin who faithfully served in church, until, in prayer, he received a word from God to start a new ministry. That very week, God prompted him again and reconfirmed the vision. With that confirmation, plans quickly began—searching for a place to gather, preparing for the work ahead, and by God's direction, launching with a Bible study in that very first week.
+
+Since then, God has been faithful. Today, Redeemed Pillar of Fire (RPF) has grown to over 21 branches and 14 university fellowships across the UK, Europe and America. Called to revival, we continue to expand, with many more branches to be established worldwide.`}
             alignment="left"
             headingSize="large"
           />
@@ -159,7 +162,9 @@ With the help of God, RPF Ministry will bring revival that will sweep the nation
               items={[
                 {
                   heading: "Our Leadership",
-                  text: `Meet Pastor Augustine E-Ben, a dedicated servant of Christ who leads Redeemed Pillar of Fire (RPF) with love, unwavering faith and humility. A man who seeks the face of God and carries His presence everywhere he goes.\n\nPastor Austin E-Ben is committed to raising up spiritual soldiers for the End Times - training and equipping everyone in the Redeemed Pillar of Fire (RPF) to walk in their God-given purpose and serve as vessels for His Kingdom. Since founding the church in October 2014, the ministry has grown significantly, expanding to multiple branches and university fellowships around the world. His love for God is evident in his passionate teaching of the Word, his compassion for souls, and his tireless devotion to the work of the ministry.\n\nHis mission is clear: to bring souls out of darkness into the light of Christ — that they may receive the forgiveness of sins and the eternal inheritance promised to all who are sanctified by faith in Jesus Christ.`,
+                  text: `Meet Pastor Augustine E-Ben. The Head Pastor of Redeemed Pillar of Fire Europe. Pastor Austin E-Ben first founded the church in October 2014, since then the ministry has expanded greatly with several branches and university fellowships worldwide. His love for God is reflected in his teaching of the word, love for souls and his dedication to the work of God. His goal is to bring souls from darkness to light, that they may receive forgiveness of sins the inheritance promised to those who are sanctified by faith in Jesus Christ.
+
+With the help of God, RPF Ministry will bring revival that will sweep the nations and restore the fear of the Lord. The ministry was built on love and prayer and as a church, we steadfastly dedicate ourselves to prayer and pour out love into one another, as we all aim to look a little bit more like Christ daily.`,
                   image: aboutLeadership,
                   imageTitle: "Senior Pastor E-Ben"
                 }
@@ -187,12 +192,7 @@ With the help of God, RPF Ministry will bring revival that will sweep the nation
               location="Sunday Service"
               image={aboutSunday}
               href="#"
-              description="Welcome to RPF HQ led by Senior Pastor Austin, we are a vibrant and welcoming church community where lives are transformed through the power of faith, fellowship, and God’s Word. 
-
-We invite you to join us for our enriching Sunday and midweek services, where you'll experience heartfelt worship, practical biblical teaching, and a deep sense of belonging. Our church is built on a foundation of love, support, and genuine connection—where everyone is valued and encouraged to grow in their walk with God. 
-
-Whether you're new to faith, returning after time away, or looking for a place to call home, there's a place for you here at RPF Europe.
-"
+              description="RPF HQ, led by Senior Pastor Austin, is a vibrant church community where lives are transformed through faith, fellowship, and God's Word. Join us for our Sunday and midweek services, where you'll experience heartfelt worship, practical biblical teaching, and a genuine sense of belonging — because no matter where you are in your journey, there's a place for you here."
             />
             <LocationCard
               location="Bible Study"
