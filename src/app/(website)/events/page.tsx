@@ -1,5 +1,6 @@
 "use client";
 
+import { formatDate } from '@/lib/utils'
 import { useState, useMemo, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { HeroText } from "@/components/common/HeroText";
@@ -196,7 +197,7 @@ function EventsPageContent() {
                       image={event.image_url}
                       title={event.title}
                       category={event.category}
-                      date={event.date}
+                      date={formatDate(event.date)}
                       time={event.time}
                       venue={event.venue}
                     />

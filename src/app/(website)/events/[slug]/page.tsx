@@ -6,6 +6,8 @@ import { FAQAccordion } from "@/components/common/FAQAccordion";
 import { EventRegistrationButton } from "@/components/events/EventRegistrationButton";
 import { supabaseAdmin } from "@/lib/supabase";
 import { notFound } from "next/navigation";
+import { formatDate } from '@/lib/utils'
+
 
 // Fetch event from database
 async function getEventDetail(slug: string) {
@@ -89,7 +91,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
               {/* Left Side - 60% */}
               <div className="lg:w-[60%]">
                 {/* Description */}
-                <p className="text-[16px] text-black/80 leading-relaxed mb-8">
+                <p className="text-[16px] text-black/80 leading-relaxed mb-8 whitespace-pre-wrap">
                   {event.description || 'Join us for this exciting event!'}
                 </p>
 
@@ -146,7 +148,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
                   <div className="space-y-3">
                     <div className="flex items-center gap-2 pt-3">
                       <Calendar className="size-6 text-black" />
-                      <span className="text-[14px] text-black">{event.date}</span>
+                      <span className="text-[14px] text-black">{formatDate(event.date)}</span>
                     </div>
 
                     <div className="flex items-center gap-2 pt-3">
@@ -190,7 +192,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
                     <h3 className="text-[22px] font-semibold text-black mt-6">
                       {item.title}
                     </h3>
-                    <p className="text-[14px] text-black font-normal mt-2">
+                    <p className="text-[14px] text-black font-normal mt-2 whitespace-pre-wrap">
                       {item.description}
                     </p>
                   </div>
