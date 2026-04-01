@@ -100,7 +100,7 @@ export async function getConnectTabImages(): Promise<Record<string, string>> {
    const { data, error } = await supabaseAdmin
     .from(tableName)
     .select('image_url')
-    .eq('page', `connect_${tabId}`)
+    .eq('page_identifier', `connect_${tabId}`)
     .limit(1)
     .single();
 
