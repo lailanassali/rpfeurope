@@ -201,7 +201,7 @@ Whether your child is taking their first steps of faith, there is a place for th
                                              {/* Time */}
                                              <div className="flex items-center gap-3 mb-4">
                                                   <Clock className="size-5 text-white" />
-                                                  <span className="text-white text-base md:text-lg">Sunday, 10:00 AM</span>
+                                                  <span className="text-white text-base md:text-lg">Sunday, 12:00 AM</span>
                                              </div>
 
                                              {/* Location */}
