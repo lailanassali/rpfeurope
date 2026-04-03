@@ -31,13 +31,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!event) {
     return {
-      title: 'Event Not Found | CHH Europe',
+      title: 'Event Not Found | RPF Europe',
     };
   }
 
   return {
-    title: `${event.title} | CHH Europe`,
-    description: event.description || 'Join us for this upcoming event at CHH Europe',
+    title: `${event.title} | RPF Europe`,
+    description: event.description || 'Join us for this upcoming event at RPF Europe',
   };
 }
 

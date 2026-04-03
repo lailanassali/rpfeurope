@@ -39,12 +39,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
    if (!location) {
       return {
-         title: 'Location Not Found | CHH Europe',
+         title: 'Location Not Found | RPF Europe',
       };
    }
 
    return {
-      title: `${location.name} | CHH Europe`,
+      title: `${location.name} | RPF Europe`,
       description: `Join us for service at ${location.name}. ${location.address}`,
    };
 }
