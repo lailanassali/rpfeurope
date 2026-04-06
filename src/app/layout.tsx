@@ -44,6 +44,8 @@ export const metadata: Metadata = {
 	},
 	icons: {
 		icon: "/assets/rpflogo.png",
+		shortcut: "/assets/rpflogo.png",
+		apple: "/assets/rpflogo.png",
 	},
 };
 
