@@ -150,7 +150,7 @@ export default async function Home() {
 						<div className="container w-full px-4 sm:w-11/12 sm:px-8 md:px-12 lg:px-[75px] mx-auto pb-12 md:pb-16 lg:pb-[96px]">
 							<SectionContent
 								heading="Ministries"
-								description="Redeemed Pillar of Fire (RPF) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Appointed and ordained to serve, our heart is to glorify God and make His love known to all."
+								description="Our ministries exist to ensure that every person — regardless of age or season of life — has a place to belong, grow, and be transformed by the power of God.  Whatever your story, there is a place for you here."
 								alignment="left"
 								headingSize="medium"
 							/>
@@ -260,7 +260,7 @@ export default async function Home() {
 					<div className="container w-full px-4 sm:w-11/12 mx-auto">
 						<SectionContent
 							heading="Connect"
-							description="Redeemed Pillar of Fire (RPF) is a family fully consecrated to Jesus Christ and led by the Holy Spirit. Appointed and ordained to serve, our heart is to glorify God and make His love known to all."
+							description="At RPF Europe, connection is at the heart of everything we do. We believe that life is better lived together — in worship, in prayer, and in community. Whether you are taking your first steps of faith or looking to go deeper, we would love to walk alongside you. Come as you are, and find your place in the family."
 							alignment="left"
 							headingSize="medium"
 						/>
