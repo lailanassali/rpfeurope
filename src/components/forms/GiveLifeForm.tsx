@@ -51,7 +51,7 @@ export function GiveLifeForm() {
   <div className="lg:w-1/2 md:px-[48px] py-8 rounded-[16px] md:border border-[#e5e5e5]/50 mx-auto overflow-hidden">
    <div className="">
     <h3 className="md:text-[24px] text-[20px] font-semibold text-[#211F1F] mt-6 mb-8 text-center">
-     I want to give my life to christ
+     I want to give my life to Christ
     </h3>
 
     <form onSubmit={handleSubmit}>

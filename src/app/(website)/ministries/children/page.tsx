@@ -8,7 +8,7 @@ import { getHeroImage, getCarouselImages } from "@/lib/image-utils";
 import { HeroText } from "@/components/common/HeroText";
 
 export const metadata: Metadata = {
-     title: "Children's Department | Redeemed Pillar of Fire",
+     title: "Children's Ministry | Redeemed Pillar of Fire",
      description: "Every child is loved, welcomed, and encouraged to grow in faith and character.",
 };
 
@@ -39,7 +39,7 @@ export default async function ChildrenPage() {
                          />
 
                          <HeroText
-                              heading="RPF Children's Church"
+                              heading="RPF Children's Ministry"
                               subtitle="Every child is loved, welcomed, and encouraged to grow in faith and character."
                               primaryButton={{
                                    text: "Join Our Children's Service",

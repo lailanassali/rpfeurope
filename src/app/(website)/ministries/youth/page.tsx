@@ -12,7 +12,7 @@ import { getAllLocations, transformLocationsToTabs } from "@/lib/location-utils"
 
 
 export const metadata: Metadata = {
-     title: "RPF Youth | Redeemed Pillar of Fire",
+     title: "Youth Ministry | Redeemed Pillar of Fire",
      description: "A Generation Rising in Christ. A space where young people encounter God, build real friendships, and discover who they are in Him.",
 };
 
@@ -46,7 +46,7 @@ export default async function YouthPage() {
                               }}
                          />
                          <HeroText
-                              heading="RPF Youth"
+                              heading="RPF Youth Ministry"
                               subtitle="A Generation Rising in Christ. A space where young people encounter God, build real friendships, and discover who they are in Him."
                               primaryButton={{
                                    text: "Get Involved",

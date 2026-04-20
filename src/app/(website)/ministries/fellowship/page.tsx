@@ -7,7 +7,7 @@ import Link from "next/link";
 import { getHeroImage } from "@/lib/image-utils";
 
 export const metadata: Metadata = {
-        title: "Men & Women's Fellowship | Redeemed Pillar of Fire",
+        title: "Men and Women | Redeemed Pillar of Fire",
         description:
                 "A home for everyone seeking God's presence, growing in faith, and walking in purpose.",
 };
@@ -37,7 +37,7 @@ export default async function FellowshipPage() {
                                                 }}
                                         />
                                         <HeroText
-                                                heading="RPF Men & Women's Fellowship"
+                                                heading="RPF Men and Women"
                                                 subtitle="A home for everyone seeking God's presence, growing in faith, and walking in purpose."
                                                 primaryButton={{
                                                         text: "Get Involved",

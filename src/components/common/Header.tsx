@@ -23,17 +23,17 @@ import { MenuItem, MenuItemProps } from "./MenuItem";
 
 const ministriesDropdown: MenuItemProps[] = [
 	{
-		title: "Men's and Women's fellowship",
+		title: "Men and Women",
 		description: "Men's and Women's Fellowships are for ages 35 and above",
 		href: "/ministries/fellowship",
 	},
 	{
-		title: "RPF Children's Ministry",
+		title: "Children's Ministry",
 		description: "Every child is loved, welcomed, and encouraged to grow.",
 		href: "/ministries/children",
 	},
 	{
-		title: "RPF Youth",
+		title: "Youth Ministry",
 		description: "Every young person has a voice and a place to belong.",
 		href: "/ministries/youth",
 	},

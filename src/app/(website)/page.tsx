@@ -160,17 +160,17 @@ export default async function Home() {
 						<MinistriesCarousel
 							items={[
 								{
-									title: "Men's and Women's Fellowship",
+									title: "Men and Women",
 									href: "/ministries/fellowship",
 									image: ministriesImages[0] || "",
 								},
 								{
-									title: "RPF Children's Ministry",
+									title: "Children's Ministry",
 									href: "/ministries/children",
 									image: ministriesImages[1] || "",
 								},
 								{
-									title: "RPF Youth",
+									title: "Youth Ministry",
 									href: "/ministries/youth",
 									image: ministriesImages[2] || "",
 								},
