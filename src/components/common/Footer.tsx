@@ -141,7 +141,7 @@ export function Footer() {
         <div className="my-6 md:my-16 border-t border-white pt-4 md:pt-10">
           <div className="flex gap-2 md:gap-3 items-center md:flex-row flex-col md:justify-between">
             <p className="text-white text-sm md:text-left text-center">
-              &copy; 2025 Redeemed Pillar of Fire. All Rights Reserved.
+              &copy; 2026 Redeemed Pillar of Fire. All Rights Reserved.
             </p>
             <button
               onClick={scrollToTop}
