@@ -47,6 +47,9 @@ export const metadata: Metadata = {
 		shortcut: "/assets/rpflogo.png",
 		apple: "/assets/rpflogo.png",
 	},
+	verification: {
+		google: '6b2fc0c517132e89',
+	},
 };
 
 export default function RootLayout({
