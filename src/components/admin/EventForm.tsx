@@ -137,12 +137,12 @@ export function EventForm({ initialData, eventId }: EventFormProps) {
               onChange={(e) => handleChange('category', e.target.value)}
               options={[
                 { value: '', label: 'Select Category' },
-                { value: 'RPF Europe', label: 'RPF Europe' },
+                { value: 'RPF Europe HQ', label: 'RPF Europe HQ' },
+                { value: 'RPF Branches', label: 'RPF Branches' },
                 { value: 'Youth', label: 'Youth' },
                 { value: 'Children', label: 'Children' },
-                { value: 'Men', label: 'Men' },
-                { value: 'Women', label: 'Women' },
-                { value: 'Campus', label: 'Campus' },
+                { value: 'Men & Women', label: 'Men & Women' },
+                { value: 'University Fellowships', label: 'University Fellowships' },
               ]}
             />
           </div>
