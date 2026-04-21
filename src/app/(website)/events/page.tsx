@@ -18,7 +18,7 @@ interface Event {
   venue: string;
 }
 
-const categories = ["All", "RPF Europe", "Youth", "Children", "Men", "Women", "Campus"];
+const categories = ["All", "RPF Europe HQ", "RPF Branches", "Youth", "Children", "Men & Women", "University Fellowships"];
 
 export default function EventsPage() {
   return (
